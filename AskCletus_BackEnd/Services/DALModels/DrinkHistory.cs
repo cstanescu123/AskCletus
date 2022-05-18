@@ -8,7 +8,7 @@ namespace AskCletus_BackEnd.Services.DALModels
     {
         [Key]
         public int HistoryId { get; set; }
-        public string DrinkName { get; set; }
+        public int DrinkId { get; set; }
         public DateTime Date { get; set; }
 
         [ForeignKey("User")]

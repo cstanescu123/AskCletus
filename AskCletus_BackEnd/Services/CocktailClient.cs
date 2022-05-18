@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
-
-    public interface ICocktailClient
-    {
-        Task<CocktailResponse> GetRecent();
-    }
-
     public class CocktailClient : ICocktailClient
     {
         private readonly HttpClient _httpClient;
