@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
-    public class CocktailClient
+
+    public interface ICocktailClient
+    {
+        Task<CocktailResponse> GetRecent();
+    }
+
+    public class CocktailClient : ICocktailClient
     {
         private readonly HttpClient _httpClient;
-        private string _baseUrl;
+        private readonly string _baseUrl;
 
         public CocktailClient(HttpClient client, IOptions<CocktailClientConfig> config)
         {
@@ -17,9 +23,9 @@ namespace AskCletus_BackEnd.Services
             _baseUrl = config.Value.BaseUrl;
         }
 
-        public async Task<CocktailResponse> GetPopularCocktails()
+        public async Task<CocktailResponse> GetRecent()
         {
-            var response = await _httpClient.GetAsync("recent");
+            var response = await _httpClient.GetAsync("recent.php");
             var content = await response.Content.ReadAsStreamAsync();
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;

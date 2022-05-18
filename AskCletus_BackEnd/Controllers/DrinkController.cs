@@ -21,7 +21,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("/recent")]
         public async Task GetRandomDrinks()
         {
-           CocktailResponse popularCocktails = await _cocktailClient.GetPopularCocktails();
+           CocktailResponse popularCocktails = await _cocktailClient.GetRecent();
         }
     }
 }
