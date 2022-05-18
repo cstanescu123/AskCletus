@@ -33,7 +33,7 @@ namespace AskCletus_BackEnd
             services.Configure<CocktailClientConfig>(Configuration.GetSection("CocktailClientConfig"));
             services.Configure<DBConfig>(Configuration.GetSection("ConnectionStrings"));
 
-            services.AddHttpClient<CocktailClient>(httpClient =>
+            services.AddHttpClient<ICocktailClient, CocktailClient>(httpClient =>
             {
                 var config = new CocktailClientConfig();
                 Configuration.GetSection("CocktailClientConfig").Bind(config);
