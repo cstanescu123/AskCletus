@@ -19,7 +19,7 @@ namespace AskCletus_BackEnd.Services
 
         public async Task<CocktailResponse> GetPopularCocktails()
         {
-            var response = await _httpClient.GetAsync("drinks");
+            var response = await _httpClient.GetAsync("recent");
             var content = await response.Content.ReadAsStreamAsync();
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
