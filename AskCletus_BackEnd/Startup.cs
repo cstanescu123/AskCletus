@@ -29,6 +29,16 @@ namespace AskCletus_BackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<IDrinkContext, DrinkContext>();
+            services.Configure<CocktailClientConfig>(Configuration.GetSection("CocktailClientConfig"));
+            services.Configure<DBConfig>(Configuration.GetSection("ConnectionStrings"));
+
+            services.AddHttpClient<CocktailClient>(httpClient =>
+            {
+                var config = new CocktailClientConfig();
+                Configuration.GetSection("CocktailclientConfig").Bind(config);
+                httpClient.BaseAddress = new Uri(config.BaseUrl);
+            });
+
             services.AddControllers();
             services.AddCors(corsOption =>
             {
