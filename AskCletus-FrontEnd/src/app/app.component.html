@@ -1,6 +1,7 @@
 Drink!
-<pre *ngIf="drink$ | async as drink; else gettingDrink">
+<pre *ngIf="drinkResponse$ | async as drink; else gettingDrink">
   name: {{drink.strDrink }}
+  ingredients: {{drink.strIngredient1}}
 </pre>
 
 <ng-template #gettingDrink>
