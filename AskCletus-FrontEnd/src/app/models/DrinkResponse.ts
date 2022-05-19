@@ -1,0 +1,55 @@
+export interface DrinkResponse {
+   
+        idDrink: any
+        strDrink: any
+        strDrinkAlternate: any
+        strTags: any
+        strVideo: any
+        strCategory: any
+        strIBA: any
+        strAlcoholic: any
+        strGlass: any
+        strInstructions: any
+        strInstructionsES: any
+        strInstructionsDE: any
+        strInstructionsFR: any
+        strInstructionsIT: any
+        strInstructionsZHHANS: any
+        strInstructionsZHHANT: any
+        strDrinkThumb: any
+        strIngredient1: any
+        strIngredient2: any
+        strIngredient3: any
+        strIngredient4: any
+        strIngredient5: any
+        strIngredient6: any
+        strIngredient7: any
+        strIngredient8: any
+        strIngredient9: any
+        strIngredient10: any
+        strIngredient11: any
+        strIngredient12: any
+        strIngredient13: any
+        strIngredient14: any
+        strIngredient15: any
+        strMeasure1: any
+        strMeasure2: any
+        strMeasure3: any
+        strMeasure4: any
+        strMeasure5: any
+        strMeasure6: any
+        strMeasure7: any
+        strMeasure8: any
+        strMeasure9: any
+        strMeasure10: any
+        strMeasure11: any
+        strMeasure12: any
+        strMeasure13: any
+        strMeasure14: any
+        strMeasure15: any
+        strImageSource: any
+        strImageAttribution: any
+        strCreativeCommonsConfirmed: any
+        dateModified: any
+        
+}
