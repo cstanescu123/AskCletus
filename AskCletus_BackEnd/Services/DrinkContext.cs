@@ -13,6 +13,19 @@ namespace AskCletus_BackEnd.Services
 
 
 
+        public User AddUser(User user)
+        {
+            var userEntity = Users.Add(user).Entity;
+            SaveChanges();
+            return userEntity;
+        }
+
+
+
+
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
