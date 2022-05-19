@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DrinkServiceService } from './drink-service.service';
-import { DrinkResponse } from './models/DrinkResponse';
+import { Drink } from './models/DrinkResponse';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,13 @@ import { DrinkResponse } from './models/DrinkResponse';
 export class AppComponent implements OnInit {
   title = 'AskCletus-FrontEnd';
 
-  drinkResponse$: Observable<DrinkResponse>;
+  drink$: Observable<Drink>;
 
 /**
  *
  */
 constructor(private _drinkService: DrinkServiceService) {
-  this.drinkResponse$ = this._drinkService.getRecentDrink();
+  this.drink$ = this._drinkService.getRecentDrink();
 }
 
 drink: string = "";

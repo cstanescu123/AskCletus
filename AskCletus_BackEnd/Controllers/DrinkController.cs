@@ -23,7 +23,7 @@ namespace AskCletus_BackEnd.Controllers
 
         [HttpGet]
         [Route("recent")]
-        public async Task<IActionResult> GetRandomDrinks()
+        public async Task<IActionResult> GetRecent()
         {
             CocktailResponse popularCocktails = await _cocktailClient.GetRecent();
             return Ok(popularCocktails);
