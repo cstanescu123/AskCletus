@@ -11,13 +11,13 @@ import { DrinkResponse } from './models/DrinkResponse';
 export class AppComponent implements OnInit {
   title = 'AskCletus-FrontEnd';
 
-  drink$: Observable<DrinkResponse>;
+  drinkResponse$: Observable<DrinkResponse>;
 
 /**
  *
  */
 constructor(private _drinkService: DrinkServiceService) {
-  this.drink$ = this._drinkService.getRecentDrink();
+  this.drinkResponse$ = this._drinkService.getRecentDrink();
 }
 
 drink: string = "";
