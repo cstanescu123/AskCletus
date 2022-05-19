@@ -22,8 +22,25 @@ namespace AskCletus_BackEnd.Services
             return userEntity;
         }
 
+        public User UpdateUser(User user)
+        {
+           var updatedUser = Users.Update(user);
+            SaveChanges();
+            return updatedUser.Entity;
+        }
 
-
+        public User DeleteUser(int userId)
+        {
+            var dbUsers = Users.Find(userId);
+            if (dbUsers != null)
+            {
+                var entity = Users.Remove(dbUsers).Entity;
+                SaveChanges();
+                return entity; 
+            }
+            return null;
+          
+        }
 
 
 
