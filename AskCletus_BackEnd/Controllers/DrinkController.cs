@@ -29,6 +29,16 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(popularCocktails);
         }
 
+        [HttpGet]
+        [Route("GetUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var users = _drinkContext.GetAllUsers();
+            return Ok(users);
+        }
+
+
+
         [HttpPost]
         [Route("AddUser")]
         public IActionResult AddUser([FromBody] PostUserRequest postUserRequest)
