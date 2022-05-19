@@ -6,7 +6,7 @@ namespace AskCletus_BackEnd.Services
     public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser
     {
     }
-
+    //anywordsIchoose
     public interface IDeleteUser
     {
         User DeleteUser(int userId);
