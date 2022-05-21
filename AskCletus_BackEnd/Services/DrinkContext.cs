@@ -39,12 +39,30 @@ namespace AskCletus_BackEnd.Services
                 return entity; 
             }
             return null;
-          
         }
 
+        public IEnumerable<UserBar> GetBars()
+        {
+            return UserBars;
+        }
+        
+        public UserBar GetMyBar(int userId)
+        {
+            var bar = UserBars.Find(userId);
+            return bar;
+        }
 
-
-
+        public UserBar DeleteBar(int userId)
+        {
+            var dbUserBar = UserBars.Find(userId);
+            if (dbUserBar != null)
+            {
+                var entity = UserBars.Remove(dbUserBar).Entity;
+                SaveChanges();
+                return entity;
+            }
+            return null;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
