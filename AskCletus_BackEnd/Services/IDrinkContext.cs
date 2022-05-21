@@ -3,13 +3,23 @@ using System.Collections.Generic;
 
 namespace AskCletus_BackEnd.Services
 {
-    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetMyBar
+    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar
     {
+    }
+
+    public interface IGetBars
+    {
+        IEnumerable<UserBar> GetBars();
     }
 
     public interface IGetMyBar
     {
-        IEnumerable<UserBar> GetMyBar();
+        UserBar GetMyBar(int userId);
+    }
+
+    public interface IDeleteBar
+    {
+        UserBar DeleteBar(int userId);
     }
 
     public interface IDeleteUser

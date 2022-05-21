@@ -21,18 +21,22 @@ namespace AskCletus_BackEnd.Controllers
 
         // GET: api/<BarController>
         [HttpGet]
-        [Route("MyBar")]
+        [Route("Bars")]
         public IActionResult GetMyBar()
         {
-            var myBar = _drinkContext.GetMyBar();
-            return Ok();
+            var myBars = _drinkContext.GetBars();
+            return Ok(myBars);
         }
 
-        // GET api/<BarController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{userId}")]
+        public IActionResult Get([FromRoute] int userId)
         {
-            return "value";
+            var myBar = _drinkContext.GetMyBar(userId);
+            if (myBar != null)
+            {
+                return Ok(myBar);
+            }
+            return NotFound("That bar does not exist");
         }
 
         // POST api/<BarController>
@@ -47,10 +51,15 @@ namespace AskCletus_BackEnd.Controllers
         {
         }
 
-        // DELETE api/<BarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{userId}")]
+        public IActionResult DeleteBar([FromRoute] int userId)
         {
+            var dbUserBar = _drinkContext.DeleteBar(userId);
+            if (dbUserBar != null)
+            {
+                return Accepted("Bar deleted");
+            }
+                return NotFound("This bar does not exist");
         }
     }
 }
