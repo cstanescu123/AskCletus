@@ -39,10 +39,13 @@ namespace AskCletus_BackEnd.Services
                 return entity; 
             }
             return null;
-          
         }
 
-
+        public IEnumerable<UserBar> GetMyBar()
+        {
+            return UserBars;
+        }
+        
 
 
 

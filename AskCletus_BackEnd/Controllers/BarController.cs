@@ -13,16 +13,18 @@ namespace AskCletus_BackEnd.Controllers
         private readonly ICocktailClient _cocktailClient;
         private readonly IDrinkContext _drinkContext;
 
-        public BarController(ICocktailClient cocktailClient, IDrinkContext drinkContext)
+        public BarController(IDrinkContext drinkContext)
         {
-            _cocktailClient = cocktailClient;
+            // _cocktailClient = cocktailClient;
             _drinkContext = drinkContext;
         }
+
         // GET: api/<BarController>
         [HttpGet]
         [Route("MyBar")]
         public IActionResult GetMyBar()
         {
+            var myBar = _drinkContext.GetMyBar();
             return Ok();
         }
 
