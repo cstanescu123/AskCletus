@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace AskCletus_BackEnd.Services
 {
-    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar
+    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar, IAddBar
     {
+    }
+
+    public interface IAddBar
+    {
+        UserBar AddBar(UserBar userBar);
     }
 
     public interface IGetBars
@@ -41,4 +46,4 @@ namespace AskCletus_BackEnd.Services
         User UpdateUser(User user);
     }
 
-}//insert interfaces into IDrinkcontext
+}

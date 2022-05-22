@@ -1,4 +1,6 @@
 ﻿using AskCletus_BackEnd.Services;
+using AskCletus_BackEnd.Services.DALModels;
+using AskCletus_BackEnd.Services.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -13,9 +15,9 @@ namespace AskCletus_BackEnd.Controllers
         private readonly ICocktailClient _cocktailClient;
         private readonly IDrinkContext _drinkContext;
 
-        public BarController(IDrinkContext drinkContext)
+        public BarController(IDrinkContext drinkContext, ICocktailClient cocktailClient)
         {
-            // _cocktailClient = cocktailClient;
+             _cocktailClient = cocktailClient;
             _drinkContext = drinkContext;
         }
 
@@ -39,10 +41,15 @@ namespace AskCletus_BackEnd.Controllers
             return NotFound("That bar does not exist");
         }
 
-        // POST api/<BarController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("AddBar")]
+        public IActionResult AddBar([FromBody] PostBarRequest postBarRequest)
         {
+            var myBar = new UserBar();
+            myBar.Ingredients = postBarRequest.Ingredients;
+
+            var dbBar = _drinkContext.AddBar(myBar);
+            return Created($"https://localhost:5001/{dbBar.Ingredients}", dbBar);
         }
 
         // PUT api/<BarController>/5

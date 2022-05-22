@@ -64,6 +64,13 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
+        public UserBar AddBar(UserBar userBar)
+        {
+            var userEntity = UserBars.Add(userBar).Entity;
+            SaveChanges();
+            return userEntity;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
