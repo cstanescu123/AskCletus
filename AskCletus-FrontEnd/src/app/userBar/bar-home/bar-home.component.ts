@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { filter, map, switchMap } from 'rxjs';
 import { UserBarResponse } from 'src/app/models/UserBarResponse';
 import { UserBarServiceService } from 'src/app/user-bar-service.service';
 
@@ -10,24 +11,18 @@ import { UserBarServiceService } from 'src/app/user-bar-service.service';
 })
 export class BarHomeComponent implements OnInit {
   
-  userBar$ = this._userbarservice.getUserBars();
+  constructor(
+    private _activatedRoute: ActivatedRoute, 
+    private _userBarService: UserBarServiceService
+  ) { }
+
+  userBar$ = this._activatedRoute.paramMap.pipe(
+  map(params => params.get('ingredientsId')), 
+  filter(ingredientsId => ingredientsId !== null), 
+  map(ingredientsId => parseInt(ingredientsId as string, 10)),
+  switchMap((ingredientsId: number) => this._userBarService.getUserBar(ingredientsId)),
+  )
   
-  bars: UserBarResponse[] = [];
-
-  constructor(private _userbarservice: UserBarServiceService) { }
-
   ngOnInit(): void {
-    this._userbarservice.getUserBars().subscribe(userBars => {
-      this.bars = userBars;
-    })
   }
-
-  deleteIngredient(ingredientsId: number) {
-    this._userbarservice.deleteIngredient(ingredientsId).pipe(
-      switchMap(() => this._userbarservice.getUserBars())
-    ).subscribe(userBars => {
-      this.bars = userBars
-    });
-  }
-
 }
