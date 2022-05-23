@@ -10,7 +10,11 @@ import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.
 
 import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
 
-import { UserComponent } from './user/user.component';
+import { UserHomeComponent } from './user/user-home/user-home.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { DeleteUserComponent } from './user/delete-user/delete-user.component';
+import { GetUserComponent } from './user/get-user/get-user.component';
+import { GetUsersComponent } from './user/get-users/get-users.component';
 
 
 
@@ -19,12 +23,13 @@ import { UserComponent } from './user/user.component';
     AppComponent,
     BarHomeComponent,
     AddIngredientComponent,
-
     DrinkHistoryComponent,
+    UpdateUserComponent,
+    DeleteUserComponent,
 
-    UserComponent,
-
+ 
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
