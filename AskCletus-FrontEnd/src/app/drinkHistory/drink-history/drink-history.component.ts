@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { filter, map, switchMap } from 'rxjs';
+import { HistoryService } from 'src/app/history.service';
 
 @Component({
   selector: 'app-drink-history',
@@ -11,18 +13,19 @@ export class DrinkHistoryComponent implements OnInit {
   constructor(
 
     private _activatedRoute: ActivatedRoute,
-    //private _historyService: HistoryService
+    private _historyService: HistoryService
 
   ) { }
+  ngOnInit(): void {
+
+  }
 
 
-   drinkHistory= this._activatedRoute.paramMap.pipe(
+   drinkHistory$ = this._activatedRoute.paramMap.pipe(
     map(params => params.get('historyId')), 
     filter(historyId => historyId !== null), 
     map(historyId => parseInt(historyId as string, 10)),
-    switchMap((historyId: number) => this._historyService.getHistory(historyId)),
+    switchMap((historyId: number) => this._historyService.getHistory(historyId)),)
 
-  ngOnInit(): void {
-  }
 
 }

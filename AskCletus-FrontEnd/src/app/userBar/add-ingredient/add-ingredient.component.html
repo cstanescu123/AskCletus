@@ -1,11 +1,11 @@
-<form [formGroup]="addIngredientFormGroup" (submit)="submitStudent()">
+<form [formGroup]="addIngredientFormGroup" (submit)="submitIngredients()">
 	<div>
 		<label>Ingredient:</label>
 		<input type="text" formControlName="ingredients">
 	</div>
 
 	<div>
-		<label>This will be autofilled in when a </label>
+		<label>This will be autofilled in when a user id when they are logged in </label>
 		<input type="text" formControlName="userId">
 	</div>
 

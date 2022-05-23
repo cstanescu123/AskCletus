@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HistoryResponse } from './models/HistoryResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +15,8 @@ export class HistoryService {
   constructor(private _httpClient: HttpClient) { }
   baseUrl = "https://localhost:5001/Drink/";
 
-  public getRecentDrink(): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
+  public getHistory(historyId: number): Observable<HistoryResponse> {
+    return this.httpClient.get<HistoryResponse>(`${this.baseUrl}recent`);
   
   }
 }

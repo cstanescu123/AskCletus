@@ -19,7 +19,7 @@ export class AddIngredientComponent implements OnInit {
     userId: new FormControl(''),
   })
 
-  submitStudent() {
+  submitIngredients() {
     const postBar: PostBar = this.addIngredientFormGroup.value;
     this._userBarService.postIngredient(postBar).subscribe();
   }
