@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DrinkServiceService } from './drink-service.service';
 import { Drink, DrinkResponse } from './models/DrinkResponse';
+import { UserBarServiceService } from './user-bar-service.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 /**
  *
  */
-constructor(private _drinkService: DrinkServiceService) {
+constructor(private _drinkService: DrinkServiceService, private _userBarService: UserBarServiceService) {
   this.drink$ = this._drinkService.getRecentDrink();
 }
 

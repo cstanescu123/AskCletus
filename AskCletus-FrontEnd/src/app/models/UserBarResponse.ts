@@ -1,5 +1,7 @@
 export interface UserBarResponse {
-    IngredientsId: string
-    Ingredients: string
-    UserId: any
+    ingredientsId: number
+    ingredients: string
+    userId: number
 }
+
+export type PostBar = Omit<UserBarResponse, "ingredientsId">;
