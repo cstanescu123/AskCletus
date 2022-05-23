@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DrinkServiceService } from './drink-service.service';
 import { Drink, DrinkResponse } from './models/DrinkResponse';
+import { UserBarServiceService } from './user-bar-service.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,6 @@ export class AppComponent implements OnInit {
 
   drink$: Observable<DrinkResponse>;
 
-/**
- *
- */
 constructor(private _drinkService: DrinkServiceService) {
   this.drink$ = this._drinkService.getRecentDrink();
 }
@@ -23,14 +21,12 @@ constructor(private _drinkService: DrinkServiceService) {
 drinkResponse: string = "";
 
 ngOnInit(){
-
   const subscription = this._drinkService.getRecentDrink().subscribe(response => {
-
     this.drinkResponse = JSON.stringify(response, null, 2);
   });
 }
-  toJson(obj: any){
 
+  toJson(obj: any){
     return JSON.stringify(obj, null, 2);
   }
 }

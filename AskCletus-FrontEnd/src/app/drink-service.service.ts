@@ -15,7 +15,7 @@ export class DrinkServiceService {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
   
   }
-  getDrink(id: number) {
-    return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
-  }
+  // getDrink(id: number) {
+  //   return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
+  // }
 }
