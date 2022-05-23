@@ -11,11 +11,11 @@ export class DrinkServiceService {
   constructor(private httpClient: HttpClient) { }
   baseUrl = "https://localhost:5001/Drink/";
 
-  public getRecentDrink(): Observable<Drink> {
-    return this.httpClient.get<Drink>(`${this.baseUrl}recent`);
+  public getRecentDrink(): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
   
   }
-  getDrink(id: number) {
-    return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
-  }
+  // getDrink(id: number) {
+  //   return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
+  // }
 }
