@@ -34,6 +34,31 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
+
+        public DrinkHistory AddDrink(DrinkHistory drink)
+        {
+            var drinkEntity = DrinkHistories.Add(drink).Entity;
+            SaveChanges();
+            return drinkEntity;
+        }
+
+        public DrinkHistory GetDrinkHistory(int id)
+        {
+            var dbDrink = DrinkHistories.Find(id);
+            if (dbDrink != null)
+            {
+                dbDrink.DrinkId = id;
+                return dbDrink;
+            }
+
+            return null;
+        }
+
+        public IEnumerable<DrinkHistory> GetHistory()
+        {
+            return DrinkHistories;
+
+        }
         public IEnumerable<UserBar> GetBars()
         {
             return UserBars;
@@ -69,6 +94,7 @@ namespace AskCletus_BackEnd.Services
             var dbUsers = Users.Find(ticketId);
 
             return dbUsers;
+
         }
 
         public User UpdateUser(User user, int userId)
@@ -88,10 +114,61 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
              @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
         }
+     }
+
+}
+
+
+
+
+
+
+
+
+/*HistoryContext : DrinkContext, IHistoryContext
+    {
+
+        public DbSet<DrinkContext> Drinks { get; set; }
+
+        public DrinkHistory AddDrink(DrinkHistory drink)
+        {
+            var drinkEntity = Drinks.Add(drink).Entity;
+            SaveChanges();
+            return drinkEntity;
+        }
+
+        public DrinkHistory GetDrinkHistory(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<DrinkHistory> GetHistory()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
+
+   }
+    public interface IAddDrink
+{
+    DrinkHistory AddDrink(DrinkHistory drink);
+}
+
+public interface IGetDrinkHistory
+{
+    DrinkHistory GetDrinkHistory(int id);
+}
+
+public interface IGetAllHistory
+{
+    IEnumerable<DrinkHistory> GetHistory();
+}
+*/
