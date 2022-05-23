@@ -1,0 +1,7 @@
+<div *ngIf="userBar$ | async as ingredients; else gettingIngredients">
+	<h1>Name: {{ingredients.ingredients}}</h1>
+</div>
+
+<ng-template #gettingIngredients>
+	<p>getting all da ingredients...</p>
+</ng-template>

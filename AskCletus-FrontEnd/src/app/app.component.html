@@ -1,8 +1,11 @@
 Drink!
-<pre *ngIf="drinkResponse$ | async as drinkResponse; else gettingDrink">
-  name: {{ drinkResponse.strDrink }}
+<pre *ngIf="drink$ | async as drinks; else gettingDrink">
+  name: {{ drinks.drinks[0].strDrink }}
 </pre>
 
 <ng-template #gettingDrink>
   <p>loading, please wait...</p>
 </ng-template>
+
+<app-bar-home></app-bar-home>
+<app-add-ingredient></app-add-ingredient>

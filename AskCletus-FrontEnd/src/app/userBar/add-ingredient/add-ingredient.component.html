@@ -1,0 +1,15 @@
+<form [formGroup]="addIngredientFormGroup" (submit)="submitStudent()">
+	<div>
+		<label>Ingredient:</label>
+		<input type="text" formControlName="ingredients">
+	</div>
+
+	<div>
+		<label>This will be autofilled in when a </label>
+		<input type="text" formControlName="userId">
+	</div>
+
+	<div>
+		<button type="submit">Add Ingredient</button>
+	</div>
+</form>

@@ -1,33 +1,38 @@
-﻿using AskCletus_BackEnd.Services.DALModels;
+﻿using AskCletus_BackEnd.Services;
+using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace AskCletus_BackEnd.Controllers
 {
+
+    [ApiController]
+    [Route("[controller]")]
     public class DrinkHistoryController : Controller
     {
+        private readonly IDrinkContext _drinkHistoryContext;
 
-        private readonly IDrinkHistoryContext _drinkHistoryContext;
-
-        public DrinkHistoryController(IDrinkHistoryContext drinkHistoryContext)
+        public DrinkHistoryController(IDrinkContext drinkHistoryContext)
         {
             _drinkHistoryContext = drinkHistoryContext;
         }
 
 
         [HttpPost]
-    
-         public IActionResult AddDrink([FromBody] PostHistoryRequest postHistoryRequest)
+        [Route("AddDrink")]
+        public IActionResult AddDrink([FromBody] PostHistoryRequest postHistoryRequest)
         {
             var drink = new DrinkHistory();
-            drink.Name = postHistoryRequest.Name;
-            drink.Description = postHistoryRequest.Description;
-            drink.Id = postHistoryRequest.Id;
-            drink.Title = postHistoryRequest.Title;
+
+            drink.DrinkId = postHistoryRequest.DrinkId;
+         
+            drink.Date = postHistoryRequest.Date;
+
+            drink.UserId = postHistoryRequest.UserId;
 
             var dbDrink = _drinkHistoryContext.AddDrink(drink);
-            return Ok(_drinkHistoryContext.GetDrinks);
+            return Created($"https://localhost:5001/{dbDrink}", dbDrink);
         }
     }
 }

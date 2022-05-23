@@ -3,14 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AskCletus_BackEnd.Services.Models
 {
-    public class PostHistoryRequest
+    public class PostBarRequest
     {
-
-        public int DrinkId { get; set; }
-        public DateTime Date { get; set; }
-
-        [ForeignKey("User")]
+        public string Ingredients { get; set; }
         public int UserId { get; set; }
-
     }
 }

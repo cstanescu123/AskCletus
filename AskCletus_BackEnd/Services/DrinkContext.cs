@@ -22,13 +22,6 @@ namespace AskCletus_BackEnd.Services
             return userEntity;
         }
 
-        public User UpdateUser(User user)
-        {
-           var updatedUser = Users.Update(user);
-            SaveChanges();
-            return updatedUser.Entity;
-        }
-
         public User DeleteUser(int userId)
         {
             var dbUsers = Users.Find(userId);
@@ -39,8 +32,8 @@ namespace AskCletus_BackEnd.Services
                 return entity; 
             }
             return null;
-          
         }
+
 
         public DrinkHistory AddDrink(DrinkHistory drink)
         {
@@ -66,7 +59,59 @@ namespace AskCletus_BackEnd.Services
             return DrinkHistories;
 
         }
+        public IEnumerable<UserBar> GetBars()
+        {
+            return UserBars;
+        }
+        
+        public UserBar GetMyBar(int userId)
+        {
+            var bar = UserBars.Find(userId);
+            return bar;
+        }
 
+        public UserBar DeleteBar(int userId)
+        {
+            var dbUserBar = UserBars.Find(userId);
+            if (dbUserBar != null)
+            {
+                var entity = UserBars.Remove(dbUserBar).Entity;
+                SaveChanges();
+                return entity;
+            }
+            return null;
+        }
+
+        public UserBar AddBar(UserBar userBar)
+        {
+            var userEntity = UserBars.Add(userBar).Entity;
+            SaveChanges();
+            return userEntity;
+        }
+
+        public User GetUser(int ticketId)
+        {
+            var dbUsers = Users.Find(ticketId);
+
+            return dbUsers;
+
+        }
+
+        public User UpdateUser(User user, int userId)
+        {
+            var dbUser = Users.Find(userId);
+            if (dbUser != null)
+            {
+                dbUser.UserName = user.UserName;
+                dbUser.Email = user.Email;
+                dbUser.Token = user.Token;
+
+                var entityUser = Users.Update(dbUser).Entity;
+                SaveChanges();
+                return entityUser;
+            }
+            return null;
+        }
 
 
 

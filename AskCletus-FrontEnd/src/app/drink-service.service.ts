@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DrinkResponse } from './models/DrinkResponse';
+import { Drink, DrinkResponse } from './models/DrinkResponse';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,11 @@ export class DrinkServiceService {
   constructor(private httpClient: HttpClient) { }
   baseUrl = "https://localhost:5001/Drink/";
 
-  getRecentDrink(): Observable<DrinkResponse> {
+  public getRecentDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
+  
   }
-
+  // getDrink(id: number) {
+  //   return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
+  // }
 }
