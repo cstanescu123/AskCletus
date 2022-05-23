@@ -9,7 +9,6 @@ namespace AskCletus_BackEnd.Services.DALModels
         public int IngredientsId { get; set; }
         public string Ingredients { get; set; }
 
-        [ForeignKey("User")]
         public int UserId { get; set; }
     }
 }
