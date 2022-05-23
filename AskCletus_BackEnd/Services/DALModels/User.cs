@@ -15,9 +15,5 @@ namespace AskCletus_BackEnd.Services.DALModels
 
         [ForeignKey("UserBar")]
         public IEnumerable<UserBar> Ingredients{ get; set; }
-
-
-        //[ForeignKey("UserBar")]
-        //public int IngredientsId { get; set; }
     }
 }
