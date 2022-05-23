@@ -18,19 +18,14 @@ namespace AskCletus_BackEnd.Controllers
             _drinkHistoryContext = drinkHistoryContext;
         }
 
-
         [HttpPost]
         [Route("AddDrink")]
         public IActionResult AddDrink([FromBody] PostHistoryRequest postHistoryRequest)
         {
             var drink = new DrinkHistory();
-
             drink.DrinkId = postHistoryRequest.DrinkId;
-         
             drink.Date = postHistoryRequest.Date;
-
             drink.UserId = postHistoryRequest.UserId;
-
             var dbDrink = _drinkHistoryContext.AddDrink(drink);
             return Created($"https://localhost:5001/{dbDrink}", dbDrink);
         }
