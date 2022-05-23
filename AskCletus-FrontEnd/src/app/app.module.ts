@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
+import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.
     AppComponent,
     BarHomeComponent,
     AddIngredientComponent,
+    DrinkHistoryComponent,
   ],
   imports: [
     BrowserModule,
