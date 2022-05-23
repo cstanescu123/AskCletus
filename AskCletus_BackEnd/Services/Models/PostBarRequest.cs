@@ -6,6 +6,7 @@ namespace AskCletus_BackEnd.Services.Models
     public class PostBarRequest
     {
         public string Ingredients { get; set; }
+        [ForeignKey("User")]
         public int UserId { get; set; }
     }
 }

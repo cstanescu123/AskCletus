@@ -46,15 +46,11 @@ namespace AskCletus_BackEnd.Controllers
         {
             var myBar = new UserBar();
             myBar.Ingredients = postBarRequest.Ingredients;
+            myBar.UserId = postBarRequest.UserId;
 
             var dbBar = _drinkContext.AddBar(myBar);
             return Created($"https://localhost:5001/{dbBar.Ingredients}", dbBar);
         }
-
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
 
         [HttpDelete("{userId}")]
         public IActionResult DeleteBar([FromRoute] int userId)
