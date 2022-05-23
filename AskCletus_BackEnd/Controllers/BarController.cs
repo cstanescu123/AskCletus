@@ -21,13 +21,13 @@ namespace AskCletus_BackEnd.Controllers
             _drinkContext = drinkContext;
         }
 
-        //[HttpGet]
-        //[Route("Bars")]
-        //public IActionResult GetMyBar()
-        //{
-        //    var myBars = _drinkContext.GetBars();
-        //    return Ok(myBars);
-        //}
+        [HttpGet]
+        [Route("Bars")]
+        public IActionResult GetMyBar()
+        {
+            var myBars = _drinkContext.GetBars();
+            return Ok(myBars);
+        }
 
         [HttpGet("{userId}")]
         public IActionResult GetBar([FromRoute] int userId)
