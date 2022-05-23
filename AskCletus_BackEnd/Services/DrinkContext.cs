@@ -22,13 +22,6 @@ namespace AskCletus_BackEnd.Services
             return userEntity;
         }
 
-        public User UpdateUser(User user)
-        {
-           var updatedUser = Users.Update(user);
-            SaveChanges();
-            return updatedUser.Entity;
-        }
-
         public User DeleteUser(int userId)
         {
             var dbUsers = Users.Find(userId);
@@ -69,6 +62,29 @@ namespace AskCletus_BackEnd.Services
             var userEntity = UserBars.Add(userBar).Entity;
             SaveChanges();
             return userEntity;
+        }
+
+        public User GetUser(int ticketId)
+        {
+            var dbUsers = Users.Find(ticketId);
+
+            return dbUsers;
+        }
+
+        public User UpdateUser(User user, int userId)
+        {
+            var dbUser = Users.Find(userId);
+            if (dbUser != null)
+            {
+                dbUser.UserName = user.UserName;
+                dbUser.Email = user.Email;
+                dbUser.Token = user.Token;
+
+                var entityUser = Users.Update(dbUser).Entity;
+                SaveChanges();
+                return entityUser;
+            }
+            return null;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

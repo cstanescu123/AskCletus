@@ -29,50 +29,10 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(popularCocktails);
         }
 
-        [HttpGet]
-        [Route("GetUsers")]
-        public IActionResult GetAllUsers()
-        {
-            var users = _drinkContext.GetAllUsers();
-            return Ok(users);
-        }
 
+        
 
-
-        [HttpPost]
-        [Route("AddUser")]
-        public IActionResult AddUser([FromBody] PostUserRequest postUserRequest)
-        {
-            var user = new User();
-            user.UserName = postUserRequest.UserName;
-            user.Email = postUserRequest.Email;
-
-            var dbUser = _drinkContext.AddUser(user);
-            return Created($"https://localhost:5001/{dbUser.UserId}", dbUser);
-        }
-
-        [HttpPost]
-        [Route("UpdateUser")]
-
-        public IActionResult UpdateUser(User user)
-        {
-            var updatedUser = _drinkContext.UpdateUser(user);
-            return Ok(updatedUser);
-        }
-
-        [HttpDelete]
-        [Route("{userId}")]
-        public IActionResult DeleteUser([FromRoute] int userId)
-        {
-            var dbDrinks = _drinkContext.DeleteUser(userId);
-
-            if (dbDrinks == null)
-            {
-                return NotFound($"{nameof(userId)}: {userId} does not exist");
-            }
-
-            return Accepted($"User with ID: {userId} has been removed");
-        }
+        
 
     }
 
