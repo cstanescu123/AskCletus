@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { filter, map, switchMap } from 'rxjs';
+import { PostBar } from 'src/app/models/UserBarResponse';
+import { UserBarServiceService } from 'src/app/user-bar-service.service';
 
 @Component({
   selector: 'app-add-ingredient',
@@ -7,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddIngredientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _userBarService: UserBarServiceService) { }
+
+  addIngredientFormGroup = new FormGroup({
+    ingredients: new FormControl(''),
+    userId: new FormControl(''),
+  })
+
+  submitStudent() {
+    const postBar: PostBar = this.addIngredientFormGroup.value;
+    this._userBarService.postIngredient(postBar).subscribe();
+  }
 
   ngOnInit(): void {
   }
-
+  
 }

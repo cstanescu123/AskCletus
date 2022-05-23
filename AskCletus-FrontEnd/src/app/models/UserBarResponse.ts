@@ -1,5 +1,5 @@
 export interface UserBarResponse {
-    ingredientsId: number
+ingredientsId: number
     ingredients: string
     userId: number
 }
