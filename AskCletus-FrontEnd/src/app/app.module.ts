@@ -12,6 +12,8 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { GetUserComponent } from './user/get-user/get-user.component';
 import { GetUsersComponent } from './user/get-users/get-users.component';
+import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
+
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { GetUsersComponent } from './user/get-users/get-users.component';
     AddIngredientComponent,
     UpdateUserComponent,
     DeleteUserComponent,
+    DrinkHistoryComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
