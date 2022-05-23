@@ -21,17 +21,16 @@ namespace AskCletus_BackEnd.Controllers
             _drinkContext = drinkContext;
         }
 
-        // GET: api/<BarController>
-        [HttpGet]
-        [Route("Bars")]
-        public IActionResult GetMyBar()
-        {
-            var myBars = _drinkContext.GetBars();
-            return Ok(myBars);
-        }
+        //[HttpGet]
+        //[Route("Bars")]
+        //public IActionResult GetMyBar()
+        //{
+        //    var myBars = _drinkContext.GetBars();
+        //    return Ok(myBars);
+        //}
 
         [HttpGet("{userId}")]
-        public IActionResult Get([FromRoute] int userId)
+        public IActionResult GetBar([FromRoute] int userId)
         {
             var myBar = _drinkContext.GetMyBar(userId);
             if (myBar != null)
@@ -42,8 +41,8 @@ namespace AskCletus_BackEnd.Controllers
         }
 
         [HttpPost]
-        [Route("AddBar")]
-        public IActionResult AddBar([FromBody] PostBarRequest postBarRequest)
+        [Route("AddIngredient")]
+        public IActionResult AddIngredient([FromBody] PostBarRequest postBarRequest)
         {
             var myBar = new UserBar();
             myBar.Ingredients = postBarRequest.Ingredients;
@@ -52,11 +51,10 @@ namespace AskCletus_BackEnd.Controllers
             return Created($"https://localhost:5001/{dbBar.Ingredients}", dbBar);
         }
 
-        // PUT api/<BarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
         [HttpDelete("{userId}")]
         public IActionResult DeleteBar([FromRoute] int userId)
