@@ -14,24 +14,19 @@ export class AppComponent implements OnInit {
 
   drink$: Observable<DrinkResponse>;
 
-/**
- *
- */
-constructor(private _drinkService: DrinkServiceService, private _userBarService: UserBarServiceService) {
+constructor(private _drinkService: DrinkServiceService) {
   this.drink$ = this._drinkService.getRecentDrink();
 }
 
 drinkResponse: string = "";
 
 ngOnInit(){
-
   const subscription = this._drinkService.getRecentDrink().subscribe(response => {
-
     this.drinkResponse = JSON.stringify(response, null, 2);
   });
 }
-  toJson(obj: any){
 
+  toJson(obj: any){
     return JSON.stringify(obj, null, 2);
   }
 }

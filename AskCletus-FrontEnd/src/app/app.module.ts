@@ -5,11 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
+import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BarHomeComponent,
+    AddIngredientComponent,
   ],
   imports: [
     BrowserModule,

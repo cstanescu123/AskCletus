@@ -22,7 +22,7 @@ export class UserBarServiceService {
     return this.httpClient.post<UserBarResponse>(this.baseUrl, userBar);
   }
 
-  deleteStudent(ingredientsId: number) {
+  deleteIngredient(ingredientsId: number) {
     return this.httpClient.delete<UserBarResponse>(`${this.baseUrl}/${ingredientsId}`);
   }
 
