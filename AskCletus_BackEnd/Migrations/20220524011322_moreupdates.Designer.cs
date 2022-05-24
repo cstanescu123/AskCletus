@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    [Migration("20220518235728_carsonfirst")]
-    partial class carsonfirst
+    [Migration("20220524011322_moreupdates")]
+    partial class moreupdates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.16")
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
@@ -78,23 +78,7 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasKey("IngredientsId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("UserBars");
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
-                {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", null)
-                        .WithMany("Ingredients")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
-                {
-                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

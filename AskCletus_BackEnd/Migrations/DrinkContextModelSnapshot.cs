@@ -76,23 +76,7 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasKey("IngredientsId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("UserBars");
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
-                {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", null)
-                        .WithMany("Ingredients")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
-                {
-                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }
