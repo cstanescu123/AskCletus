@@ -109,7 +109,7 @@ namespace AskCletus_BackEnd.Services
                 dbUser.UserName = user.UserName;
                 dbUser.Email = user.Email;
                 dbUser.Token = user.Token;
-                dbUser.Ingredients = user.Ingredients;
+               // dbUser.Ingredients = user.Ingredients;
 
                 var entityUser = Users.Update(dbUser).Entity;
                 SaveChanges();
