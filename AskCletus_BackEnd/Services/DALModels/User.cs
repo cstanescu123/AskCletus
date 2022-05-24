@@ -13,7 +13,7 @@ namespace AskCletus_BackEnd.Services.DALModels
         public string Email { get; set; }
         public string Token { get; set; }
 
-        [ForeignKey("UserBar")]
+     //   [ForeignKey("UserBar")]
         public IEnumerable<UserBar> Ingredients{ get; set; }
     }
 }
