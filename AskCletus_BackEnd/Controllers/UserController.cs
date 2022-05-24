@@ -58,7 +58,6 @@ namespace AskCletus_BackEnd.Controllers
             user.UserName = postUserRequest.UserName;
             user.Email = postUserRequest.Email;
             user.Token = postUserRequest.Token;
-            user.Ingredients = postUserRequest.Ingredients;
 
             var dbUser = _userContext.AddUser(user);
             return Created($"https://localhost:5001/{dbUser.UserId}", dbUser);
