@@ -15,6 +15,8 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { GetUserComponent } from './user/get-user/get-user.component';
 import { GetUsersComponent } from './user/get-users/get-users.component';
+import { NavigationComponent } from './navigation/navigation.component';
+
 
 
 
@@ -26,15 +28,15 @@ import { GetUsersComponent } from './user/get-users/get-users.component';
     DrinkHistoryComponent,
     UpdateUserComponent,
     DeleteUserComponent,
-
- 
+    NavigationComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
