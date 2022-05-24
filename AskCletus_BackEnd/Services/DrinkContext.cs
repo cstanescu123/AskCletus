@@ -1,14 +1,22 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 
 namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
+        //private readonly string _connectionString;
+
         public DbSet<User> Users { get; set; }
         public DbSet<UserBar> UserBars { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
+
+        //public DrinkContext(IOptions<DBConfig> dbConfig)
+        //{
+        //    _connectionString = dbConfig.Value.Cletus;
+        //}
 
         public IEnumerable<User> GetAllUsers()
         {
@@ -34,7 +42,6 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
-
         public DrinkHistory AddDrink(DrinkHistory drink)
         {
             var drinkEntity = DrinkHistories.Add(drink).Entity;
@@ -50,7 +57,6 @@ namespace AskCletus_BackEnd.Services
                 dbDrink.DrinkId = id;
                 return dbDrink;
             }
-
             return null;
         }
 
@@ -92,9 +98,7 @@ namespace AskCletus_BackEnd.Services
         public User GetUser(int ticketId)
         {
             var dbUsers = Users.Find(ticketId);
-
             return dbUsers;
-
         }
 
         public User UpdateUser(User user, int userId)
@@ -114,61 +118,12 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
-
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
              @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
+             //this._connectionString);
         }
      }
 
 }
-
-
-
-
-
-
-
-
-/*HistoryContext : DrinkContext, IHistoryContext
-    {
-
-        public DbSet<DrinkContext> Drinks { get; set; }
-
-        public DrinkHistory AddDrink(DrinkHistory drink)
-        {
-            var drinkEntity = Drinks.Add(drink).Entity;
-            SaveChanges();
-            return drinkEntity;
-        }
-
-        public DrinkHistory GetDrinkHistory(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<DrinkHistory> GetHistory()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-}
-
-   }
-    public interface IAddDrink
-{
-    DrinkHistory AddDrink(DrinkHistory drink);
-}
-
-public interface IGetDrinkHistory
-{
-    DrinkHistory GetDrinkHistory(int id);
-}
-
-public interface IGetAllHistory
-{
-    IEnumerable<DrinkHistory> GetHistory();
-}
-*/
