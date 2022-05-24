@@ -5,14 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
-
 import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
-
 
 
 @NgModule({
@@ -20,11 +19,10 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     AppComponent,
     BarHomeComponent,
     AddIngredientComponent,
-    DrinkHistoryComponent,
     UpdateUserComponent,
     DeleteUserComponent,
-    UserLoginComponent,
- 
+    DrinkHistoryComponent
+    UserLoginComponent
   ],
 
   imports: [
