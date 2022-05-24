@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _userService: UserService) { }
+
+
 
   ngOnInit(): void {
   }
