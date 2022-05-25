@@ -17,10 +17,10 @@ export class BarHomeComponent implements OnInit {
   ) { }
 
   userBar$ = this._activatedRoute.paramMap.pipe(
-  map(params => params.get('ingredientsId')), 
-  filter(ingredientsId => ingredientsId !== null), 
-  map(ingredientsId => parseInt(ingredientsId as string, 10)),
-  switchMap((ingredientsId: number) => this._userBarService.getUserBar(ingredientsId)),
+  map(params => params.get('userId')), 
+  filter(userId => userId !== null), 
+  map(userId => parseInt(userId as string, 10)),
+  switchMap((userId: number) => this._userBarService.getUserBar(userId)),
   )
   
   ngOnInit(): void {
