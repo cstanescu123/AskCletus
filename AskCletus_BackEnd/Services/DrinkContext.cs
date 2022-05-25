@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AskCletus_BackEnd.Services
 {
@@ -12,11 +13,6 @@ namespace AskCletus_BackEnd.Services
         public DbSet<User> Users { get; set; }
         public DbSet<UserBar> UserBars { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
-
-        //public DrinkContext(IOptions<DBConfig> dbConfig)
-        //{
-        //    _connectionString = dbConfig.Value.Cletus;
-        //}
 
         public IEnumerable<User> GetAllUsers()
         {
@@ -72,8 +68,8 @@ namespace AskCletus_BackEnd.Services
         
         public IEnumerable<UserBar> GetMyBar(int userId)
         {
-            var bar = UserBars.Find(userId);
-            yield return bar;
+            var myBar = UserBars.Where(x => x.UserId == userId);
+            return myBar;
         }
 
         public UserBar DeleteBar(int userId)
