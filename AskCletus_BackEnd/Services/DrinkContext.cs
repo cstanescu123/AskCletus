@@ -11,7 +11,7 @@ namespace AskCletus_BackEnd.Services
         //private readonly string _connectionString;
 
         public DbSet<User> Users { get; set; }
-        public DbSet<UserBar> UserBars { get; set; }
+        public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
 
         public IEnumerable<User> GetAllUsers()
@@ -45,15 +45,10 @@ namespace AskCletus_BackEnd.Services
             return drinkEntity;
         }
 
-        public DrinkHistory GetDrinkHistory(int id)
+        public IEnumerable<DrinkHistory> GetDrinkHistory(int userId)
         {
-            var dbDrink = DrinkHistories.Find(id);
-            if (dbDrink != null)
-            {
-                dbDrink.DrinkId = id;
-                return dbDrink;
-            }
-            return null;
+            var myHistory = DrinkHistories.Where(x => x.UserId == userId);
+            return myHistory;
         }
 
         public IEnumerable<DrinkHistory> GetHistory()
@@ -61,39 +56,39 @@ namespace AskCletus_BackEnd.Services
             return DrinkHistories;
 
         }
-        public IEnumerable<UserBar> GetBars()
+        public IEnumerable<Ingredients> GetBars()
         {
-            return UserBars;
+            return UserIngredient;
         }
         
-        public IEnumerable<UserBar> GetMyBar(int userId)
+        public IEnumerable<Ingredients> GetMyBar(int userId)
         {
-            var myBar = UserBars.Where(x => x.UserId == userId);
+            var myBar = UserIngredient.Where(x => x.UserId == userId);
             return myBar;
         }
 
-        public UserBar DeleteBar(int userId)
+        public Ingredients DeleteBar(int userId)
         {
-            var dbUserBar = UserBars.Find(userId);
-            if (dbUserBar != null)
+            var dbIngredients = UserIngredient.Find(userId);
+            if (dbIngredients != null)
             {
-                var entity = UserBars.Remove(dbUserBar).Entity;
+                var entity = UserIngredient.Remove(dbIngredients).Entity;
                 SaveChanges();
                 return entity;
             }
             return null;
         }
 
-        public UserBar AddBar(UserBar userBar)
+        public Ingredients AddBar(Ingredients userIngredient)
         {
-            var userEntity = UserBars.Add(userBar).Entity;
+            var userEntity = UserIngredient.Add(userIngredient).Entity;
             SaveChanges();
             return userEntity;
         }
 
-        public User GetUser(int ticketId)
+        public User GetUser(int id)
         {
-            var dbUsers = Users.Find(ticketId);
+            var dbUsers = Users.Find(id);
             return dbUsers;
         }
 
@@ -122,5 +117,4 @@ namespace AskCletus_BackEnd.Services
              //this._connectionString);
         }
      }
-
 }

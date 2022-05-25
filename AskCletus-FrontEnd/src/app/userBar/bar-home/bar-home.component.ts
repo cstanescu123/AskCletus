@@ -16,6 +16,8 @@ export class BarHomeComponent implements OnInit {
     private _userBarService: UserBarServiceService
   ) { }
 
+    
+
   userBar$ = this._activatedRoute.paramMap.pipe(
   map(params => params.get('userId')), 
   filter(userId => userId !== null), 
