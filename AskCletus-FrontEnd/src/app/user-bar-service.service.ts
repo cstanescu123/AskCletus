@@ -14,8 +14,8 @@ export class UserBarServiceService {
     return this.httpClient.get<Array<UserBarResponse>>(this.baseUrl);
   }
   
-  getUserBar(ingredientsId: number) { 
-    return this.httpClient.get<UserBarResponse>(`${this.baseUrl}/${ingredientsId}`);
+  getUserBar(userId: number) { 
+    return this.httpClient.get<UserBarResponse>(`${this.baseUrl}/${userId}`);
   }
     
   postIngredient(userBar: PostBar) {
