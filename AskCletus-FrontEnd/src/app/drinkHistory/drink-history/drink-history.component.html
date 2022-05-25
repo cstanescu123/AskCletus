@@ -1,1 +1,10 @@
 <p>drink-history works!</p>
+
+
+<div *ngIf="drinkHistory$ | async as history; else gettingHistory">
+	<h1>History: {{drinkHistory$}}</h1>
+</div>
+
+<ng-template #gettingHistory>
+	<p>Membering...</p>
+</ng-template>

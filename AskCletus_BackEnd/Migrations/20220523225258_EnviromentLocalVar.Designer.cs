@@ -4,14 +4,16 @@ using AskCletus_BackEnd.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    partial class DrinkContextModelSnapshot : ModelSnapshot
+    [Migration("20220523225258_EnviromentLocalVar")]
+    partial class EnviromentLocalVar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,12 +73,29 @@ namespace AskCletus_BackEnd.Migrations
                     b.Property<string>("Ingredients")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserBar")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("IngredientsId");
 
+                    b.HasIndex("UserBar");
+
                     b.ToTable("UserBars");
+                });
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
+                {
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", null)
+                        .WithMany("Ingredients")
+                        .HasForeignKey("UserBar");
+                });
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

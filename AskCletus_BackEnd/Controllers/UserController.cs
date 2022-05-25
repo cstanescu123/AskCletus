@@ -1,7 +1,12 @@
 ﻿using AskCletus_BackEnd.Services;
 using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Controllers
 {
@@ -15,6 +20,37 @@ namespace AskCletus_BackEnd.Controllers
         {
             _userContext = userContext;
         }
+
+
+        //public async Task Login()
+        //{
+        //    await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
+        //    {
+        //        RedirectUri = Url.Action("GoogleResponse")
+        //    });
+        //}
+
+        //public async Task<IActionResult> GoogleResponse()
+        //{
+        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //    var claims = result.Principal.Identities
+        //        .FirstOrDefault().Claims.Select(claim => new
+        //        {
+        //            claim.Issuer,
+        //            claim.OriginalIssuer,
+        //            claim.Type,
+        //            claim.Value
+        //        });
+        //    return Ok(claims);
+        //}
+
+
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await HttpContext.SignOutAsync();
+        //    return Ok("Signed Out");
+        //}
+
 
         [HttpGet]
         [Route("{userId}")]
@@ -38,7 +74,6 @@ namespace AskCletus_BackEnd.Controllers
             {
                 return NotFound($"{nameof(userId)}: {userId} does not exist");
             }
-
             return Accepted($"User with ID: {userId} has been removed");
         }
 
@@ -58,7 +93,6 @@ namespace AskCletus_BackEnd.Controllers
             user.UserName = postUserRequest.UserName;
             user.Email = postUserRequest.Email;
             user.Token = postUserRequest.Token;
-            user.Ingredients = postUserRequest.Ingredients;
 
             var dbUser = _userContext.AddUser(user);
             return Created($"https://localhost:5001/{dbUser.UserId}", dbUser);
@@ -72,7 +106,5 @@ namespace AskCletus_BackEnd.Controllers
             var updatedUser = _userContext.UpdateUser(user, userId);
             return Ok(updatedUser);
         }
-
-
     }
 }
