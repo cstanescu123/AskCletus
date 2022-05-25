@@ -19,6 +19,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     BarHomeComponent,
     AddIngredientComponent,
     DeleteUserComponent,
+    UserLoginComponent,
     DrinkHistoryComponent
   ],
 
