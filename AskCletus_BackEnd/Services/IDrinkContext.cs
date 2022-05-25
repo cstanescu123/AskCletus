@@ -33,7 +33,7 @@ public interface IAddBar
 
     public interface IGetMyBar
     {
-        UserBar GetMyBar(int userId);
+        IEnumerable<UserBar> GetMyBar(int userId);
     }
 
     public interface IDeleteBar

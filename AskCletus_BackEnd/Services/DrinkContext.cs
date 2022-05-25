@@ -70,10 +70,10 @@ namespace AskCletus_BackEnd.Services
             return UserBars;
         }
         
-        public UserBar GetMyBar(int userId)
+        public IEnumerable<UserBar> GetMyBar(int userId)
         {
             var bar = UserBars.Find(userId);
-            return bar;
+            yield return bar;
         }
 
         public UserBar DeleteBar(int userId)
@@ -109,7 +109,8 @@ namespace AskCletus_BackEnd.Services
                 dbUser.UserName = user.UserName;
                 dbUser.Email = user.Email;
                 dbUser.Token = user.Token;
-               // dbUser.Ingredients = user.Ingredients;
+                dbUser.Ingredients = user.Ingredients;
+
 
                 var entityUser = Users.Update(dbUser).Entity;
                 SaveChanges();

@@ -11,6 +11,7 @@ import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.
 import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     AddIngredientComponent,
     DeleteUserComponent,
     UserLoginComponent,
-    DrinkHistoryComponent
+    DrinkHistoryComponent,
+    NavigationComponent
   ],
 
   imports: [
