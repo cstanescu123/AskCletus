@@ -20,38 +20,7 @@ namespace AskCletus_BackEnd.Controllers
         {
             _userContext = userContext;
         }
-
-
-        //public async Task Login()
-        //{
-        //    await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
-        //    {
-        //        RedirectUri = Url.Action("GoogleResponse")
-        //    });
-        //}
-
-        //public async Task<IActionResult> GoogleResponse()
-        //{
-        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        //    var claims = result.Principal.Identities
-        //        .FirstOrDefault().Claims.Select(claim => new
-        //        {
-        //            claim.Issuer,
-        //            claim.OriginalIssuer,
-        //            claim.Type,
-        //            claim.Value
-        //        });
-        //    return Ok(claims);
-        //}
-
-
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await HttpContext.SignOutAsync();
-        //    return Ok("Signed Out");
-        //}
-
-
+       
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetUser([FromRoute] int userId)

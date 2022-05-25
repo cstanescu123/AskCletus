@@ -46,7 +46,7 @@ namespace AskCletus_BackEnd.Controllers
         {
             var myBar = new UserBar();
             myBar.Ingredients = postBarRequest.Ingredients;
-            myBar.UserId = postBarRequest.UserId;
+            //myBar.UserId = postBarRequest.UserId;
 
             var dbBar = _drinkContext.AddBar(myBar);
             return Created($"https://localhost:5001/{dbBar.Ingredients}", dbBar);
