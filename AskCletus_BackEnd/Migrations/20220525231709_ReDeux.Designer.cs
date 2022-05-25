@@ -4,14 +4,16 @@ using AskCletus_BackEnd.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    partial class DrinkContextModelSnapshot : ModelSnapshot
+    [Migration("20220525231709_ReDeux")]
+    partial class ReDeux
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,26 +42,6 @@ namespace AskCletus_BackEnd.Migrations
                     b.ToTable("DrinkHistories");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
-                {
-                    b.Property<int>("IngredientsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Ingredient")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("IngredientsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserIngredient");
-                });
-
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -81,7 +63,27 @@ namespace AskCletus_BackEnd.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
+                {
+                    b.Property<int>("IngredientsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Ingredients")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IngredientsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserBars");
+                });
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
                 {
                     b.HasOne("AskCletus_BackEnd.Services.DALModels.User", "User")
                         .WithMany("Ingredients")
