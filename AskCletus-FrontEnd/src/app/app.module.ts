@@ -12,6 +12,9 @@ import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-histor
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchFunctionsComponent } from './search-functions/search-functions.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { NavigationComponent } from './navigation/navigation.component';
     DeleteUserComponent,
     UserLoginComponent,
     DrinkHistoryComponent,
-    NavigationComponent
+    NavigationComponent,
+    WelcomePageComponent,
+    SearchResultsComponent,
+    SearchFunctionsComponent
   ],
 
   imports: [
