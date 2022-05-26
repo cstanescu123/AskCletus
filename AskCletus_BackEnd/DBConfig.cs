@@ -2,7 +2,7 @@
 {
     public class DBConfig
     {
-        //public string AskCletus { get; set; }
-        public string Default { get; set; }
+        public string AskCletus { get; set; }
+        //public string Default { get; set; }
     }
 }

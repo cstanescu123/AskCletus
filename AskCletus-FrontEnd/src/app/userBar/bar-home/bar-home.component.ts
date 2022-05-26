@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { IngredientsResponse } from 'src/app/models/IngredientsResponse';
-import { UserBarServiceService } from '../add-ingredient/Services/user-bar-service.service';
+import { UserBarServiceService } from '../../Services/user-bar-service.service';
 
 @Component({
   selector: 'app-bar-home',

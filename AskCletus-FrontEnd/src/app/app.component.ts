@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Drink, DrinkResponse } from './models/DrinkResponse';
-import { DrinkServiceService } from './userBar/add-ingredient/Services/drink-service.service';
+import { DrinkServiceService } from './Services/drink-service.service';
 
 @Component({
   selector: 'app-root',
