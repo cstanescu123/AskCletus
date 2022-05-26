@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
-import { UserService } from 'src/app/user.service';
+import { UserService } from 'src/app/userBar/add-ingredient/Services/user.service';
 
 @Component({
   selector: 'app-delete-user',

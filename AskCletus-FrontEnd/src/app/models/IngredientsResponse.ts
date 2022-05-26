@@ -1,10 +1,10 @@
 import { UserResponse } from "./UserResponse";
 
-export interface UserBarResponse {
+export interface IngredientsResponse {
     ingredientId: number
     ingredient: string
     userId: number
     user: UserResponse
 }
 
-export type PostBar = Omit<UserBarResponse, "ingredientsId">;
+export type PostBar = Omit<IngredientsResponse, "ingredientsId">;
