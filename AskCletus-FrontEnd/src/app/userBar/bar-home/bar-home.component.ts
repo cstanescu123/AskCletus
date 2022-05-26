@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
-import { UserBarResponse } from 'src/app/models/UserBarResponse';
+import { UserBarResponse } from 'src/app/models/IngredientsResponse';
 import { UserBarServiceService } from 'src/app/user-bar-service.service';
 
 @Component({

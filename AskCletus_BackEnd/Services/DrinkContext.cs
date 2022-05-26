@@ -8,11 +8,16 @@ namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-        //private readonly string _connectionString;
+        //private readonly string ConnectionString;
 
         public DbSet<User> Users { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
+
+        //public DrinkContext(IOptions<DBConfig> dbConfig)
+        //{
+        //    ConnectionString = dbConfig.Value.AskCletus;
+        //}
 
         public IEnumerable<User> GetAllUsers()
         {
@@ -114,7 +119,7 @@ namespace AskCletus_BackEnd.Services
         {
             optionsBuilder.UseSqlServer(
              @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
-             //this._connectionString);
+             //this.ConnectionString);
         }
      }
 }
