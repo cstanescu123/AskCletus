@@ -15,5 +15,9 @@ namespace AskCletus_BackEnd.Services.DALModels
 
 
         public IEnumerable<UserBar> Ingredients{ get; set; }
+      //  public IEnumerable<DrinkHistory> DrinkHistory{ get; set; }  using ef Core?
+
     }
 }
+
+
