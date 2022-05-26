@@ -29,11 +29,13 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(popularCocktails);
         }
 
-
-        
-
-        
-
+        [HttpGet]
+        [Route("Random")]
+        public async Task<IActionResult> GetRandomDrink()
+        {
+            CocktailResponse popularCocktails = await _cocktailClient.GetRandomDrink();
+            return Ok(popularCocktails);
+        }
     }
 
 }

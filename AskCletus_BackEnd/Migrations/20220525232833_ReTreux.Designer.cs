@@ -4,14 +4,16 @@ using AskCletus_BackEnd.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    partial class DrinkContextModelSnapshot : ModelSnapshot
+    [Migration("20220525232833_ReTreux")]
+    partial class ReTreux
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,8 +38,6 @@ namespace AskCletus_BackEnd.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("HistoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("DrinkHistories");
                 });
@@ -81,17 +81,6 @@ namespace AskCletus_BackEnd.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
-                {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>

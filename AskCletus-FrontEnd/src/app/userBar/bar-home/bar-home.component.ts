@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
-import { UserBarResponse } from 'src/app/models/UserBarResponse';
-import { UserBarServiceService } from 'src/app/user-bar-service.service';
+import { IngredientsResponse } from 'src/app/models/IngredientsResponse';
+import { UserBarServiceService } from '../../Services/user-bar-service.service';
 
 @Component({
   selector: 'app-bar-home',
@@ -16,11 +16,13 @@ export class BarHomeComponent implements OnInit {
     private _userBarService: UserBarServiceService
   ) { }
 
+    
+
   userBar$ = this._activatedRoute.paramMap.pipe(
-  map(params => params.get('ingredientsId')), 
-  filter(ingredientsId => ingredientsId !== null), 
-  map(ingredientsId => parseInt(ingredientsId as string, 10)),
-  switchMap((ingredientsId: number) => this._userBarService.getUserBar(ingredientsId)),
+  map(params => params.get('userId')), 
+  filter(userId => userId !== null), 
+  map(userId => parseInt(userId as string, 10)),
+  switchMap((userId: number) => this._userBarService.getUserBar(userId)),
   )
   
   ngOnInit(): void {

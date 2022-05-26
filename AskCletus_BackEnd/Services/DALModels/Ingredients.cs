@@ -3,14 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AskCletus_BackEnd.Services.DALModels
 {
-    public class UserBar
+    public class Ingredients
     {
         [Key]
         public int IngredientsId { get; set; }
-        public string Ingredients { get; set; }
-
-        [ForeignKey("User")]
+        public string Ingredient { get; set; }
         public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
     }
 }
 
