@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
-import { HistoryService } from 'src/app/history.service';
+import { HistoryService } from 'src/app/Services/history.service';
 
 @Component({
   selector: 'app-drink-history',

@@ -8,37 +8,37 @@ namespace AskCletus_BackEnd.Services
     }
 
 public interface IAddDrink
-{
-    DrinkHistory AddDrink(DrinkHistory drink);
-}
+    {
+        DrinkHistory AddDrink(DrinkHistory drink);
+    }
 
 public interface IGetDrinkHistory
-{
-    DrinkHistory GetDrinkHistory(int id);
-}
+    {
+        IEnumerable<DrinkHistory> GetDrinkHistory(int id);
+    }
 
 public interface IGetAllHistory
-{
-    IEnumerable<DrinkHistory> GetHistory();
-}
+    {
+        IEnumerable<DrinkHistory> GetHistory();
+    }
 public interface IAddBar
     {
-        UserBar AddBar(UserBar userBar);
+        Ingredients AddBar(Ingredients userBar);
     }
 
     public interface IGetBars
     {
-        IEnumerable<UserBar> GetBars();
+        IEnumerable<Ingredients> GetBars();
     }
 
     public interface IGetMyBar
     {
-        IEnumerable<UserBar> GetMyBar(int userId);
+        IEnumerable<Ingredients> GetMyBar(int userId);
     }
 
     public interface IDeleteBar
     {
-        UserBar DeleteBar(int userId);
+        Ingredients DeleteBar(int userId);
     }
 
     public interface IDeleteUser

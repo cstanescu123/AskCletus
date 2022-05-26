@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HistoryResponse } from './models/HistoryResponse';
+import { HistoryResponse } from 'src/app/models/HistoryResponse';
 
 @Injectable({
   providedIn: 'root'
