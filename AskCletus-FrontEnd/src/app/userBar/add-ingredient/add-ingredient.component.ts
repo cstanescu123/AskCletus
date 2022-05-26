@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
-import { PostBar } from 'src/app/models/UserBarResponse';
+import { PostBar } from 'src/app/models/IngredientsResponse';
 import { UserBarServiceService } from 'src/app/user-bar-service.service';
 
 @Component({

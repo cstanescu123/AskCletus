@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PostBar, UserBarResponse } from './models/UserBarResponse';
+import { PostBar, UserBarResponse } from './models/IngredientsResponse';
 
 @Injectable({
   providedIn: 'root'

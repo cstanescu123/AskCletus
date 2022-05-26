@@ -1,8 +1,8 @@
 import { UserResponse } from "./UserResponse";
 
 export interface UserBarResponse {
-    ingredientsId: number
-    ingredients: string
+    ingredientId: number
+    ingredient: string
     userId: number
     user: UserResponse
 }
