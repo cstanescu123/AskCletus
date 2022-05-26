@@ -24,6 +24,11 @@ export class AddIngredientComponent implements OnInit {
     this._userBarService.postIngredient(postBar).subscribe();
   }
 
+  onSubmit() {
+    const requestJson = JSON.stringify(this.UserBarServiceService.value);
+    this.UserBarServiceService.post(this.UserBarServiceService.value).subscribe();
+  }
+
   ngOnInit(): void {
   }
   
