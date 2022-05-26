@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { PostBar } from 'src/app/models/IngredientsResponse';
-import { UserBarServiceService } from './Services/user-bar-service.service';
+import { UserBarServiceService } from '../../Services/user-bar-service.service';
 
 @Component({
   selector: 'app-add-ingredient',

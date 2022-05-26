@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserResponse } from 'src/app/models/UserResponse';
-import { UserService } from 'src/app/userBar/add-ingredient/Services/user.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-user-login',
