@@ -24,7 +24,5 @@ export class AddIngredientComponent implements OnInit {
     this._userBarService.postIngredient(postBar).subscribe();
   }
 
-  ngOnInit(): void {
-  }
-  
+  ngOnInit(): void { }
 }
