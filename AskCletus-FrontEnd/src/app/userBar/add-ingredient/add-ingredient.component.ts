@@ -19,10 +19,15 @@ export class AddIngredientComponent implements OnInit {
     userId: new FormControl(''),
   })
 
-  // submitIngredients() {
-  //   const postBar: PostBar = this.addIngredientFormGroup.value;
-  //   this._userBarService.postIngredient(postBar).subscribe();
-  // }
+  submitIngredients() {
+    const postBar: PostBar = this.addIngredientFormGroup.value;
+    this._userBarService.postIngredient(postBar).subscribe();
+  }
+
+  onSubmit() {
+    const requestJson = JSON.stringify(this.UserBarServiceService.value);
+    this.UserBarServiceService.post(this.UserBarServiceService.value).subscribe();
+  }
 
   ngOnInit(): void {
   }
