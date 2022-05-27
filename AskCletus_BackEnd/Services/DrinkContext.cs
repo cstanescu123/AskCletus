@@ -10,33 +10,33 @@ namespace AskCletus_BackEnd.Services
     {
         private readonly string _connectionString;
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> Appusers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
 
-        public DrinkContext(IOptions<DBConfig> dbConfig)
+        public DrinkContext()
         {
-            _connectionString = dbConfig.Value.AskCletus;
+            //_connectionString = dbConfig.Value.AskCletus;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<AppUser> GetAllUsers()
         {
-            return Users;
+            return Appusers;
         }
 
-        public User AddUser(User user)
+        public AppUser AddUser(AppUser user)
         {
-            var userEntity = Users.Add(user).Entity;
+            var userEntity = Appusers.Add(user).Entity;
             SaveChanges();
             return userEntity;
         }
 
-        public User DeleteUser(int userId)
+        public AppUser DeleteUser(int userId)
         {
-            var dbUsers = Users.Find(userId);
+            var dbUsers = Appusers.Find(userId);
             if (dbUsers != null)
             {
-                var entity = Users.Remove(dbUsers).Entity;
+                var entity = Appusers.Remove(dbUsers).Entity;
                 SaveChanges();
                 return entity; 
             }
@@ -91,15 +91,15 @@ namespace AskCletus_BackEnd.Services
             return userEntity;
         }
 
-        public User GetUser(int id)
+        public AppUser GetUser(int id)
         {
-            var dbUsers = Users.Find(id);
+            var dbUsers = Appusers.Find(id);
             return dbUsers;
         }
 
-        public User UpdateUser(User user, int userId)
+        public AppUser UpdateUser(AppUser user, int userId)
         {
-            var dbUser = Users.Find(userId);
+            var dbUser = Appusers.Find(userId);
             if (dbUser != null)
             {
                 dbUser.UserName = user.UserName;
@@ -108,7 +108,7 @@ namespace AskCletus_BackEnd.Services
                 dbUser.Ingredients = user.Ingredients;
 
 
-                var entityUser = Users.Update(dbUser).Entity;
+                var entityUser = Appusers.Update(dbUser).Entity;
                 SaveChanges();
                 return entityUser;
             }
@@ -118,8 +118,12 @@ namespace AskCletus_BackEnd.Services
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-             //@"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
-             this._connectionString);
+            //@"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
+            // this._connectionString);
+            @"Data Source=askcletus-backenddbserver.database.windows.net;Initial Catalog=AskCletus_BackEnd_db;
+            User ID=Carson;Password=chickenSandwich1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+            MultiSubnetFailover=False");
+
         }
-     }
+    }
 }

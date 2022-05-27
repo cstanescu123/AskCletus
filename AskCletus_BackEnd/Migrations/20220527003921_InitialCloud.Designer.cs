@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    [Migration("20220525231709_ReDeux")]
-    partial class ReDeux
+    [Migration("20220527003921_InitialCloud")]
+    partial class InitialCloud
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,27 @@ namespace AskCletus_BackEnd.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Appusers");
+                });
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
@@ -39,38 +60,19 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasKey("HistoryId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("DrinkHistories");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
                 {
                     b.Property<int>("IngredientsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Ingredients")
+                    b.Property<string>("Ingredient")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
@@ -80,12 +82,23 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserBars");
+                    b.ToTable("UserIngredient");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.UserBar", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
+                {
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
                         .WithMany("Ingredients")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -94,7 +107,7 @@ namespace AskCletus_BackEnd.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
                 {
                     b.Navigation("Ingredients");
                 });
