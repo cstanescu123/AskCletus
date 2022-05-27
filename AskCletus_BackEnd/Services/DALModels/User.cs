@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AskCletus_BackEnd.Services.DALModels
 {
-    public class User
+    public class AppUser
     {
         [Key]
         public int UserId { get; set; }

@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { PostBar } from 'src/app/models/IngredientsResponse';
-import { UserBarServiceService } from '../../Services/user-bar-service.service';
+import { UserBarServiceService } from 'src/app/Services/user-bar-service.service';
 
 @Component({
   selector: 'app-add-ingredient',
@@ -15,21 +15,14 @@ export class AddIngredientComponent implements OnInit {
   constructor(private _userBarService: UserBarServiceService) { }
 
   addIngredientFormGroup = new FormGroup({
-    ingredients: new FormControl(''),
+    ingredient: new FormControl(''),
     userId: new FormControl(''),
   })
 
-  submitIngredients() {
+  submitIngredient() {
     const postBar: PostBar = this.addIngredientFormGroup.value;
     this._userBarService.postIngredient(postBar).subscribe();
   }
 
-  onSubmit() {
-    const requestJson = JSON.stringify(this.UserBarServiceService.value);
-    this.UserBarServiceService.post(this.UserBarServiceService.value).subscribe();
-  }
-
-  ngOnInit(): void {
-  }
-  
+  ngOnInit(): void { }
 }
