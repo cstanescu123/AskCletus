@@ -8,7 +8,7 @@ import { IngredientsResponse, PostBar } from 'src/app/models/IngredientsResponse
 export class UserBarServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/Bar/";
+  baseUrl = "https://localhost:5001/Bar";
 
   getUserBars() { 
     return this.httpClient.get<Array<IngredientsResponse>>(this.baseUrl);
