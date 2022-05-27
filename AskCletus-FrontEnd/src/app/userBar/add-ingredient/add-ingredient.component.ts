@@ -14,7 +14,7 @@ export class AddIngredientComponent implements OnInit {
 
   constructor(private _userBarService: UserBarServiceService) { }
 
-  addIngredientFormGroup = new FormGroup({
+    addIngredientFormGroup = new FormGroup({
     ingredient: new FormControl(''),
     userId: new FormControl(''),
   })
