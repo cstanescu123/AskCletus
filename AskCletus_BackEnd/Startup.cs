@@ -31,7 +31,7 @@ namespace AskCletus_BackEnd
             services.AddDbContext<IDrinkContext, DrinkContext>();
 
             services.Configure<CocktailClientConfig>(Configuration.GetSection("CocktailClientConfig"));
-            services.Configure<DBConfig>(Configuration.GetSection("ConnectionString"));
+          //  services.Configure<DBConfig>(Configuration.GetSection("ConnectionString"));
 
             services.AddHttpClient<ICocktailClient, CocktailClient>(httpClient =>
             {
