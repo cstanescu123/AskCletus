@@ -29,7 +29,8 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(myBars);
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet]
+        [Route("{userId}")]
         public IActionResult GetBar([FromRoute] int userId)
         {
             var myBar = _drinkContext.GetMyBar(userId);
