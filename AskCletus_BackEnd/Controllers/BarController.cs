@@ -41,7 +41,6 @@ namespace AskCletus_BackEnd.Controllers
         }
 
         [HttpPost]
-        [Route("AddIngredient")]
         public IActionResult AddIngredient([FromBody] PostBarRequest postBarRequest)
         {
             var myBar = new Ingredients();
@@ -52,10 +51,10 @@ namespace AskCletus_BackEnd.Controllers
             return Created($"https://localhost:5001/{dbBar.Ingredient}", dbBar);
         }
 
-        [HttpDelete("{userId}")]
-        public IActionResult DeleteBar([FromRoute] int userId)
+        [HttpDelete("{ingredientId}")]
+        public IActionResult DeleteBar([FromRoute] int ingredientId)
         {
-            var dbUserBar = _drinkContext.DeleteBar(userId);
+            var dbUserBar = _drinkContext.DeleteBar(ingredientId);
             if (dbUserBar != null)
             {
                 return Accepted("Bar deleted");

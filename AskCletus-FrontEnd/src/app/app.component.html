@@ -1,6 +1,13 @@
-<div class="nav-bar">
+<div class="nav-bar-container">
     <app-navigation></app-navigation>
 </div>
-<div class="body">
+<div class="main-container">
     <router-outlet></router-outlet>
 </div>
+
+<p>This below is a test are will be deleted</p>
+<li *ngFor="let bar of bars">
+    <div>
+        <p>Ingredient: {{ingredient.ingredient}</p>
+    </div>
+</li>
