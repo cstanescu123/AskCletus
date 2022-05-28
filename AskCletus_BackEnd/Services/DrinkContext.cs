@@ -8,7 +8,7 @@ namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-        private readonly string _connectionString;
+       // private readonly string _connectionString;
 
         public DbSet<AppUser> Appusers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
