@@ -5,6 +5,7 @@ import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.
 import { NavigationComponent } from './navigation/navigation.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
+import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: "app-delete-user",
     component: DeleteUserComponent
+  },
+  {
+    path: "app-bar-home",
+    component: BarHomeComponent
   }
  
   //define routes here
