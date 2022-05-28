@@ -1,16 +1,13 @@
 <ul *ngIf="bars.length > 0; else getBars">
-
 	<li *ngFor="let bar of bars">
 		<div>
-		<p>Ingredient Name: {{bar.ingredient}} 
-			<button (click)="removeIngredient(bar.ingredientId)">❌</button>
-			<!-- <a [routerLink]="['/student', bar.ingredient">{{student.name}}</a> -->
-		</p>
+		<p>Ingredient Name: {{bar.ingredient}}</p>
+		<p>Ingredient Id: {{bar.ingredientsId}}</p>
+		<p>Associate User Id: {{bar.userId}}  </p>
+			<button (click)="removeIngredient(bar.ingredientsId)">❌</button>
 		</div>
 	</li>
-	
-	</ul>
-	
+</ul>
 	<ng-template #getBars>
 		<p>getting bars...</p>
 	</ng-template>
