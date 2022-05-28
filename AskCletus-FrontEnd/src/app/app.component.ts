@@ -23,18 +23,22 @@ export class AppComponent implements OnInit {
 
 constructor(private _drinkService: DrinkServiceService, 
             private _activatedRoute: ActivatedRoute,
-            private _userBarService: UserBarServiceService) {
-  this.drink$ = this._drinkService.getRecentDrink();
-}
+            private _userBarService: UserBarServiceService) 
+            {
+              this.drink$ = this._drinkService.getRecentDrink();
+            }
+
+bar$ = this._userBarService.getUserBars();
+allBars: IngredientsResponse[] = [];
 
 drinkResponse: string = "";
 
 ngOnInit(){
-  const subscription = this._drinkService.getRandomDrink().subscribe(response => {
-    this.drinkResponse = JSON.stringify(response, null, 2);
-  });
-      this._userBarService.getUserBars().subscribe(bars => {
-      this.bars = bars;
+  // const subscription = this._drinkService.getRandomDrink().subscribe(response => {
+  //   this.drinkResponse = JSON.stringify(response, null, 2);
+  // });
+      this._userBarService.getUserBars().subscribe(allBars => {
+      this.allBars = allBars;
     })
   }
   
