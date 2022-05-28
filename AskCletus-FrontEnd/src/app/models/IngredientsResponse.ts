@@ -7,4 +7,4 @@ export interface IngredientsResponse {
     user: UserResponse
 }
 
-export type PostBar = Omit<IngredientsResponse, "ingredientsId">;
+export type PostBar = Omit<IngredientsResponse, "ingredientId">;

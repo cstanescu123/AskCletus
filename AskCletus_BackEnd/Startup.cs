@@ -40,17 +40,17 @@ namespace AskCletus_BackEnd
                 httpClient.BaseAddress = new Uri(config.BaseUrl);
             });
 
-            services.AddControllers();
-            services.AddCors(corsOption =>
+            services.AddCors(corsOptions =>
             {
-                corsOption.AddDefaultPolicy(policy =>
+                corsOptions.AddDefaultPolicy(corsPolicyBuilder =>
                 {
-                    policy.AllowAnyHeader();
-                    policy.AllowAnyMethod();
-                    policy.AllowAnyOrigin();
+                    corsPolicyBuilder.AllowAnyHeader();
+                    corsPolicyBuilder.AllowAnyMethod();
+                    corsPolicyBuilder.AllowAnyOrigin();
                 });
             });
 
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });

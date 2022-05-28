@@ -72,9 +72,9 @@ namespace AskCletus_BackEnd.Services
             return myBar;
         }
 
-        public Ingredients DeleteBar(int userId)
+        public Ingredients DeleteBar(int ingredientId)
         {
-            var dbIngredients = UserIngredient.Find(userId);
+            var dbIngredients = UserIngredient.Find(ingredientId);
             if (dbIngredients != null)
             {
                 var entity = UserIngredient.Remove(dbIngredients).Entity;
