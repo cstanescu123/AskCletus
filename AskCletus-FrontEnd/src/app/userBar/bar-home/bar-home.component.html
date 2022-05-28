@@ -3,6 +3,7 @@
 	<li *ngFor="let bar of bars">
 		<div>
 		<p>Ingredient Name: {{bar.ingredient}} 
+			<button (click)="removeIngredient(bar.ingredientId)">❌</button>
 			<!-- <a [routerLink]="['/student', bar.ingredient">{{student.name}}</a> -->
 		</p>
 		</div>
