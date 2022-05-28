@@ -1,7 +1,15 @@
-<div *ngIf="userBar$ | async as ingredient; else gettingIngredients">
-	<h1>Name: {{ingredient.ingredient}}</h1>
-</div>
+<ul *ngIf="bars.length > 0; else getBars">
 
-<ng-template #gettingIngredients>
-	<p>Add ingredients to your bar...</p>
-</ng-template>
+	<li *ngFor="let bar of bars">
+		<div>
+		<p>Ingredient Name: {{bar.ingredient}} 
+			<!-- <a [routerLink]="['/student', bar.ingredient">{{student.name}}</a> -->
+		</p>
+		</div>
+	</li>
+	
+	</ul>
+	
+	<ng-template #getBars>
+		<p>getting bars...</p>
+	</ng-template>

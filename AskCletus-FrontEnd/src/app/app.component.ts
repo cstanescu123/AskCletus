@@ -34,12 +34,9 @@ allBars: IngredientsResponse[] = [];
 drinkResponse: string = "";
 
 ngOnInit(){
-  // const subscription = this._drinkService.getRandomDrink().subscribe(response => {
-  //   this.drinkResponse = JSON.stringify(response, null, 2);
-  // });
-      this._userBarService.getUserBars().subscribe(allBars => {
-      this.allBars = allBars;
-    })
+   const subscription = this._drinkService.getRandomDrink().subscribe(response => {
+     this.drinkResponse = JSON.stringify(response, null, 2);
+   });
   }
   
   toJson(obj: any){
