@@ -1,5 +1,5 @@
-<ul *ngIf="bars.length > 0; else getBars">
-	<li *ngFor="let bar of bars">
+<ul *ngIf="bars.length > 0; else getBars" class="bar-container">
+	<li *ngFor="let bar of bars" class="list-container">
 		<div>
 		<p>Ingredient Name: {{bar.ingredient}}</p>
 		<p>Ingredient Id: {{bar.ingredientsId}}</p>
