@@ -1,10 +1,11 @@
-<p>drink-history works!</p>
-
-
-<div *ngIf="drinkHistory$ | async as history; else gettingHistory">
-	<h1>History: {{drinkHistory$}}</h1>
-</div>
-
-<ng-template #gettingHistory>
-	<p>Membering...</p>
-</ng-template>
+<ul *ngIf="histories.length > 0; else getHistory">
+	<li *ngFor="let history of histories">
+		<div>
+			<p>Ingredient Name: {{history.drinkId }}  </p>
+			<p>Associate User Id: {{history.userId}} </p>
+		</div>
+	</li>
+</ul>
+	<ng-template #getHistory>
+		<p>you should of deleted your history...</p>
+	</ng-template>

@@ -22,7 +22,7 @@ namespace AskCletus_BackEnd.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetMyBar()
+        public IActionResult GetBars()
         {
             var myBars = _drinkContext.GetBars();
             return Ok(myBars);

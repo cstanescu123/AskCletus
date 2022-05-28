@@ -13,10 +13,13 @@ export class HistoryService {
   
 
   constructor(private _httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/Drink/";
+  baseUrl = "https://localhost:5001/DrinkHistory";
+
+  getHistories() { 
+    return this.httpClient.get<Array<HistoryResponse>>(this.baseUrl);
+  }
 
   public getHistory(historyId: number): Observable<HistoryResponse> {
     return this.httpClient.get<HistoryResponse>(`${this.baseUrl}recent`);
-  
   }
 }

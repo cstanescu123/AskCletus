@@ -19,15 +19,21 @@ namespace AskCletus_BackEnd.Controllers
         }
 
         [HttpGet]
-        [Route("MyHistory")]
-        public IActionResult GetMyHistory(int userId)
+        public IActionResult GetBars()
+        {
+            var myBars = _drinkHistoryContext.GetHistory();
+            return Ok(myBars);
+        }
+
+        [HttpGet]
+        [Route("{userId}")]
+        public IActionResult GetMyHistory([FromRoute]int userId)
         {
             var myBars = _drinkHistoryContext.GetDrinkHistory(userId);
             return Ok(myBars);
         }
 
         [HttpPost]
-        [Route("AddDrink")]
         public IActionResult AddDrink([FromBody] PostHistoryRequest postHistoryRequest)
         {
             var drink = new DrinkHistory();
