@@ -13,12 +13,10 @@ namespace AskCletus_BackEnd.Controllers
     public class DrinkController : ControllerBase
     {
         private readonly ICocktailClient _cocktailClient;
-        private readonly IDrinkContext _drinkContext;
 
-        public DrinkController(ICocktailClient cocktailClient, IDrinkContext drinkContext)
+        public DrinkController(ICocktailClient cocktailClient)
         {
             _cocktailClient = cocktailClient;
-            _drinkContext = drinkContext;
         }
 
         [HttpGet]
@@ -36,6 +34,17 @@ namespace AskCletus_BackEnd.Controllers
             CocktailResponse popularCocktails = await _cocktailClient.GetRandomDrink();
             return Ok(popularCocktails);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetSingleSearch([FromQuery] string drink)
+        {
+            CocktailResponse singleSearch = await _cocktailClient.SearchSearchByName(drink);
+            return Ok(singleSearch);
+        }
+
+
+
     }
 
 }
