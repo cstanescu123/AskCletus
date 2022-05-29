@@ -8,7 +8,7 @@ namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-        private readonly string _connectionString;
+       // private readonly string _connectionString;
 
         public DbSet<AppUser> Appusers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
@@ -72,9 +72,9 @@ namespace AskCletus_BackEnd.Services
             return myBar;
         }
 
-        public Ingredients DeleteBar(int userId)
+        public Ingredients DeleteBar(int ingredientId)
         {
-            var dbIngredients = UserIngredient.Find(userId);
+            var dbIngredients = UserIngredient.Find(ingredientId);
             if (dbIngredients != null)
             {
                 var entity = UserIngredient.Remove(dbIngredients).Entity;

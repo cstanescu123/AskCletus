@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs';
+import { HistoryResponse } from 'src/app/models/HistoryResponse';
 import { HistoryService } from 'src/app/Services/history.service';
 
 @Component({
@@ -9,23 +9,15 @@ import { HistoryService } from 'src/app/Services/history.service';
   styleUrls: ['./drink-history.component.css']
 })
 export class DrinkHistoryComponent implements OnInit {
+  
+  histories: HistoryResponse[] = []
 
-  constructor(
-
-    private _activatedRoute: ActivatedRoute,
-    private _historyService: HistoryService
-
-  ) { }
+  constructor(private _historyrService: HistoryService) { }
+ 
   ngOnInit(): void {
-
+    this._historyrService.getHistories().subscribe(history => {
+      this.histories = history;
+    })
   }
-
-
-   drinkHistory$ = this._activatedRoute.paramMap.pipe(
-    map(params => params.get('historyId')), 
-    filter(historyId => historyId !== null), 
-    map(historyId => parseInt(historyId as string, 10)),
-    switchMap((historyId: number) => this._historyService.getHistory(historyId)),)
-
 
 }

@@ -1,0 +1,10 @@
+.bar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+}
+.list-container {
+    margin: 2em;
+    padding: 2em;
+}

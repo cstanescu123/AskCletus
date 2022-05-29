@@ -24,29 +24,19 @@ namespace AskCletus_BackEnd.Services
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
         }
-
-        //public async Task<CocktailResponse> SearchDrink()
-        //{
-        //    var animals = new string[] { "Dog", "Cat", "Mouse" };
-
-        //    if (age != null && sign != null)
-        //    {
-        //        return $"name: {name}, type: {animals[id]}, age: {age.Value}, sign: {sign}";
-        //    }
-
-        //    return $"name: {name}, type: {animals[id]}";
-
-
-        //    var response = await _httpClient.GetAsync("recent.php");
-        //    var content = await response.Content.ReadAsStreamAsync();
-        //    var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
-        //    return cocktailResponse;
-        //}
         
         public async Task<CocktailResponse> GetRandomDrink()
         {
             var response = await _httpClient.GetAsync("randomselection.php");
             var content = await response.Content.ReadAsStreamAsync();
+            var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
+            return cocktailResponse;
+        }
+
+        public async Task<CocktailResponse> SearchSearchByName(string search)
+        {
+            var searchResult = await _httpClient.GetAsync($"search/php?s={search}");
+            var content = await searchResult.Content.ReadAsStreamAsync();
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
         }
