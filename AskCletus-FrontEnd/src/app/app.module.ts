@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
@@ -28,7 +29,8 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     NavigationComponent,
     WelcomePageComponent,
     SearchResultsComponent,
-    SearchFunctionsComponent
+    SearchFunctionsComponent,
+    BrowserAnimationsModule
   ],
 
   imports: [
