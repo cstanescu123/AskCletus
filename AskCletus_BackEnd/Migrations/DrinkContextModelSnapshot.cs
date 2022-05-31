@@ -26,6 +26,9 @@ namespace AskCletus_BackEnd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Authority")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -37,7 +40,7 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Appusers");
+                    b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
@@ -83,6 +86,29 @@ namespace AskCletus_BackEnd.Migrations
                     b.ToTable("UserIngredient");
                 });
 
+            modelBuilder.Entity("Identity_Back_End.Models.Todo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Todos");
+                });
+
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
                     b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
@@ -105,9 +131,22 @@ namespace AskCletus_BackEnd.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Identity_Back_End.Models.Todo", b =>
+                {
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
+                        .WithMany("Todos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
                 {
                     b.Navigation("Ingredients");
+
+                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }
