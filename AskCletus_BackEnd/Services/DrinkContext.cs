@@ -129,9 +129,7 @@ namespace AskCletus_BackEnd.Services
                 user.Token = token;
                 AppUsers.Update(user);
             }
-
             await SaveChangesAsync();
-
             return user;
         }
         public AppUsers GetUser(int userId)
@@ -139,6 +137,7 @@ namespace AskCletus_BackEnd.Services
             var dbUsers = AppUsers.Find(userId);
             return dbUsers;
         }
+
         //public async Task<User> GetUser(int userId)
         //{
         //    return await Users.FindAsync(userId);

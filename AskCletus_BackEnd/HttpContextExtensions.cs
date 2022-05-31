@@ -16,13 +16,11 @@ namespace AskCletus_BackEnd
             {
                 throw new ArgumentNullException(nameof(context));
             }
-
             var schemes = context.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
 
             return (await schemes.GetAllSchemesAsync())
                 .Where(scheme => !string.IsNullOrEmpty(scheme.DisplayName))
                 .Select(scheme => scheme.Name);
-
         }
 
         public static async Task<bool> IsProviderSupportedAsync(this HttpContext context, string provider)

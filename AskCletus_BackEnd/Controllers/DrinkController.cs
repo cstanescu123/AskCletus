@@ -35,7 +35,6 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(popularCocktails);
         }
 
-
         [HttpGet]
         [Route("DrinkName")]
         public async Task<IActionResult> GetSingleDrinkSearch([FromQuery] string drinkName)
@@ -51,8 +50,5 @@ namespace AskCletus_BackEnd.Controllers
             CocktailResponse singleSearch = await _cocktailClient.SearchSearchByIngredient(ingredientName);
             return Ok(singleSearch);
         }
-
-
     }
-
 }
