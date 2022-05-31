@@ -44,7 +44,6 @@ namespace AskCletus_BackEnd.Controllers
                     .Todos
                     .FirstOrDefault(todo => todo.Id == todoId);
 
-
                 // logic to grab a todo item
                 return Ok(todo);
             }

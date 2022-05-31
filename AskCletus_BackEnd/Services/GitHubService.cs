@@ -52,7 +52,6 @@ namespace AskCletus_BackEnd.Services
 
         public async Task<GithubUser> GetGithubUser(string token)
         {
-
             var request = new HttpRequestMessage()
             {
                 RequestUri = new Uri("https://api.github.com/user"),
@@ -75,9 +74,7 @@ namespace AskCletus_BackEnd.Services
             {
                 PropertyNameCaseInsensitive = true
             };
-
             var githubUser = JsonSerializer.Deserialize<GithubUser>(content, options);
-
             return githubUser;
         }
     }
