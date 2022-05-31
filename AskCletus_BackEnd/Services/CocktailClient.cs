@@ -40,5 +40,14 @@ namespace AskCletus_BackEnd.Services
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
         }
+
+        public async Task<CocktailResponse> SearchSearchByIngredient(string search)
+        {
+            var searchResult = await _httpClient.GetAsync($"search.php?i={search}");
+            var content = await searchResult.Content.ReadAsStreamAsync();
+            var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
+            return cocktailResponse;
+        }
+
     }
 }

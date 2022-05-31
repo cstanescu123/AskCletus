@@ -37,12 +37,20 @@ namespace AskCletus_BackEnd.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetSingleSearch([FromQuery] string drink)
+        [Route("DrinkName")]
+        public async Task<IActionResult> GetSingleDrinkSearch([FromQuery] string drinkName)
         {
-            CocktailResponse singleSearch = await _cocktailClient.SearchSearchByName(drink);
+            CocktailResponse singleSearch = await _cocktailClient.SearchSearchByName(drinkName);
             return Ok(singleSearch);
         }
 
+        [HttpGet]
+        [Route("IngredientSearch")]
+        public async Task<IActionResult> GetSingleIngredientSearch([FromQuery] string ingredientName)
+        {
+            CocktailResponse singleSearch = await _cocktailClient.SearchSearchByIngredient(ingredientName);
+            return Ok(singleSearch);
+        }
 
 
     }
