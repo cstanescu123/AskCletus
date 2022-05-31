@@ -13,6 +13,6 @@ namespace Identity_Back_End.Models
 
         [ForeignKey("User")]
         public int UserId { get; set; }
-        public AppUser User { get; set; }
+        public AppUsers User { get; set; }
     }
 }

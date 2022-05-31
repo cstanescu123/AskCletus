@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AskCletus_BackEnd.Services.DALModels
 {
-    public class AppUser
+    public class AppUsers
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

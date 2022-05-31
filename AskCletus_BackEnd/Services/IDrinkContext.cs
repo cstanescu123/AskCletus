@@ -43,25 +43,25 @@ public interface IAddBar
 
     public interface IDeleteUser
     {
-        AppUser DeleteUser(int userId);
+        AppUsers DeleteUser(int userId);
     }
 
     public interface IGetAllUsers
     {
-        IEnumerable<AppUser> GetAllUsers();
+        IEnumerable<AppUsers> GetAllUsers();
     }
 
     public interface IAddUser
     {
-        AppUser AddUser(AppUser user);
+        AppUsers AddUser(AppUsers user);
     }
     public interface IUpdateUser
     {
-        AppUser UpdateUser(AppUser user, int userId);
+        AppUsers UpdateUser(AppUsers user, int userId);
     }
     public interface IGetUser
     {
-        AppUser GetUser(int userId);
+        AppUsers GetUser(int userId);
     }
 
 }
