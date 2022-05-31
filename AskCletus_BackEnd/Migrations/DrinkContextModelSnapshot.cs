@@ -19,6 +19,30 @@ namespace AskCletus_BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Authority")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("AppUsers");
+                });
+
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
                     b.Property<int>("HistoryId")
@@ -62,30 +86,32 @@ namespace AskCletus_BackEnd.Migrations
                     b.ToTable("UserIngredient");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
+            modelBuilder.Entity("Identity_Back_End.Models.Todo", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Todos");
                 });
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -96,7 +122,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.User", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
                         .WithMany("Ingredients")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -105,9 +131,22 @@ namespace AskCletus_BackEnd.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.User", b =>
+            modelBuilder.Entity("Identity_Back_End.Models.Todo", b =>
+                {
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
+                        .WithMany("Todos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
                 {
                     b.Navigation("Ingredients");
+
+                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

@@ -31,7 +31,7 @@ namespace AskCletus_BackEnd
             services.AddDbContext<IDrinkContext, DrinkContext>();
 
             services.Configure<CocktailClientConfig>(Configuration.GetSection("CocktailClientConfig"));
-            services.Configure<DBConfig>(Configuration.GetSection("ConnectionString"));
+          //  services.Configure<DBConfig>(Configuration.GetSection("ConnectionString"));
 
             services.AddHttpClient<ICocktailClient, CocktailClient>(httpClient =>
             {
@@ -40,17 +40,17 @@ namespace AskCletus_BackEnd
                 httpClient.BaseAddress = new Uri(config.BaseUrl);
             });
 
-            services.AddControllers();
-            services.AddCors(corsOption =>
+            services.AddCors(corsOptions =>
             {
-                corsOption.AddDefaultPolicy(policy =>
+                corsOptions.AddDefaultPolicy(corsPolicyBuilder =>
                 {
-                    policy.AllowAnyHeader();
-                    policy.AllowAnyMethod();
-                    policy.AllowAnyOrigin();
+                    corsPolicyBuilder.AllowAnyHeader();
+                    corsPolicyBuilder.AllowAnyMethod();
+                    corsPolicyBuilder.AllowAnyOrigin();
                 });
             });
 
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });

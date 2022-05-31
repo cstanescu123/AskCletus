@@ -2,7 +2,7 @@
 
 namespace AskCletus_BackEnd.Migrations
 {
-    public partial class KyleDBUpdate : Migration
+    public partial class InitialCloud2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

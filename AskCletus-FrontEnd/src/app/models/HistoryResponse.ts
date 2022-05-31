@@ -1,9 +1,8 @@
 export interface HistoryResponse {
-    DrinkId: number
-    DateTime: string
+        historyId: number
+        drinkId: number
+        dateTime: string
         userId: number
     }
     
-    export type PostHistory = Omit<HistoryResponse, "ingredientsId">;
-
-
+    export type PostHistory = Omit<HistoryResponse, "historyId">;

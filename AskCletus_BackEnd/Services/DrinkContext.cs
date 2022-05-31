@@ -1,42 +1,46 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
+using AskCletus_BackEnd.Services.Models;
+using Identity_Back_End.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-        private readonly string _connectionString;
+       // private readonly string _connectionString;
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUsers> AppUsers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
+        public DbSet<Todo> Todos { get; set; }
 
-        public DrinkContext(IOptions<DBConfig> dbConfig)
+        public DrinkContext()
         {
-            _connectionString = dbConfig.Value.AskCletus;
+            //_connectionString = dbConfig.Value.AskCletus;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<AppUsers> GetAllUsers()
         {
-            return Users;
+            return AppUsers;
         }
 
-        public User AddUser(User user)
+        public AppUsers AddUser(AppUsers user)
         {
-            var userEntity = Users.Add(user).Entity;
+            var userEntity = AppUsers.Add(user).Entity;
             SaveChanges();
             return userEntity;
         }
 
-        public User DeleteUser(int userId)
+        public AppUsers DeleteUser(int userId)
         {
-            var dbUsers = Users.Find(userId);
+            var dbUsers = AppUsers.Find(userId);
             if (dbUsers != null)
             {
-                var entity = Users.Remove(dbUsers).Entity;
+                var entity = AppUsers.Remove(dbUsers).Entity;
                 SaveChanges();
                 return entity; 
             }
@@ -72,9 +76,9 @@ namespace AskCletus_BackEnd.Services
             return myBar;
         }
 
-        public Ingredients DeleteBar(int userId)
+        public Ingredients DeleteBar(int ingredientId)
         {
-            var dbIngredients = UserIngredient.Find(userId);
+            var dbIngredients = UserIngredient.Find(ingredientId);
             if (dbIngredients != null)
             {
                 var entity = UserIngredient.Remove(dbIngredients).Entity;
@@ -91,15 +95,9 @@ namespace AskCletus_BackEnd.Services
             return userEntity;
         }
 
-        public User GetUser(int id)
+        public AppUsers UpdateUser(AppUsers user, int userId)
         {
-            var dbUsers = Users.Find(id);
-            return dbUsers;
-        }
-
-        public User UpdateUser(User user, int userId)
-        {
-            var dbUser = Users.Find(userId);
+            var dbUser = AppUsers.Find(userId);
             if (dbUser != null)
             {
                 dbUser.UserName = user.UserName;
@@ -108,18 +106,76 @@ namespace AskCletus_BackEnd.Services
                 dbUser.Ingredients = user.Ingredients;
 
 
-                var entityUser = Users.Update(dbUser).Entity;
+                var entityUser = AppUsers.Update(dbUser).Entity;
                 SaveChanges();
                 return entityUser;
             }
             return null;
         }
+        public async Task<AppUsers> UpsertGithubUser(GithubUser githubUser, string token)
+        {
+            var user = await AppUsers.FirstOrDefaultAsync(user => user.Email == githubUser.email);
+            if (user == null)
+            {
+                user = new AppUsers();
+                user.UserName = githubUser.login;
+                user.Email = githubUser.email;
+                user.Authority = Authority.Github;
+                user.Token = token;
+                user = (await AppUsers.AddAsync(user)).Entity;
+            }
+            else
+            {
+                user.Token = token;
+                AppUsers.Update(user);
+            }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            await SaveChangesAsync();
+
+            return user;
+        }
+        public AppUsers GetUser(int userId)
+        {
+            var dbUsers = AppUsers.Find(userId);
+            return dbUsers;
+        }
+        //public async Task<User> GetUser(int userId)
+        //{
+        //    return await Users.FindAsync(userId);
+        //}
+
+        public async Task<AppUsers> UpdateUserToken(int userId, string token)
+        {
+            var user = GetUser(userId);
+            user.Token = token;
+            AppUsers.Update(user);
+            await SaveChangesAsync();
+            return user;
+        }
+
+        public async Task Logout(int userId)
+        {
+            await UpdateUserToken(userId, null);
+        }
+
+        public bool IsLoggedIn(int userId)
+        {
+            var user = AppUsers.Find(userId);
+
+            return user != null && user.Token != null;
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-             //@"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
-             this._connectionString);
+            // @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
+
+            @"Data Source=askcletus-backenddbserver.database.windows.net;Initial Catalog=AskCletus_BackEnd_db;
+            User ID=Carson;Password=chickenSandwich1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+            MultiSubnetFailover=False");
+
         }
-     }
+    }
 }
+
