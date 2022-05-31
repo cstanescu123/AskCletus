@@ -58,7 +58,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("AddUser")]
         public IActionResult AddUser([FromBody] PostUserRequest postUserRequest)
         {
-            var user = new AppUser();
+            var user = new AppUsers();
             user.UserName = postUserRequest.UserName;
             user.Email = postUserRequest.Email;
             user.Token = postUserRequest.Token;
@@ -70,7 +70,7 @@ namespace AskCletus_BackEnd.Controllers
         [HttpPost]
         [Route("UpdateUser")]
 
-        public IActionResult UpdateUser(AppUser user, int userId)
+        public IActionResult UpdateUser(AppUsers user, int userId)
         {
             var updatedUser = _userContext.UpdateUser(user, userId);
             return Ok(updatedUser);

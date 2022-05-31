@@ -13,6 +13,6 @@ namespace AskCletus_BackEnd.Services.DALModels
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual AppUser User { get; set; }
+        public virtual AppUsers User { get; set; }
     }
 }

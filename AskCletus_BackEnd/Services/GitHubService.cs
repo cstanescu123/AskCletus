@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace AskCletus_BackEnd
+namespace AskCletus_BackEnd.Services
 {
     public class GitHubService
     {
