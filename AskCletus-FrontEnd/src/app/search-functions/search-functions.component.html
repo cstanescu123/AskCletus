@@ -9,7 +9,7 @@
 	</div>
 </form>	 -->
 
-<ul *ngIf="drinks.length > 0; else waitingForStudents">
+<ul *ngIf="drinks.length > 0; else waitingforDrink">
 
 	<li *ngFor="let drink of drinks">
 		<div>
@@ -21,6 +21,6 @@
 	
 	</ul>
 	
-	<ng-template #waitingForStudents>
-		<p>getting students...</p>
+	<ng-template #waitingforDrink>
+		<p>getting your drink...</p>
 	</ng-template>
