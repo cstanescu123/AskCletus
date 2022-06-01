@@ -132,20 +132,15 @@ namespace AskCletus_BackEnd.Services
             await SaveChangesAsync();
             return user;
         }
-        public AppUsers GetUser(int userId)
-        {
-            var dbUsers = AppUsers.Find(userId);
-            return dbUsers;
-        }
 
-        //public async Task<User> GetUser(int userId)
-        //{
-        //    return await Users.FindAsync(userId);
-        //}
+        public async Task<AppUsers> GetUser(int userId)
+        {
+            return await AppUsers.FindAsync(userId);
+        }
 
         public async Task<AppUsers> UpdateUserToken(int userId, string token)
         {
-            var user = GetUser(userId);
+            var user = await GetUser(userId);
             user.Token = token;
             AppUsers.Update(user);
             await SaveChangesAsync();
