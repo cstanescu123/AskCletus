@@ -3,12 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
 import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
@@ -31,10 +28,7 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     NavigationComponent,
     WelcomePageComponent,
     SearchResultsComponent,
-    SearchFunctionsComponent,
-    // MatButtonModule,
-    // MatButtonModule,
-    // MatIconModule
+    SearchFunctionsComponent
   ],
 
   imports: [
