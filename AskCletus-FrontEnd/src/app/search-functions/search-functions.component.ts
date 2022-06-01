@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DrinkServiceService } from '../Services/drink-service.service';
 import { UserBarServiceService } from '../Services/user-bar-service.service';
@@ -17,6 +18,17 @@ export class SearchFunctionsComponent implements OnInit {
       //this.drink$ = this._drinkService.getRecentDrink();
     }
     drinkResponse: string = "";
+
+
+    searchIngredientFormGroup = new FormGroup({
+      strIngredient1: new FormControl(''),
+    })
+  
+    // searchIngredient() {
+    //   const postBar: PostBar = this.addIngredientFormGroup.value;
+    //   this._userBarService.postIngredient(postBar).subscribe();
+    // }
+
 
   ngOnInit(): void {
     const subscription = this._drinkService.getRandomDrink().subscribe(response => {
