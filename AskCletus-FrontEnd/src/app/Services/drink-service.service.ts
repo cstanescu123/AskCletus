@@ -18,10 +18,7 @@ export class DrinkServiceService {
   public getRandomDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}random`)
   }
-
-
-
-  // getDrink(id: number) {
-  //   return this.httpClient.get<Drink>(`${this.baseUrl}people/${id}`);
-  // }
+  getDrink(name: string): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${name}`);
+  }
 }

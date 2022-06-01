@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DrinkResponse } from '../models/DrinkResponse';
 import { DrinkServiceService } from '../Services/drink-service.service';
-import { UserBarServiceService } from '../Services/user-bar-service.service';
 
 @Component({
   selector: 'app-search-functions',
@@ -12,11 +13,24 @@ export class SearchFunctionsComponent implements OnInit {
 
   constructor
   ( private _drinkService: DrinkServiceService, 
-    private _activatedRoute: ActivatedRoute,
-    private _userBarService: UserBarServiceService) { 
-      //this.drink$ = this._drinkService.getRecentDrink();
+    private _activatedRoute: ActivatedRoute,) { 
     }
+
+    randomDrink$ = this._drinkService.getRandomDrink()
+    drinks: DrinkResponse[] = [];
+
     drinkResponse: string = "";
+
+    searchIngredientFormGroup = new FormGroup({
+      strIngredient1: new FormControl(''),
+    })
+  
+    searchIngredient() {
+
+      // const postBar: PostBar = this.addIngredientFormGroup.value;
+      // this._userBarService.postIngredient(postBar).subscribe();
+    }
+
 
   ngOnInit(): void {
     const subscription = this._drinkService.getRandomDrink().subscribe(response => {
