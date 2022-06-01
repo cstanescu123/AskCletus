@@ -2,7 +2,7 @@
 
 namespace AskCletus_BackEnd.Migrations
 {
-    public partial class InitialCloud2 : Migration
+    public partial class anothermigration6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
