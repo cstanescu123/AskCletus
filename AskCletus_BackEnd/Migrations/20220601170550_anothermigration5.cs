@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AskCletus_BackEnd.Migrations
 {
-    public partial class updatingtables2 : Migration
+    public partial class anothermigration5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,27 +45,6 @@ namespace AskCletus_BackEnd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Todos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Todos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Todos_AppUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AppUsers",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserIngredient",
                 columns: table => new
                 {
@@ -91,11 +70,6 @@ namespace AskCletus_BackEnd.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Todos_UserId",
-                table: "Todos",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserIngredient_UserId",
                 table: "UserIngredient",
                 column: "UserId");
@@ -105,9 +79,6 @@ namespace AskCletus_BackEnd.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DrinkHistories");
-
-            migrationBuilder.DropTable(
-                name: "Todos");
 
             migrationBuilder.DropTable(
                 name: "UserIngredient");
