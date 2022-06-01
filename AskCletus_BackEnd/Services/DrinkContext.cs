@@ -23,37 +23,13 @@ namespace AskCletus_BackEnd.Services
             //_connectionString = dbConfig.Value.AskCletus;
         }
 
-        public IEnumerable<AppUsers> GetAllUsers()
-        {
-            return AppUsers;
-        }
-
-        public AppUsers AddUser(AppUsers user)
-        {
-            var userEntity = AppUsers.Add(user).Entity;
-            SaveChanges();
-            return userEntity;
-        }
-
-        public AppUsers DeleteUser(int userId)
-        {
-            var dbUsers = AppUsers.Find(userId);
-            if (dbUsers != null)
-            {
-                var entity = AppUsers.Remove(dbUsers).Entity;
-                SaveChanges();
-                return entity; 
-            }
-            return null;
-        }
-
         public DrinkHistory AddDrink(DrinkHistory drink)
         {
             var drinkEntity = DrinkHistories.Add(drink).Entity;
             SaveChanges();
             return drinkEntity;
         }
-
+        
         public IEnumerable<DrinkHistory> GetDrinkHistory(int userId)
         {
             var myHistory = DrinkHistories.Where(x => x.UserId == userId);
@@ -65,6 +41,14 @@ namespace AskCletus_BackEnd.Services
             return DrinkHistories;
 
         }
+        
+        public Ingredients AddBar(Ingredients userIngredient)
+        {
+            var userEntity = UserIngredient.Add(userIngredient).Entity;
+            SaveChanges();
+            return userEntity;
+        }
+        
         public IEnumerable<Ingredients> GetBars()
         {
             return UserIngredient;
@@ -88,9 +72,26 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
-        public Ingredients AddBar(Ingredients userIngredient)
+        public AppUsers DeleteUser(int userId)
         {
-            var userEntity = UserIngredient.Add(userIngredient).Entity;
+            var dbUsers = AppUsers.Find(userId);
+            if (dbUsers != null)
+            {
+                var entity = AppUsers.Remove(dbUsers).Entity;
+                SaveChanges();
+                return entity; 
+            }
+            return null;
+        }
+
+        public IEnumerable<AppUsers> GetAllUsers()
+        {
+            return AppUsers;
+        }
+
+        public AppUsers AddUser(AppUsers user)
+        {
+            var userEntity = AppUsers.Add(user).Entity;
             SaveChanges();
             return userEntity;
         }
@@ -112,6 +113,12 @@ namespace AskCletus_BackEnd.Services
             }
             return null;
         }
+
+        public async Task<AppUsers> GetUser(int userId)
+        {
+            return await AppUsers.FindAsync(userId);
+        }
+        
         public async Task<AppUsers> UpsertGithubUser(GithubUser githubUser, string token)
         {
             var user = await AppUsers.FirstOrDefaultAsync(user => user.Email == githubUser.email);
@@ -133,10 +140,6 @@ namespace AskCletus_BackEnd.Services
             return user;
         }
 
-        public async Task<AppUsers> GetUser(int userId)
-        {
-            return await AppUsers.FindAsync(userId);
-        }
 
         public async Task<AppUsers> UpdateUserToken(int userId, string token)
         {

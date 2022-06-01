@@ -1,13 +1,16 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
-    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar, IAddBar, IAddDrink, IGetDrinkHistory, IGetAllHistory
+    public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar, 
+                     IAddBar, IAddDrink, IGetDrinkHistory, IGetAllHistory, IGetUser
     {
     }
 
-public interface IAddDrink
+
+    public interface IAddDrink
     {
         DrinkHistory AddDrink(DrinkHistory drink);
     }
@@ -60,5 +63,9 @@ public interface IAddBar
         AppUsers UpdateUser(AppUsers user, int userId);
     }
 
+    public interface IGetUser
+    {
+        Task<AppUsers> GetUser(int userId);
+    }
 
 }
