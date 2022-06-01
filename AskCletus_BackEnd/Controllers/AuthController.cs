@@ -44,7 +44,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("auto-login/{userId}")]
         public async Task<IActionResult> AutoLogin([FromRoute] int userId)
         {
-            var user = _drinkContext.GetUser(userId);
+            var user = await _drinkContext.GetUser(userId);
 
             if (user == null)
             {

@@ -22,7 +22,7 @@ namespace AskCletus_BackEnd.Controllers
         {
             if (_drinkContext.IsLoggedIn(userId))
             {
-                var user = _drinkContext.GetUser(userId);
+                var user = await _drinkContext.GetUser(userId);
 
 
                 // logic to grab a todo item
@@ -40,7 +40,7 @@ namespace AskCletus_BackEnd.Controllers
         {
             if (_drinkContext.IsLoggedIn(userId))
             {
-                var todo = (_drinkContext.GetUser(userId))
+                var todo = (await _drinkContext.GetUser(userId))
                     .Todos
                     .FirstOrDefault(todo => todo.Id == todoId);
 

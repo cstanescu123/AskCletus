@@ -15,17 +15,19 @@ namespace AskCletus_BackEnd.Controllers
     public class UserController : ControllerBase
     {
         private readonly IDrinkContext _userContext;
+        private readonly DrinkContext _drinkContext;
 
-        public UserController(IDrinkContext userContext)
+        public UserController(IDrinkContext userContext, DrinkContext drinkContext)
         {
             _userContext = userContext;
+            _drinkContext = drinkContext;
         }
        
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetUser([FromRoute] int userId)
         {
-            var user = _userContext.GetUser(userId);
+            var user = _drinkContext.GetUser(userId);
             if (user != null)
             {
                 return Ok(user);
