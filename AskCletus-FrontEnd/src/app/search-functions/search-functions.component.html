@@ -1,8 +1,26 @@
-<form>
-    <input type = "text" id = "hooch" value = "Beer, Whiskey, Wine, Whatev..">
-    <input type = "text" id = "ing" value = "Available food?">
+<!-- <form [formGroup]="searchIngredientFormGroup" (submit)="searchIngredient()">
+	<div>
+		<label>Ingredient:</label>
+		<input type="text" formControlName="strIngredient1">
+		<a [routerLink]="['/searchResult', {{drinkResponse.strIngredient1}}"></a>
+	</div>
+	<div>
+		<button type="submit">Search!</button>
+	</div>
+</form>	 -->
 
+<ul *ngIf="drinks.length > 0; else waitingForStudents">
 
-    <button type = "submit">Go!</button>
-
-</form>
+	<li *ngFor="let drink of drinks">
+		<div>
+		<p>name: 
+			<a [routerLink]="['/student', drink]">{{drink}}</a>
+		</p>
+		</div>
+	</li>
+	
+	</ul>
+	
+	<ng-template #waitingForStudents>
+		<p>getting students...</p>
+	</ng-template>
