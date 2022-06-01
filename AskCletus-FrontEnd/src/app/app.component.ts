@@ -14,32 +14,8 @@ import { UserBarServiceService } from './Services/user-bar-service.service';
 export class AppComponent implements OnInit {
   title = 'AskCletus-FrontEnd';
 
-  drink$: Observable<DrinkResponse>;
-  
-  userBars$ = this._userBarService.getUserBars();
-  bars: IngredientsResponse[] = [];
+constructor() {}
 
-  
-
-constructor(private _drinkService: DrinkServiceService, 
-            private _activatedRoute: ActivatedRoute,
-            private _userBarService: UserBarServiceService) 
-            {
-              this.drink$ = this._drinkService.getRecentDrink();
-            }
-
-bar$ = this._userBarService.getUserBars();
-allBars: IngredientsResponse[] = [];
-
-drinkResponse: string = "";
-
-ngOnInit(){
-   const subscription = this._drinkService.getRandomDrink().subscribe(response => {
-     this.drinkResponse = JSON.stringify(response, null, 2);
-   });
-  }
-  
-  toJson(obj: any){
-    return JSON.stringify(obj, null, 2);
+  ngOnInit(){
   }
 }
