@@ -4,14 +4,16 @@ using AskCletus_BackEnd.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    partial class DrinkContextModelSnapshot : ModelSnapshot
+    [Migration("20220531195135_InitialCloud2")]
+    partial class InitialCloud2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace AskCletus_BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -111,7 +113,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -122,7 +124,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
                         .WithMany("Ingredients")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -133,7 +135,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("Identity_Back_End.Models.Todo", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
                         .WithMany("Todos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -142,7 +144,7 @@ namespace AskCletus_BackEnd.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
                 {
                     b.Navigation("Ingredients");
 

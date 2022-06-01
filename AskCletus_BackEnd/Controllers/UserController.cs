@@ -15,17 +15,19 @@ namespace AskCletus_BackEnd.Controllers
     public class UserController : ControllerBase
     {
         private readonly IDrinkContext _userContext;
+        private readonly DrinkContext _drinkContext;
 
-        public UserController(IDrinkContext userContext)
+        public UserController(IDrinkContext userContext, DrinkContext drinkContext)
         {
             _userContext = userContext;
+            _drinkContext = drinkContext;
         }
        
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetUser([FromRoute] int userId)
         {
-            var user = _userContext.GetUser(userId);
+            var user = _drinkContext.GetUser(userId);
             if (user != null)
             {
                 return Ok(user);
@@ -58,7 +60,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("AddUser")]
         public IActionResult AddUser([FromBody] PostUserRequest postUserRequest)
         {
-            var user = new AppUser();
+            var user = new AppUsers();
             user.UserName = postUserRequest.UserName;
             user.Email = postUserRequest.Email;
             user.Token = postUserRequest.Token;
@@ -70,7 +72,7 @@ namespace AskCletus_BackEnd.Controllers
         [HttpPost]
         [Route("UpdateUser")]
 
-        public IActionResult UpdateUser(AppUser user, int userId)
+        public IActionResult UpdateUser(AppUsers user, int userId)
         {
             var updatedUser = _userContext.UpdateUser(user, userId);
             return Ok(updatedUser);
