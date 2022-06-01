@@ -15,7 +15,7 @@ export class UserBarServiceService {
   }
   
   getUserBar(userId: number) { 
-    return this.httpClient.get<IngredientsResponse>(`${this.baseUrl}/ ${userId}`);
+    return this.httpClient.get<IngredientsResponse>(`${this.baseUrl}/${userId}`);
   }
     
   postIngredient(userBar: PostBar) {
@@ -25,5 +25,4 @@ export class UserBarServiceService {
   deleteIngredient(ingredientId: number) {
     return this.httpClient.delete<IngredientsResponse>(`${this.baseUrl}/${ingredientId}`);
   }
-
 }

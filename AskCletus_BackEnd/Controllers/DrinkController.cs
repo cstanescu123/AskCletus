@@ -35,7 +35,6 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(popularCocktails);
         }
 
-
         [HttpGet]
         [Route("DrinkName")]
         public async Task<IActionResult> GetSingleDrinkSearch([FromQuery] string drinkName)
@@ -52,7 +51,13 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(singleSearch);
         }
 
-
+        [HttpGet]
+        [Route("MultipleIngredientSearch")]
+        public async Task<IActionResult> GetDrinkMultipleIngredient([FromQuery] string ingredientOne, [FromQuery] string ingredientTwo, 
+                                                                    [FromQuery] string ingredientThree, [FromQuery] string ingredientFour)
+        {
+            CocktailResponse multiSearch = await _cocktailClient.SearchByMultiIngredients(ingredientOne, ingredientTwo, ingredientThree, ingredientFour);
+            return Ok(multiSearch);
+        }
     }
-
 }

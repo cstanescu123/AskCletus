@@ -16,7 +16,6 @@ namespace AskCletus_BackEnd.Services.DALModels
         public string Token { get; set; }
         public Authority Authority { get; set; }
         public IEnumerable<Ingredients> Ingredients { get; set; }
-
         public IEnumerable<Todo> Todos { get; set; }
     }
 
