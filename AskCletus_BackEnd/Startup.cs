@@ -52,13 +52,16 @@ namespace AskCletus_BackEnd
             });
 
             services
-               .AddControllers();
-               
+               .AddControllers()
+               .AddJsonOptions(jsonOptions =>
+                 {
+                     jsonOptions.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                 });
 
             services.Configure<GithubOAuthSettings>(Configuration.GetSection("GithubOAuth"));
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(swaggerGenOptions =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
+                swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
             });
         }
 
