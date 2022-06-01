@@ -2,8 +2,25 @@
 	<div>
 		<label>Ingredient:</label>
 		<input type="text" formControlName="strIngredient1">
+		<a [routerLink]="['/searchResult', {{drinkResponse.strIngredient1}}"></a>
 	</div>
 	<div>
-		<button type="submit">Add Ingredient</button>
+		<button type="submit">Search!</button>
 	</div>
 </form>	 -->
+
+<ul *ngIf="drinks.length > 0; else waitingForStudents">
+
+	<li *ngFor="let drink of drinks">
+		<div>
+		<p>name: 
+			<a [routerLink]="['/student', drink]">{{drink}}</a>
+		</p>
+		</div>
+	</li>
+	
+	</ul>
+	
+	<ng-template #waitingForStudents>
+		<p>getting students...</p>
+	</ng-template>
