@@ -48,15 +48,12 @@ namespace AskCletus_BackEnd.Services
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
         }
-        public async Task<CocktailResponse> SearchByMultiIngredients(string itemOne, string itemTwo, string itemThree, string itemFour)
+        public async Task<CocktailResponse> SearchByMultiIngredients(string? itemOne, string? itemTwo, string? itemThree, string? itemFour)
         {
-            var searchResult = await _httpClient.GetAsync($"filter.php?{itemTwo}, {itemTwo}, {itemThree}, {itemFour}");
+            var searchResult = await _httpClient.GetAsync($"filter.php?i={itemTwo},{itemTwo},{itemThree},{itemFour}");
             var content = await searchResult.Content.ReadAsStreamAsync();
             var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
             return cocktailResponse;
         }
     }
 }
-
-
-//www.thecocktaildb.com/api/json/v1/1/filter.php?i=Dry_Vermouth,Gin,Anis
