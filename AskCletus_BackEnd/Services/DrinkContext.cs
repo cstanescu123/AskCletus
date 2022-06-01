@@ -1,6 +1,5 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
-using Identity_Back_End.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
@@ -16,7 +15,6 @@ namespace AskCletus_BackEnd.Services
         public DbSet<AppUsers> AppUsers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
-        public DbSet<Todo> Todos { get; set; }
 
         public DrinkContext()
         {
@@ -163,7 +161,7 @@ namespace AskCletus_BackEnd.Services
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-            // @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
+             //@"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
 
             @"Data Source=askcletus-backenddbserver.database.windows.net;Initial Catalog=AskCletus_BackEnd_db;
             User ID=Carson;Password=chickenSandwich1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
