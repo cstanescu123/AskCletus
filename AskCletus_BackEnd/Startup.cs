@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd
@@ -50,10 +51,17 @@ namespace AskCletus_BackEnd
                 });
             });
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services
+               .AddControllers()
+               .AddJsonOptions(jsonOptions =>
+               {
+                   jsonOptions.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+               });
+
+            services.Configure<GithubOAuthSettings>(Configuration.GetSection("GithubOAuth"));
+            services.AddSwaggerGen(swaggerGenOptions =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
+                swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
             });
         }
 
