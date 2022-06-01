@@ -1,13 +1,16 @@
 <ul *ngIf="bars.length > 0; else getBars" class="bar-container">
-	<li *ngFor="let bar of bars" class="list-container">
+<li *ngFor="let bar of bars" class="list-container">
 		<div>
 		<p>Ingredient Name: {{bar.ingredient}}</p>
 		<p>Ingredient Id: {{bar.ingredientsId}}</p>
 		<p>Associate User Id: {{bar.userId}}  </p>
-			<button (click)="removeIngredient(bar.ingredientsId)">❌</button>
+			<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
 		</div>
 	</li>
 </ul>
 	<ng-template #getBars>
 		<p>getting bars...</p>
 	</ng-template>
+
+	<app-drink-history></app-drink-history>
+

@@ -15,6 +15,10 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchFunctionsComponent } from './search-functions/search-functions.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @NgModule({
@@ -28,7 +32,9 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     NavigationComponent,
     WelcomePageComponent,
     SearchResultsComponent,
-    SearchFunctionsComponent
+    SearchFunctionsComponent,
+    SignInComponent,
+    
   ],
 
   imports: [
@@ -36,6 +42,8 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule
   
   ],
   providers: [],
