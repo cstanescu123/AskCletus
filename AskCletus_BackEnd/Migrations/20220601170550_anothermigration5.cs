@@ -3,23 +3,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AskCletus_BackEnd.Migrations
 {
-    public partial class InitialCloud : Migration
+    public partial class anothermigration5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Appusers",
+                name: "AppUsers",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Token = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Token = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Authority = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Appusers", x => x.UserId);
+                    table.PrimaryKey("PK_AppUsers", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,9 +37,9 @@ namespace AskCletus_BackEnd.Migrations
                 {
                     table.PrimaryKey("PK_DrinkHistories", x => x.HistoryId);
                     table.ForeignKey(
-                        name: "FK_DrinkHistories_Appusers_UserId",
+                        name: "FK_DrinkHistories_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalTable: "Appusers",
+                        principalTable: "AppUsers",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -56,9 +57,9 @@ namespace AskCletus_BackEnd.Migrations
                 {
                     table.PrimaryKey("PK_UserIngredient", x => x.IngredientsId);
                     table.ForeignKey(
-                        name: "FK_UserIngredient_Appusers_UserId",
+                        name: "FK_UserIngredient_AppUsers_UserId",
                         column: x => x.UserId,
-                        principalTable: "Appusers",
+                        principalTable: "AppUsers",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -83,7 +84,7 @@ namespace AskCletus_BackEnd.Migrations
                 name: "UserIngredient");
 
             migrationBuilder.DropTable(
-                name: "Appusers");
+                name: "AppUsers");
         }
     }
 }

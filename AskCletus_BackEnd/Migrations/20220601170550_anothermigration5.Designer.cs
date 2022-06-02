@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AskCletus_BackEnd.Migrations
 {
     [DbContext(typeof(DrinkContext))]
-    [Migration("20220527003921_InitialCloud")]
-    partial class InitialCloud
+    [Migration("20220601170550_anothermigration5")]
+    partial class anothermigration5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,15 @@ namespace AskCletus_BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Authority")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -39,7 +42,7 @@ namespace AskCletus_BackEnd.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Appusers");
+                    b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
@@ -87,7 +90,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.DrinkHistory", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -98,7 +101,7 @@ namespace AskCletus_BackEnd.Migrations
 
             modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.Ingredients", b =>
                 {
-                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUser", "User")
+                    b.HasOne("AskCletus_BackEnd.Services.DALModels.AppUsers", "User")
                         .WithMany("Ingredients")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -107,7 +110,7 @@ namespace AskCletus_BackEnd.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUser", b =>
+            modelBuilder.Entity("AskCletus_BackEnd.Services.DALModels.AppUsers", b =>
                 {
                     b.Navigation("Ingredients");
                 });
