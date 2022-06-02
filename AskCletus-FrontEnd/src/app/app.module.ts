@@ -2,9 +2,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MatButtonModule} from '@angular/material/button';
 
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
@@ -40,6 +42,8 @@ import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-in
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule
   
   ],
   providers: [],

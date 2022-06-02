@@ -6,3 +6,15 @@
         height: 90% vh;
         width: 100% vw;
 }
+
+app-sign-in{
+
+}
+
+#Wallpaper{
+        background-image: url("../app/images/bia-blurred.jpg");
+        background-size: 700px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+}
