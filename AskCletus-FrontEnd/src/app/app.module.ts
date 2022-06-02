@@ -14,7 +14,9 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { SearchFunctionsComponent } from './search-functions/search-functions.component';
+import { GetRandomComponent } from './get-random/get-random.component';
+import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
+import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     NavigationComponent,
     WelcomePageComponent,
     SearchResultsComponent,
-    SearchFunctionsComponent
+    GetRandomComponent,
+    GetDrinkNameComponent,
+    GetDrinkIngredientComponent
   ],
 
   imports: [

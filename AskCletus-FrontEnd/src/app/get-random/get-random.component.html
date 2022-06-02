@@ -9,7 +9,7 @@
 	</div>
 </form>	 -->
 
-<ul *ngIf="drinks.length > 0; else waitingforDrink">
+<!-- <ul *ngIf="drinks.length > 0; else waitingforDrink">
 
 	<li *ngFor="let drink of drinks">
 		<div>
@@ -23,4 +23,12 @@
 	
 	<ng-template #waitingforDrink>
 		<p>getting your drink...</p>
-	</ng-template>
+	</ng-template> -->
+
+	<pre *ngIf="randomDrink$ | async as drinks; else gettingDrink">
+		name: {{ drinks.drinks[0].strDrink }}
+	  </pre>
+	  
+	  <ng-template #gettingDrink>
+		<p>loading, please wait...</p>
+	  </ng-template>
