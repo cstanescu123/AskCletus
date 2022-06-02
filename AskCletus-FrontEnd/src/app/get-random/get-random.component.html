@@ -1,0 +1,34 @@
+<!-- <form [formGroup]="searchIngredientFormGroup" (submit)="searchIngredient()">
+	<div>
+		<label>Ingredient:</label>
+		<input type="text" formControlName="strIngredient1">
+		<a [routerLink]="['/searchResult', {{drinkResponse.strIngredient1}}"></a>
+	</div>
+	<div>
+		<button type="submit">Search!</button>
+	</div>
+</form>	 -->
+
+<!-- <ul *ngIf="drinks.length > 0; else waitingforDrink">
+
+	<li *ngFor="let drink of drinks">
+		<div>
+		<p>name: 
+			<a [routerLink]="['/student', drink]">{{drink}}</a>
+		</p>
+		</div>
+	</li>
+	
+	</ul>
+	
+	<ng-template #waitingforDrink>
+		<p>getting your drink...</p>
+	</ng-template> -->
+
+	<pre *ngIf="randomDrink$ | async as drinks; else gettingDrink">
+		name: {{ drinks.drinks[0].strDrink }}
+	  </pre>
+	  
+	  <ng-template #gettingDrink>
+		<p>loading, please wait...</p>
+	  </ng-template>
