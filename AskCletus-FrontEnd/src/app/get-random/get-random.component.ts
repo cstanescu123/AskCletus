@@ -6,11 +6,11 @@ import { DrinkResponse } from '../models/DrinkResponse';
 import { DrinkServiceService } from '../Services/drink-service.service';
 
 @Component({
-  selector: 'app-search-functions',
-  templateUrl: './search-functions.component.html',
-  styleUrls: ['./search-functions.component.css']
+  selector: 'app-get-random',
+  templateUrl: './get-random.component.html',
+  styleUrls: ['./get-random.component.css']
 })
-export class SearchFunctionsComponent implements OnInit {
+export class GetRandomComponent implements OnInit {
   randomDrink$: Observable<DrinkResponse>;
   
   constructor

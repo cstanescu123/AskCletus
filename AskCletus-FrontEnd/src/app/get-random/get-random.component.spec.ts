@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchFunctionsComponent } from './search-functions.component';
+import { SearchFunctionsComponent } from './get-random.component';
 
 describe('SearchFunctionsComponent', () => {
   let component: SearchFunctionsComponent;
