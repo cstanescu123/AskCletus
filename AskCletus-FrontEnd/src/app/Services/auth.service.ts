@@ -33,6 +33,7 @@ export class AuthService {
     window.location.href = `https://github.com/login/oauth/authorize?${queryParameters.join('&')}`;
   }
 
+  //https://localhost:5001/Auth/                  login/ 23/   Github
   githubLogin(code: string) {
     return this._http.get<User>(`${this.baseUrl}/login/${code}/Github`);
   }
