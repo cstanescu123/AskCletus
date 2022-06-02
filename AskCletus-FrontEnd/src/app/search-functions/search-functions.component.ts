@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DrinkResponse } from '../models/DrinkResponse';
 import { DrinkServiceService } from '../Services/drink-service.service';
 
@@ -10,14 +11,15 @@ import { DrinkServiceService } from '../Services/drink-service.service';
   styleUrls: ['./search-functions.component.css']
 })
 export class SearchFunctionsComponent implements OnInit {
-
+  randomDrink$: Observable<DrinkResponse>;
+  
   constructor
   ( private _drinkService: DrinkServiceService, 
     private _activatedRoute: ActivatedRoute,) { 
+      this.randomDrink$ = this._drinkService.getRandomDrink();
     }
 
-    randomDrink$ = this._drinkService.getRandomDrink()
-    drinks: DrinkResponse[] = [];
+    //drinks: DrinkResponse[] = [];
 
     drinkResponse: string = "";
 
@@ -26,11 +28,9 @@ export class SearchFunctionsComponent implements OnInit {
     })
   
     searchIngredient() {
-
       // const postBar: PostBar = this.addIngredientFormGroup.value;
       // this._userBarService.postIngredient(postBar).subscribe();
     }
-
 
   ngOnInit(): void {
     const subscription = this._drinkService.getRandomDrink().subscribe(response => {
@@ -41,5 +41,4 @@ export class SearchFunctionsComponent implements OnInit {
   toJson(obj: any){
     return JSON.stringify(obj, null, 2);
   }
-
 }
