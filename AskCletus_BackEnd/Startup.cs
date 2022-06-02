@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -28,6 +27,7 @@ namespace AskCletus_BackEnd
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
             services.AddDbContext<IDrinkContext, DrinkContext>();
 
@@ -41,15 +41,6 @@ namespace AskCletus_BackEnd
                 httpClient.BaseAddress = new Uri(config.BaseUrl);
             });
 
-            services.AddCors(corsOptions =>
-            {
-                corsOptions.AddDefaultPolicy(corsPolicyBuilder =>
-                {
-                    corsPolicyBuilder.AllowAnyHeader();
-                    corsPolicyBuilder.AllowAnyMethod();
-                    corsPolicyBuilder.AllowAnyOrigin();
-                });
-            });
 
             services
                .AddControllers()
@@ -63,6 +54,17 @@ namespace AskCletus_BackEnd
             {
                 swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
             });
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                });
+            });
+
+            services.AddHttpClient<GitHubService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

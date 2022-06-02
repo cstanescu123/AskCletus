@@ -10,9 +10,9 @@ namespace AskCletus_BackEnd.Controllers
     public class AuthController : ControllerBase
     {
         private readonly GitHubService _gitHubService;
-        private readonly DrinkContext _drinkContext;
+        private readonly IDrinkContext _drinkContext;
 
-        public AuthController(DrinkContext drinkContext, GitHubService gitHubService)
+        public AuthController(IDrinkContext drinkContext, GitHubService gitHubService)
         {
             _gitHubService = gitHubService;
             _drinkContext = drinkContext;
