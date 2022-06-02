@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
     if (user) {
       const currentUser = JSON.parse(user);
 
-      this._authService.autoLogin(currentUser.id).subscribe(user => {
+      this._authService.autoLogin(currentUser.userId).subscribe(user => {
         if (user) {
           this._authService.setUser(user);
         }
@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
     localStorage.setItem("user", "");
     this._authService.user$.pipe(
       filter(user => user !== null),
-      switchMap(user => this._authService.logout(user!.id))
+      switchMap(user => this._authService.logout(user!.userId))
     ).subscribe(_ => this._authService.setUser(null));
   }
 

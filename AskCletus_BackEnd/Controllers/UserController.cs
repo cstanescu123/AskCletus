@@ -14,21 +14,18 @@ namespace AskCletus_BackEnd.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IDrinkContext _user;
-      //  private readonly DrinkContext _drinkContext;
+        private readonly IDrinkContext _drinkContext;
 
         public UserController(IDrinkContext userContext)
-            //, DrinkContext drinkContext)
         {
-            _user = userContext;
-         //   _drinkContext = drinkContext;
+            _drinkContext = userContext;
         }
        
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetUser([FromRoute] int userId)
         {
-            var user = _user.GetUser(userId);
+            var user = _drinkContext.GetUser(userId);
             if (user != null)
             {
                 return Ok(user);
@@ -40,7 +37,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("{userId}")]
         public IActionResult DeleteUser([FromRoute] int userId)
         {
-            var dbDrinks = _user.DeleteUser(userId);
+            var dbDrinks = _drinkContext.DeleteUser(userId);
 
             if (dbDrinks == null)
             {
@@ -53,7 +50,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("GetUsers")]
         public IActionResult GetAllUsers()
         {
-            var users = _user.GetAllUsers();
+            var users = _drinkContext.GetAllUsers();
             return Ok(users);
         }
 
@@ -66,7 +63,7 @@ namespace AskCletus_BackEnd.Controllers
             user.Email = postUserRequest.Email;
             user.Token = postUserRequest.Token;
 
-            var dbUser = _user.AddUser(user);
+            var dbUser = _drinkContext.AddUser(user);
             return Created($"https://localhost:5001/{dbUser.UserId}", dbUser);
         }
 
@@ -75,7 +72,7 @@ namespace AskCletus_BackEnd.Controllers
 
         public IActionResult UpdateUser(AppUsers user, int userId)
         {
-            var updatedUser = _user.UpdateUser(user, userId);
+            var updatedUser = _drinkContext.UpdateUser(user, userId);
             return Ok(updatedUser);
         }
     }

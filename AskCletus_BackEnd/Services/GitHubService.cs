@@ -61,7 +61,11 @@ namespace AskCletus_BackEnd.Services
             request.Headers.Add("Authorization", $"token {token}");
             request.Headers.Add("User-Agent", _config.UserAgent);
 
+
             var response = await _httpClient.SendAsync(request);
+
+
+
 
             if (!response.IsSuccessStatusCode)
             {
