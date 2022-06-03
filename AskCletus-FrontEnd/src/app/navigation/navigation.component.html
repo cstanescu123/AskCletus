@@ -1,9 +1,9 @@
 <ul class="navigation-container">
-    <li>  <a routerLink="/">Home</a>                            </li>
-    <li>  <a routerLink="addIngredient">Add Ingredient</a>      </li>
-    <li>  <a routerLink="app-bar-home">Bar Home</a>   </li>
-    <li *ngIf="user$ | async as user; else shouldLogin"><button (click)="logout()">LOGOUT</button></li>
+    <li>  <button mat-button><a routerLink="/">Home</a></button>                    </li>
+    <li>  <button mat-button><a routerLink="addIngredient">Add Ingredient</a></button>       </li>
+    <li>  <button mat-button><a routerLink="app-bar-home">Bar Home</a></button>    </li>
+    <li *ngIf="user$ | async as user; else shouldLogin"><button mat-button> (click)="logout()">LOGOUT</button></li>
 		<ng-template #shouldLogin>
-			<li><a routerLink="user-login">LOGIN</a></li>
+			<li><button mat-button><a routerLink="user-login">LOGIN</a></button></li>
             </ng-template>
 </ul>

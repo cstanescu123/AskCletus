@@ -24,6 +24,17 @@ li a{
     
     width: 100%;
     height: 35px
+
+}
+
+li mat-button{
+    display: block;
+    color: rgb(79, 182, 79);
+    text-decoration: none;
+    
+    
+    width: 100%;
+    height: 35px
 }
 
 li a:hover{
