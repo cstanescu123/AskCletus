@@ -31,7 +31,7 @@ export class WelcomePageComponent implements OnInit {
     .subscribe(user => {
       localStorage.setItem("user", JSON.stringify(user));
       this._authService.setUser(user);
-      this._router.navigate(["/"]);
+      this._router.navigate(["/app-bar-home"]);
     });
   }
 
