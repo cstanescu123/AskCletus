@@ -1,11 +1,12 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
+using AskCletus_BackEnd.Services.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
     public interface IDrinkContext: IAddUser, IGetAllUsers, IUpdateUser, IDeleteUser, IGetBars, IGetMyBar, IDeleteBar, 
-                     IAddBar, IAddDrink, IGetDrinkHistory, IGetAllHistory, IGetUser
+                     IAddBar, IAddDrink, IGetDrinkHistory, IGetAllHistory, IGetUser, IUpsertGitHubUser, IUpdateUserToken, ILogout, IIsLoggedIn
     {
     }
 
@@ -68,4 +69,23 @@ public interface IAddBar
         Task<AppUsers> GetUser(int userId);
     }
 
+    public interface IUpsertGitHubUser
+    {
+        Task<AppUsers> UpsertGithubUser(GithubUser githubUser, string token);
+    }
+
+    public interface IUpdateUserToken
+    {
+        Task<AppUsers> UpdateUserToken(int userId, string token);
+    }
+
+    public interface ILogout
+    {
+        Task Logout(int userId);
+    }
+
+    public interface IIsLoggedIn
+    {
+        bool IsLoggedIn(int userId);
+    }
 }

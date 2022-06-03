@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private _http: HttpClient) { }
 
-  baseUrl = "https://localhost:5001/auth";
+  baseUrl = "https://localhost:5001/Auth";
 
   user$: ReplaySubject<User | null> = new ReplaySubject();
 
@@ -33,15 +33,16 @@ export class AuthService {
     window.location.href = `https://github.com/login/oauth/authorize?${queryParameters.join('&')}`;
   }
 
+  //https://localhost:5001/Auth/                  login/ 23/   Github
   githubLogin(code: string) {
     return this._http.get<User>(`${this.baseUrl}/login/${code}/Github`);
   }
 
-  autoLogin(id: number) {
-    return this._http.get<User>(`${this.baseUrl}/auto-login/${id}`);
+  autoLogin(userId: number) {
+    return this._http.get<User>(`${this.baseUrl}/auto-login/${userId}`);
   }
 
-  logout(id: number) {
-    return this._http.get(`${this.baseUrl}/logout/${id}`);
+  logout(userId: number) {
+    return this._http.get(`${this.baseUrl}/logout/${userId}`);
   }
 }
