@@ -19,6 +19,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { GetRandomComponent } from './get-random/get-random.component';
 import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
 import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-in
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule
   
   ],
   providers: [],

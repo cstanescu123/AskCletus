@@ -138,7 +138,6 @@ namespace AskCletus_BackEnd.Services
             return user;
         }
 
-
         public async Task<AppUsers> UpdateUserToken(int userId, string token)
         {
             var user = await GetUser(userId);
@@ -160,7 +159,6 @@ namespace AskCletus_BackEnd.Services
             return user != null && user.Token != null;
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
@@ -169,7 +167,6 @@ namespace AskCletus_BackEnd.Services
             @"Data Source=askcletus-backenddbserver.database.windows.net;Initial Catalog=AskCletus_BackEnd_db;
             User ID=Carson;Password=chickenSandwich1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
             MultiSubnetFailover=False");
-
         }
     }
 }
