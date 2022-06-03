@@ -23,7 +23,7 @@ export class UserLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // localhost:4200/?code=12345&state=123435
+    
     this._activatedRoute.queryParams.pipe(
       map(params => ({code: params["code"], state: params["state"]})),
       filter(p => p.code && p.state && p.state === localStorage.getItem("authState")),
