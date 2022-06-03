@@ -2,9 +2,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatButtonModule } from '@angular/material/button';
 
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
@@ -14,7 +16,10 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { SearchFunctionsComponent } from './search-functions/search-functions.component';
+import { GetRandomComponent } from './get-random/get-random.component';
+import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
+import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -28,7 +33,9 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     NavigationComponent,
     WelcomePageComponent,
     SearchResultsComponent,
-    SearchFunctionsComponent
+    GetRandomComponent,
+    GetDrinkNameComponent,
+    GetDrinkIngredientComponent
   ],
 
   imports: [
@@ -36,6 +43,9 @@ import { SearchFunctionsComponent } from './search-functions/search-functions.co
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   
   ],
   providers: [],

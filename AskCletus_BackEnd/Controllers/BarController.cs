@@ -12,12 +12,10 @@ namespace AskCletus_BackEnd.Controllers
     [Route("[controller]")]
     public class BarController : ControllerBase
     {
-        private readonly ICocktailClient _cocktailClient;
         private readonly IDrinkContext _drinkContext;
 
-        public BarController(IDrinkContext drinkContext, ICocktailClient cocktailClient)
+        public BarController(IDrinkContext drinkContext)
         {
-             _cocktailClient = cocktailClient;
             _drinkContext = drinkContext;
         }
 
