@@ -1,6 +1,5 @@
 ﻿using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
-using Identity_Back_End.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
@@ -16,35 +15,10 @@ namespace AskCletus_BackEnd.Services
         public DbSet<AppUsers> AppUsers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
-        public DbSet<Todo> Todos { get; set; }
 
         public DrinkContext()
         {
             //_connectionString = dbConfig.Value.AskCletus;
-        }
-
-        public IEnumerable<AppUsers> GetAllUsers()
-        {
-            return AppUsers;
-        }
-
-        public AppUsers AddUser(AppUsers user)
-        {
-            var userEntity = AppUsers.Add(user).Entity;
-            SaveChanges();
-            return userEntity;
-        }
-
-        public AppUsers DeleteUser(int userId)
-        {
-            var dbUsers = AppUsers.Find(userId);
-            if (dbUsers != null)
-            {
-                var entity = AppUsers.Remove(dbUsers).Entity;
-                SaveChanges();
-                return entity; 
-            }
-            return null;
         }
 
         public DrinkHistory AddDrink(DrinkHistory drink)
@@ -53,7 +27,7 @@ namespace AskCletus_BackEnd.Services
             SaveChanges();
             return drinkEntity;
         }
-
+        
         public IEnumerable<DrinkHistory> GetDrinkHistory(int userId)
         {
             var myHistory = DrinkHistories.Where(x => x.UserId == userId);
@@ -65,6 +39,14 @@ namespace AskCletus_BackEnd.Services
             return DrinkHistories;
 
         }
+        
+        public Ingredients AddBar(Ingredients userIngredient)
+        {
+            var userEntity = UserIngredient.Add(userIngredient).Entity;
+            SaveChanges();
+            return userEntity;
+        }
+        
         public IEnumerable<Ingredients> GetBars()
         {
             return UserIngredient;
@@ -88,9 +70,26 @@ namespace AskCletus_BackEnd.Services
             return null;
         }
 
-        public Ingredients AddBar(Ingredients userIngredient)
+        public AppUsers DeleteUser(int userId)
         {
-            var userEntity = UserIngredient.Add(userIngredient).Entity;
+            var dbUsers = AppUsers.Find(userId);
+            if (dbUsers != null)
+            {
+                var entity = AppUsers.Remove(dbUsers).Entity;
+                SaveChanges();
+                return entity; 
+            }
+            return null;
+        }
+
+        public IEnumerable<AppUsers> GetAllUsers()
+        {
+            return AppUsers;
+        }
+
+        public AppUsers AddUser(AppUsers user)
+        {
+            var userEntity = AppUsers.Add(user).Entity;
             SaveChanges();
             return userEntity;
         }
@@ -112,6 +111,12 @@ namespace AskCletus_BackEnd.Services
             }
             return null;
         }
+
+        public async Task<AppUsers> GetUser(int userId)
+        {
+            return await AppUsers.FindAsync(userId);
+        }
+        
         public async Task<AppUsers> UpsertGithubUser(GithubUser githubUser, string token)
         {
             var user = await AppUsers.FirstOrDefaultAsync(user => user.Email == githubUser.email);
@@ -131,11 +136,6 @@ namespace AskCletus_BackEnd.Services
             }
             await SaveChangesAsync();
             return user;
-        }
-
-        public async Task<AppUsers> GetUser(int userId)
-        {
-            return await AppUsers.FindAsync(userId);
         }
 
         public async Task<AppUsers> UpdateUserToken(int userId, string token)
@@ -159,16 +159,14 @@ namespace AskCletus_BackEnd.Services
             return user != null && user.Token != null;
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-            // @"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
+            //@"Data Source=localhost;Initial Catalog=DrinkDb;Integrated Security=True");
 
             @"Data Source=askcletus-backenddbserver.database.windows.net;Initial Catalog=AskCletus_BackEnd_db;
             User ID=Carson;Password=chickenSandwich1;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;
             MultiSubnetFailover=False");
-
         }
     }
 }
