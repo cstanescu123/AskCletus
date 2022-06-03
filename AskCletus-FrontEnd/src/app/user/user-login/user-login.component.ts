@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs';
-import { UserResponse } from 'src/app/models/UserResponse';
 import { AuthService } from 'src/app/Services/auth.service';
-import { UserService } from 'src/app/Services/user.service';
+import { map } from 'rxjs/internal/operators/map';
+import { filter } from 'rxjs/internal/operators/filter';
+import { switchMap } from 'rxjs/internal/operators/switchMap';
 
 @Component({
   selector: 'app-user-login',
@@ -24,7 +23,7 @@ export class UserLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // localhost:4200/?code=12345&state=123435
+    
     this._activatedRoute.queryParams.pipe(
       map(params => ({code: params["code"], state: params["state"]})),
       filter(p => p.code && p.state && p.state === localStorage.getItem("authState")),

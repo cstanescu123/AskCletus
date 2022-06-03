@@ -10,9 +10,9 @@ namespace AskCletus_BackEnd.Controllers
     public class AuthController : ControllerBase
     {
         private readonly GitHubService _gitHubService;
-        private readonly DrinkContext _drinkContext;
+        private readonly IDrinkContext _drinkContext;
 
-        public AuthController(DrinkContext drinkContext, GitHubService gitHubService)
+        public AuthController(IDrinkContext drinkContext, GitHubService gitHubService)
         {
             _gitHubService = gitHubService;
             _drinkContext = drinkContext;
@@ -20,7 +20,8 @@ namespace AskCletus_BackEnd.Controllers
 
         [HttpGet]
         [Route("login/{code}/{authority}")]
-        public async Task<IActionResult> Login([FromRoute] string code, [FromRoute] Authority authority)
+        //public async Task<IActionResult> Login([FromRoute] string code, [FromRoute] Authority authority)
+        public async Task<IActionResult> Login(string code, Authority authority)
         {
             var token = authority switch
             {
@@ -28,6 +29,7 @@ namespace AskCletus_BackEnd.Controllers
             };
 
             var githubUser = await _gitHubService.GetGithubUser(token.AccessToken);
+            var user = await _drinkContext.UpsertGithubUser(githubUser, token.AccessToken);
 
             if (githubUser == null)
             {
@@ -35,7 +37,8 @@ namespace AskCletus_BackEnd.Controllers
             }
 
             // this is YOUR application DATABASE
-            var user = await _drinkContext.UpsertGithubUser(githubUser, token.AccessToken);
+
+            //save user into database
 
             return Ok(user);
         }
@@ -44,7 +47,7 @@ namespace AskCletus_BackEnd.Controllers
         [Route("auto-login/{userId}")]
         public async Task<IActionResult> AutoLogin([FromRoute] int userId)
         {
-            var user = _drinkContext.GetUser(userId);
+            var user = await _drinkContext.GetUser(userId);
 
             if (user == null)
             {
