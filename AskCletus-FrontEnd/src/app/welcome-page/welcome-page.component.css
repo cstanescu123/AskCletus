@@ -16,7 +16,8 @@
     background-color: rgb(226, 226, 226);
     border-radius: 25px;
     width: 30vw;
-    height: 50vh;
+    height: 35vh;
+    margin-top: 16px;;
 }
 
 .mat-card h3{
@@ -30,10 +31,22 @@
   box-shadow: 7px 4px 7px;
 
 }
-.mat-card mat-button {
-    display: block;
-   height: 100%;
-   width: 100%;
-    /*border-radius: 20px; */
+
+mat-button{
+   
+    color: rgb(79, 182, 79);
+    text-decoration: none;
+    background-color:aliceblue;
+    height: 80%;
+    width: 10%;
 }
 
+#authwrap mat-card:hover{
+
+   
+    background-image: url("../../app/images/pexels-bia-sousa-4493771.jpg");
+    background-size: 700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

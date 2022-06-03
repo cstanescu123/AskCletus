@@ -2,7 +2,7 @@
     <li>  <button mat-button><a routerLink="/">Home</a></button>                    </li>
     <li>  <button mat-button><a routerLink="addIngredient">Add Ingredient</a></button>       </li>
     <li>  <button mat-button><a routerLink="app-bar-home">Bar Home</a></button>    </li>
-    <li *ngIf="user$ | async as user; else shouldLogin"><button mat-button> (click)="logout()">LOGOUT</button></li>
+    <li *ngIf="user$ | async as user; else shouldLogin"><button mat-button (click)="logout()">LOGOUT</button></li>
 		<ng-template #shouldLogin>
 			<li><button mat-button><a routerLink="user-login">LOGIN</a></button></li>
             </ng-template>
