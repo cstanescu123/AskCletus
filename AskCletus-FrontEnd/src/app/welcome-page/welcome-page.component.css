@@ -13,7 +13,7 @@
     align-content: center;
     text-align: center;
     border: 3px solid rgb(133, 133, 133);
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(165, 165, 165);
     border-radius: 25px;
     width: 30vw;
     height: 35vh;
@@ -32,19 +32,11 @@
 
 }
 
-mat-button{
-   
-    color: rgb(79, 182, 79);
-    text-decoration: none;
-    background-color:aliceblue;
-    height: 80%;
-    width: 10%;
-}
 
 #authwrap mat-card:hover{
 
    
-    background-image: url("../../app/images/pexels-bia-sousa-4493771.jpg");
+    background-image: url("../../app/images/internationalTractor.jpg");
     background-size: 700px;
     background-repeat: no-repeat;
     background-position: center;
