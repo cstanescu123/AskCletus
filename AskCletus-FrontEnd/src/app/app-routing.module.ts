@@ -7,6 +7,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { DeleteUserComponent } from './user/delete-user/delete-user.component';
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { DrinkHistoryComponent } from './drinkHistory/drink-history/drink-history.component';
 
 const routes: Routes = [
 
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "app-bar-home",
     component: BarHomeComponent
+  },
+  {
+    path: "app-drink-history",
+    component: DrinkHistoryComponent
   },
   {
     path: '',

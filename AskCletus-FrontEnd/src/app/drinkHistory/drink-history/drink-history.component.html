@@ -1,4 +1,4 @@
-<ul *ngIf="histories.length > 0; else getHistory">
+<!-- <ul *ngIf="histories.length > 0; else getHistory">
 	<li *ngFor="let history of histories">
 		<div>
 			<p>Ingredient Name: {{history.drinkId }}  </p>
@@ -8,4 +8,16 @@
 </ul>
 	<ng-template #getHistory>
 		<p>you should of deleted your history...</p>
-	</ng-template>
+	</ng-template> -->
+	This is the user's drink history
+	<ng-container *ngIf="userHistory$ | async as userHistory; else notLoggedIn">
+		<ul class="bar-container">
+			<li *ngFor="let history of userHistory" class="list-container">
+				<p>Ingredient Name: {{history.drinkId}}</p>
+			</li>
+		</ul>
+		</ng-container>
+		
+		<ng-template #notLoggedIn>
+		<p>You are not logged in and thus cannot see this shit...</p>
+		</ng-template>
