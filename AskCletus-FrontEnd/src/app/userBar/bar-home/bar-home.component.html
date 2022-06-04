@@ -1,4 +1,4 @@
-<ul *ngIf="bars.length > 0; else getBars" class="bar-container">
+<!-- <ul *ngIf="bars.length > 0; else getBars" class="bar-container">
 <li *ngFor="let bar of bars" class="list-container">
 		<div>
 		<p>Ingredient Name: {{bar.ingredient}}</p>
@@ -7,19 +7,20 @@
 			<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
 		</div>
 	</li>
-</ul>
+</ul> -->
 <!-- <button mat-raised-button ><a [routerLink]="['./add-ingredient']">Add Ingredient</a> </button>
  -->
-	<ng-template #getBars>
+	<!-- <ng-template #getBars>
 		<p>getting bars...</p>
-	</ng-template>
+	</ng-template> -->
 
 
     
-<ng-container *ngIf="userBar$ | async as userLoggedIn; else notLoggedIn">
-<ul *ngFor="let bar of bars">
-	<li>
-		Ingredient Name: {{bar.ingredient}
+<ng-container *ngIf="userBar$ | async as userBar; else notLoggedIn">
+<ul class="bar-container">
+	<li *ngFor="let bar of userBar" class="list-container">
+		<p>Ingredient Name: {{bar.ingredient}}</p>
+		<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
 	</li>
 </ul>
 </ng-container>

@@ -21,6 +21,7 @@ export class BarHomeComponent implements OnInit {
         //if user get userId for user bar
         
     bars: IngredientsResponse[] = []
+    
     userBar$ = this._authService.user$.pipe(
       filter(x => x !== null),
       map(x => x!.userId),
@@ -37,8 +38,8 @@ export class BarHomeComponent implements OnInit {
     }
         
     ngOnInit(): void {
-    // this._userBarService.getUserBars().subscribe(bars => {
-    //   this.bars = bars;
-    // })
+    this._userBarService.getUserBars().subscribe(bars => {
+      this.bars = bars;
+    })
     }
 }
