@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs';
+import { filter, mergeMap, switchMap } from 'rxjs';
 import { IngredientsResponse } from 'src/app/models/IngredientsResponse';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UserBarServiceService } from '../../Services/user-bar-service.service';
@@ -13,18 +13,27 @@ export class BarHomeComponent implements OnInit {
   
   bars: IngredientsResponse[] = []
 
+  
   constructor(private _userBarService: UserBarServiceService,
-              private _authService: AuthService) { }
+    private _authService: AuthService) { }
+    
+    //grab user to get userId to get their version of the bar
+    //if no user, don't stay on this page
+    //if user get userId for user bar
 
-              //grab user to get userId to get their version of the bar
-              //if no user, don't stay on this page
-              //if user get userId for user bar
- 
-  ngOnInit(): void {
-    this._userBarService.getUserBars().subscribe(bars => {
-      this.bars = bars;
-    })
+    
+    userLoggedIn$ = .pipe(
+      filter(x => x !== null),
+      mergeMap(x => this._userBarService.getUserBar(x))
+      );
+
+    ngOnInit(): void {
+    // this._userBarService.getUserBars().subscribe(bars => {
+    //   this.bars = bars;
+    // })
   }
+
+  getUserBar(userId: number) {}
 
   removeIngredient(id: number) {
     const userBars$ = this._userBarService.deleteIngredient(id).pipe(
