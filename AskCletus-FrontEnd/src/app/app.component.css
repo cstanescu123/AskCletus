@@ -1,20 +1,30 @@
-.nav-bar-container-bar {
-        height: 10% vh;
-        width: 100% vw;
+app-navigation{
+        position: fixed;
+        width: 100vw;
+        z-index: 9;
+        
 }
+
 .main-container {
         height: 90% vh;
         width: 100% vw;
 }
 
-app-sign-in{
-
-}
-
 #Wallpaper{
+        display: flex;
+        justify-content:center;
+
         background-image: url("../app/images/internationalTractor-blurred.jpg");
         background-size: 700px;
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
+}
+
+h1{
+        background-color:goldenrod;
+        z-index: 10;
+        position: fixed;
+        top: 1px;
+        left: 1px;
 }
