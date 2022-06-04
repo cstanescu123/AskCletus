@@ -1,19 +1,16 @@
 <h1>Ask Cleetus!</h1>
 
-<h2>What's your hooch?</h2>
 
 <div id = "authwrap">
 	<mat-card id = "auth-card" >
-		<button mat-button  (click)="onGithubLogin()">LOGIN WITH GITHUB</button>
-		<h3>Signin'</h3>
-
-	</mat-card>
-
-	<mat-card id = "no-auth-card">
 		<h3>Signin' in?</h3>
-		<button mat-button>Just, let's go.</button>
+		<button mat-raised-button color = "accent"  (click)="onGithubLogin()">LOGIN WITH GITHUB</button>
+	
+	
+
+		<h3>Sneakin' in?</h3>
+		<button mat-raised-button color = "accent">BE MY GUEST</button>
 	</mat-card>
 
-  
-
+	
 </div>
