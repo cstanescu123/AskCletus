@@ -4,37 +4,29 @@
     justify-content: space-around;
     font: normal bold normal 1em/1em helvetica, sans-serif;
     list-style: none;
-    height: 38px;
+    height: 42px;
     margin-bottom: 10px;
-    background-color: rgb(217, 226, 235);
+    background-color: rgb(31, 31, 31);
 }
 
 li {
     width: 16%;
     text-align: center;
-    line-height: 2em;
+    margin-top: 4px;
   
 }
 
 li a{
     display: block;
-    color: rgb(51, 69, 51);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     width: 100%;
     height: 35px;
 
 
 }
-/* 
-li mat-button{
-    display: block;
-    color: rgb(79, 182, 79);
-    text-decoration: none;
-    background-color:aliceblue;
-    height: 80%;
-    width: 10%;
-    
-} */
+
+
 
 li a:hover{
     font-size: 1.3em;

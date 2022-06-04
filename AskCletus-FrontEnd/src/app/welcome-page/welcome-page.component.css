@@ -1,41 +1,43 @@
 #authwrap{
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
     align-items: center;
+    justify-content: center;
     background-color:rgb(232, 232, 232);
     opacity: 50%;
+    height: 90vh;
 }
 
 
 .mat-card{
+    
     display:flex;
     flex-direction: column;
-    align-content: center;
-    text-align: center;
+ 
     border: 3px solid rgb(133, 133, 133);
     background-color: rgb(165, 165, 165);
     border-radius: 25px;
     width: 30vw;
     height: 35vh;
-    margin-top: 16px;;
+ 
 }
 
 .mat-card h3{
 
-  position: absolute;
   top: 1px;
-  background-color: yellow;
+  color:rgb(255, 255, 255);
+  background-color: rgb(5, 4, 0);
   border-right: 2px solid black;
   border-left: 8px solid black;
-  border-radius: 20%;
-  box-shadow: 7px 4px 7px;
-
+  border-radius: 50%;
+  box-shadow: 7px 4px 7px black;
+  height: 100px;
+  width: 100px;
+  z-index: 2;
 }
 
 
 #authwrap mat-card:hover{
-
-   
     background-image: url("../../app/images/internationalTractor.jpg");
     background-size: 700px;
     background-repeat: no-repeat;
