@@ -16,13 +16,14 @@
 
 
     
-<ng-container *ngIf="userLoggedIn$ | async as userLoggedIn; else notLoggedIn">
-<ul>
+<ng-container *ngIf="userBar$ | async as userLoggedIn; else notLoggedIn">
+<ul *ngFor="let bar of bars">
 	<li>
-		Ingredient Name:
+		Ingredient Name: {{bar.ingredient}
 	</li>
 </ul>
 </ng-container>
-<ng-template #notLoggedIn>
 
+<ng-template #notLoggedIn>
+<p>You are not logged in and thus cannot see this shit...</p>
 </ng-template>
