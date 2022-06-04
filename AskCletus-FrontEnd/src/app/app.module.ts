@@ -23,6 +23,7 @@ import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-in
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    
   
   ],
   providers: [],

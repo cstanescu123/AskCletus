@@ -1,24 +1,55 @@
-#add-ingredient{
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../../images/internationalTractor-blurred.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: fixed;
-}
+@media only screen and (min-width: 300px) {
+
+    #add-ingredient{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-image: url("../../images/internationalTractor-blurred.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: fixed;
+    }
 
 
-h2, h4{
-    display: block;
-}
+    h2, h4{
+        display: block;
+    }
 
-input{
+    input{
 
-    height: 24px;
-    border: 2px solid black;
-    border-radius: 5px;
-}
+        height: 24px;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+
+}   
+    @media only screen and (min-width: 768px) {
+    
+    #add-ingredient{
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("../../images/internationalTractor-blurred.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+
+
+        h2, h4{
+            display: block;
+        }
+
+        input{
+
+            height: 24px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    }
