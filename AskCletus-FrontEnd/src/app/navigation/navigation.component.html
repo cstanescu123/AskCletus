@@ -1,7 +1,7 @@
 <ul class="navigation-container">
-    <li>  <button mat-raised-button color ="accent"><a routerLink="/">Home</a></button>                    </li>
-    <li>  <button mat-raised-button color ="accent"><a routerLink="addIngredient">Add Ingredient</a></button>       </li>
-    <li>  <button mat-raised-button color ="accent"><a routerLink="app-bar-home">Bar Home</a></button>    </li>
+    <li>  <button mat-raised-button color ="accent"><a routerLink="/"><mat-icon>home</mat-icon> <span>Home</span></a></button></li>
+    <li>  <button mat-raised-button color ="accent"><a routerLink="addIngredient">+<mat-icon> local_drink</mat-icon><span>Add Ingredient</span></a></button></li>
+    <li>  <button mat-raised-button color ="accent"><a routerLink="app-bar-home"><mat-icon> local_bar</mat-icon><span>Bar Home</span></a></button></li>
     <!-- <li *ngIf="user$ | async as user; else shouldLogin"><button mat-button (click)="logout()">LOGOUT</button></li>
 		<ng-template #shouldLogin>
 			<li><button mat-button><a routerLink="user-login">LOGIN</a></button></li>
