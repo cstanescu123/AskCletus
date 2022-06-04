@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs';
+import { filter, map, mergeMap, switchMap } from 'rxjs';
 import { PostBar } from 'src/app/models/IngredientsResponse';
+import { AuthService } from 'src/app/Services/auth.service';
 import { UserBarServiceService } from 'src/app/Services/user-bar-service.service';
 
 @Component({
@@ -12,12 +13,19 @@ import { UserBarServiceService } from 'src/app/Services/user-bar-service.service
 })
 export class AddIngredientComponent implements OnInit {
 
-  constructor(private _userBarService: UserBarServiceService) { }
+  constructor(private _userBarService: UserBarServiceService,
+              private _authService: AuthService) { }
 
     addIngredientFormGroup = new FormGroup({
     ingredient: new FormControl(''),
-    userId: new FormControl(''),
+   // userId: new FormControl(''),
   })
+
+  userBar$ = this._authService.user$.pipe(
+    filter(x => x !== null),
+    map(x => x!.userId),
+    mergeMap(x => this._userBarService.getUserBar(x))
+  );
 
   submitIngredient() {
     const postBar: PostBar = this.addIngredientFormGroup.value;
