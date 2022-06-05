@@ -21,6 +21,7 @@ import { GetRandomComponent } from './get-random/get-random.component';
 import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
 import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -49,7 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     BrowserAnimationsModule,
     MatIconModule,
-    
+    MatMenuModule
   
   ],
   providers: [],
