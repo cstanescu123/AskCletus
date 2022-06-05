@@ -9,10 +9,7 @@
         width: 90vw;
         height: 70vh;
     }
-    .list-container {
-        margin: 2em;
-        padding: 2em;
-    }
+    
 
 
     ul li{
@@ -27,18 +24,22 @@
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
-        height: 120px;
+        height: 50px;
         width: 120px;
-        box-shadow: -7px 5px 17px;
-        color:rgb(233, 187, 6);
+       
+        color:rgb(255, 229, 31);
         text-shadow: 1px 1px black;
 
+    }
+
+    li p{
+        margin: 0;
     }
 
     li button{
         width: 80px;
         height: 30px;
-        
+        border-radius: 11px;
     }
 }
 @media only screen and (min-width: 768px) {
