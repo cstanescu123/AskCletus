@@ -2,7 +2,7 @@
 	<ul class="bar-container">
 		<li *ngFor="let bar of userBar" class="list-container">
 			<p>Ingredient Name: {{bar.ingredient}}</p>
-			<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
+			<p><button (click)="removeIngredient(bar.ingredientsId)">Delete me</button></p>
 		</li>
 	</ul>
 </ng-container>

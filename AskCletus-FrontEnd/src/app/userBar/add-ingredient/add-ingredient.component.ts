@@ -18,7 +18,6 @@ import { UserBarServiceService } from 'src/app/Services/user-bar-service.service
   styleUrls: ['./add-ingredient.component.css'],
 })
 export class AddIngredientComponent implements AfterViewInit {
-  
   constructor(
     private _userBarService: UserBarServiceService,
     private _authService: AuthService,
@@ -27,6 +26,9 @@ export class AddIngredientComponent implements AfterViewInit {
 
   addIngredientControl = new FormControl();
   addingIngredient$ = this.addIngredientControl.valueChanges;
+  click$!: Observable<any>;
+  addIngredientClick$!: Observable<any>;
+  postBar$!: Observable<PostBar>;
 
   userBar$ = this._authService.user$.pipe(
     filter((x) => x !== null),
@@ -36,26 +38,24 @@ export class AddIngredientComponent implements AfterViewInit {
   @ViewChild('button')
   getIngredientButton!: ElementRef<HTMLButtonElement>;
 
-  click$!: Observable<any>;
-  addIngredientClick$!: Observable<any>;
-
-  submitIngredient() {
-    //  let postBar: PostBar;
-    //this._userBarService.postIngredient(postBar).subscribe();
-  }
+  // submitIngredient() {
+  //   const postBar: PostBar = this.addIngredientFormGroup.value;
+  //   this._userBarService.postIngredient(postBar).subscribe();
+  // }
 
   //3 switchmaps to pipe to http request with form/id
   ngAfterViewInit(): void {
     this.click$ = fromEvent(this.getIngredientButton.nativeElement, 'click');
-    //click button = event
-    this.addIngredientClick$ = this.click$.pipe(
-      //grab user info
+    this.postBar$ = this.click$.pipe(
       switchMap((_) => this.userBar$),
       //grab form info
-      switchMap((_) => this.addingIngredient$),
-      //send to post
-      //switchMap(_ => this._userBarService.postIngredient())
-     // switchMap(_ => this._router.navigate(["/app-bar-home"]))  
+      switchMap((_) => this.addingIngredient$)
     );
+    //click button = event
+    this.addIngredientClick$ = this.postBar$.pipe(
+      switchMap((postBar) => this._userBarService.postIngredient(postBar))
+    );
+    //send to post
+    //switchMap(_ => this._userBarService.postIngredient())
   }
 }

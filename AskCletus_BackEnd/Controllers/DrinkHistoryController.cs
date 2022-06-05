@@ -41,7 +41,6 @@ namespace AskCletus_BackEnd.Controllers
             var drink = new DrinkHistory();
             drink.DrinkId = postHistoryRequest.DrinkId;
             drink.Date = System.DateTime.UtcNow;
-                //postHistoryRequest.Date;
             drink.UserId = postHistoryRequest.UserId;
             var dbDrink = _drinkHistoryContext.AddDrink(drink);
             return Created($"https://localhost:5001/{dbDrink}", dbDrink);
