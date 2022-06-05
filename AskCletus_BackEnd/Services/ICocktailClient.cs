@@ -3,8 +3,14 @@ using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Services
 {
-    public interface ICocktailClient : IGetRandomDrink, IGetRecentDrink, ISearchByDrinkName, ISearchByIngredientName, ISearchMultipleIngredients
+    public interface ICocktailClient : IGetRandomDrink, IGetRecentDrink, ISearchByDrinkName, 
+                     ISearchByIngredientName, ISearchMultipleIngredients, ISearchById
     {
+    }
+
+    public interface ISearchById
+    {
+        Task<CocktailResponse> GetDrinkById(int drinkId);
     }
 
     public interface ISearchMultipleIngredients

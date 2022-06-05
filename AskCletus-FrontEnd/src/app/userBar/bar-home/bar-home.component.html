@@ -1,33 +1,13 @@
-<!-- <ul *ngIf="bars.length > 0; else getBars" class="bar-container">
-<li *ngFor="let bar of bars" class="list-container">
-		<div>
-		<p>Ingredient Name: {{bar.ingredient}}</p>
-		<p>Ingredient Id: {{bar.ingredientsId}}</p>
-		<p>Associate User Id: {{bar.userId}}  </p>
+<ng-container *ngIf="userBar$ | async as userBar">
+	<ul class="bar-container">
+		<li *ngFor="let bar of userBar" class="list-container">
+			<p>Ingredient Name: {{bar.ingredient}}</p>
 			<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
-		</div>
-	</li>
-</ul> -->
-<!-- <button mat-raised-button ><a [routerLink]="['./add-ingredient']">Add Ingredient</a> </button>
- -->
-	<!-- <ng-template #getBars>
-		<p>getting bars...</p>
-	</ng-template> -->
-
-
-	
-	<ng-container *ngIf="userBar$ | async as userBar; else notLoggedIn">
-		<ul class="bar-container">
-			<li *ngFor="let bar of userBar" class="list-container">
-				<p>{{bar.ingredient}}</p>
-				<button (click)="removeIngredient(bar.ingredientsId)">Delete</button>
-			</li>
-	
-		<app-drink-history></app-drink-history>
+		</li>
 	</ul>
-	</ng-container>
+</ng-container>
 	
-	<ng-template #notLoggedIn>
-		<p>You are not logged in and thus cannot see this shit...</p>
-	</ng-template>
-	
+<app-drink-history></app-drink-history>
+<app-get-random></app-get-random>
+<app-get-drink-ingredient></app-get-drink-ingredient>
+<app-get-drink-name></app-get-drink-name>
