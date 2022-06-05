@@ -23,10 +23,10 @@
 				<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
 			</li>
 		</ul>
+		<app-drink-history></app-drink-history>
 	</ng-container>
 	
 	<ng-template #notLoggedIn>
 		<p>You are not logged in and thus cannot see this shit...</p>
 	</ng-template>
 	
-	<app-drink-history></app-drink-history>

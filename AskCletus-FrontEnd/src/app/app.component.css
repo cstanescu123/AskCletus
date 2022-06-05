@@ -1,13 +1,16 @@
+
+
+
 @media only screen and (min-width: 300px) {
 
         app-navigation{
                 position: fixed;
                 width: 100vw;
                 z-index: 9;
-                
         }
 
         .main-container {
+                margin-top: 30px;
                 height: 90% vh;
                 width: 100% vw;
         }
@@ -38,10 +41,10 @@
                 position: fixed;
                 width: 100vw;
                 z-index: 9;
-                
         }
 
         .main-container {
+                margin-top: 30px;
                 height: 90% vh;
                 width: 100% vw;
         }
@@ -68,19 +71,22 @@
 
 }
 @media only screen and (min-width: 768px) {
+
         app-navigation{
+
                 position: fixed;
                 width: 100vw;
                 z-index: 9;
-                
         }
 
         .main-container {
+               margin-top: 30px;
                 height: 90% vh;
                 width: 100% vw;
         }
 
         #Wallpaper{
+              
                 display: flex;
                 justify-content:center;
 

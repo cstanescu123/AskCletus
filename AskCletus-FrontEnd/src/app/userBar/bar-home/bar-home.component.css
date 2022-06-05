@@ -5,7 +5,7 @@
         justify-content: center;
         list-style: none;
         flex-wrap: wrap;
-        /* background-color: rgb(204, 213, 221); */
+       
         width: 90vw;
         height: 70vh;
     }
@@ -30,7 +30,7 @@
         height: 120px;
         width: 120px;
         box-shadow: -7px 5px 17px;
-        color:rgb(255, 183, 168);
+        color:rgb(233, 187, 6);
         text-shadow: 1px 1px black;
 
     }
@@ -74,7 +74,7 @@
         height: 120px;
         width: 120px;
         box-shadow: -7px 5px 17px;
-        color:rgb(255, 183, 168);
+        color:rgb(233, 187, 6);
         text-shadow: 1px 1px black;
 
     }
