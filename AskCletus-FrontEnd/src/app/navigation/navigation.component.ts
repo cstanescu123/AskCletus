@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, map, mergeMap, switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 import { User } from '../models/GithubUser';
 import { AuthService } from '../Services/auth.service';
-import { UserService } from '../Services/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -12,8 +11,7 @@ import { UserService } from '../Services/user.service';
 export class NavigationComponent implements OnInit {
   user$ = this._authService.user$;
 
-  constructor(private _authService: AuthService,
-              private _userService: UserService) { }
+  constructor(private _authService: AuthService,) { }
 
   user: User | null = null;
 
