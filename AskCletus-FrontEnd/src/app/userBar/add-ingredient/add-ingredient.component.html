@@ -9,14 +9,10 @@
 		</div>
 	</form>	
 </div> -->
-<div id = "add-ingredient">	
-	<!-- <ng-container *ngIf="addIngredient$ | async as addIngredient">
-		<p>{{addIngredient$}}</p>
-	</ng-container> -->
-	
-	<form [formGroup]="addIngredientFormGroup">
-		<input type="text" formControlName="ingredient" />
-	</form>
-	
-	<button mat-raised-button color = "accent" #button>Add Ingredient</button>
+<div id="add-ingredient">
+<form>
+    <input [formControl]="addIngredientControl" />
+  </form>
+
+  <button mat-raised-button color="accent" #button>Add Ingredient</button>
 </div>
