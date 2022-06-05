@@ -1,14 +1,7 @@
-
-
+<div>
 
 <ng-container class="bar-container" *ngIf="userHistory$ | async as userHistory">
 	<ul >
-<<<<<<< HEAD
-		<li *ngFor="let history of userHistory" class="list-container" cdkDrag>
-=======
-
-	This is the user's drink history
-	<!-- <div id = "drinkHistory">
 	<ng-container *ngIf="userHistory$ | async as userHistory; else notLoggedIn">
 		<ul class="bar-container">
 			<li *ngFor="let history of userHistory" class="list-container">
@@ -20,16 +13,14 @@
 		<ng-template #notLoggedIn>
 		<p>You are not logged in and thus cannot see this shit...</p>
 		</ng-template>
-	</div> -->
+
 <ng-container *ngIf="userHistory$ | async as userHistory">
 	<ul class="bar-container">
 
 		<li *ngFor="let history of userHistory" class="list-container">
->>>>>>> 29071a52b5047d1ece365733095e27329272d37d
 			<p>Ingredient Name: {{history.drinkId}}</p>
 		</li>
 	</ul>
-
 
 
 	<!-- <button mat-raised-button color ="accent" [matMenuTriggerFor]="menu">Drink History</button>
