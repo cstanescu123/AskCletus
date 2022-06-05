@@ -52,6 +52,14 @@ namespace AskCletus_BackEnd.Controllers
         }
 
         [HttpGet]
+        [Route("{drinkId}")]
+        public async Task<IActionResult> GetDrinkById(int drinkId)
+        {
+            CocktailResponse drink = await _cocktailClient.GetDrinkById(drinkId);
+            return Ok(drink);
+        }
+
+        [HttpGet]
         [Route("MultipleIngredientSearch")]
         public async Task<IActionResult> GetDrinkMultipleIngredient([FromQuery] string ingredientOne, [FromQuery] string ingredientTwo, 
                                                                     [FromQuery] string ingredientThree, [FromQuery] string ingredientFour)

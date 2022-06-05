@@ -14,11 +14,13 @@ export class DrinkServiceService {
   public getRecentDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
   }
-
   public getRandomDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}random`)
   }
   getDrink(name: string): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${name}`);
+  }
+  public getDrinkById(drinkId: number): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${drinkId}`)
   }
 }
