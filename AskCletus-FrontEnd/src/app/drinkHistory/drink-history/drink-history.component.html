@@ -2,7 +2,7 @@
 
 <ng-container class="bar-container" *ngIf="userHistory$ | async as userHistory">
 	<ul >
-		<li *ngFor="let history of userHistory" class="list-container">
+		<li *ngFor="let history of userHistory" class="list-container" cdkDrag>
 			<p>Ingredient Name: {{history.drinkId}}</p>
 		</li>
 	</ul>
