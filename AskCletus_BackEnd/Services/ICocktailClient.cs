@@ -37,4 +37,9 @@ namespace AskCletus_BackEnd.Services
     {
         Task<CocktailResponse> GetRandomDrink();
     }
+
+    public interface IGetDrinkById
+    {
+        Task<CocktailResponse> GetCoctailNamesById(int cocktailId);
+    }
 }

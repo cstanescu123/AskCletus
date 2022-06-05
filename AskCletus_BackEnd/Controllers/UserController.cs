@@ -23,7 +23,7 @@ namespace AskCletus_BackEnd.Controllers
        
         [HttpGet]
         [Route("{userId}")]
-        public IActionResult GetUser([FromRoute] int userId)
+        public IActionResult GetUser(int userId)
         {
             var user = _drinkContext.GetUser(userId);
             if (user != null)

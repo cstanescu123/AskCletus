@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+//import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DrinkResponse } from '../models/DrinkResponse';
@@ -21,24 +21,24 @@ export class GetRandomComponent implements OnInit {
 
     //drinks: DrinkResponse[] = [];
 
-    drinkResponse: string = "";
+  //   drinkResponse: string = "";
 
-    searchIngredientFormGroup = new FormGroup({
-      strIngredient1: new FormControl(''),
-    })
+  //   searchIngredientFormGroup = new UntypedFormGroup({
+  //     strIngredient1: new UntypedFormControl(''),
+  //   })
   
-    searchIngredient() {
-      // const postBar: PostBar = this.addIngredientFormGroup.value;
-      // this._userBarService.postIngredient(postBar).subscribe();
-    }
+  //   searchIngredient() {
+  //     // const postBar: PostBar = this.addIngredientFormGroup.value;
+  //     // this._userBarService.postIngredient(postBar).subscribe();
+  //   }
 
   ngOnInit(): void {
     const subscription = this._drinkService.getRandomDrink().subscribe(response => {
-      this.drinkResponse = JSON.stringify(response, null, 2);
+      //this.drinkResponse = JSON.stringify(response, null, 2);
     });
   }
     
-  toJson(obj: any){
-    return JSON.stringify(obj, null, 2);
-  }
+  // toJson(obj: any){
+  //   return JSON.stringify(obj, null, 2);
+  // }
 }
