@@ -1,6 +1,5 @@
 	This is the user's drink history
-<<<<<<< HEAD
-	<div id = "drinkHistory">
+	<!-- <div id = "drinkHistory">
 	<ng-container *ngIf="userHistory$ | async as userHistory; else notLoggedIn">
 		<ul class="bar-container">
 			<li *ngFor="let history of userHistory" class="list-container">
@@ -12,8 +11,7 @@
 		<ng-template #notLoggedIn>
 		<p>You are not logged in and thus cannot see this shit...</p>
 		</ng-template>
-	</div>
-=======
+	</div> -->
 <ng-container *ngIf="userHistory$ | async as userHistory">
 	<ul class="bar-container">
 		<li *ngFor="let history of userHistory" class="list-container">
@@ -21,4 +19,3 @@
 		</li>
 	</ul>
 </ng-container>
->>>>>>> 5bd9a137c5555bd944affbbb0ac0002e85438cfb
