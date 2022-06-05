@@ -46,16 +46,18 @@ export class AddIngredientComponent implements AfterViewInit {
   //3 switchmaps to pipe to http request with form/id
   ngAfterViewInit(): void {
     this.click$ = fromEvent(this.getIngredientButton.nativeElement, 'click');
+    //click button = event
     this.postBar$ = this.click$.pipe(
       switchMap((_) => this.userBar$),
       //grab form info
-      switchMap((_) => this.addingIngredient$)
-    );
-    //click button = event
-    this.addIngredientClick$ = this.postBar$.pipe(
-      switchMap((postBar) => this._userBarService.postIngredient(postBar))
-    );
-    //send to post
+      switchMap((_) => this.addingIngredient$),
+      //send to post
+      switchMap(_ => this.addIngredientClick$ = this.postBar$.pipe(
+        switchMap(postBar => this._userBarService.postIngredient(postBar))
+      )));
+    // this.addIngredientClick$ = this.postBar$.pipe(
+    //   switchMap((postBar) => this._userBarService.postIngredient(postBar))
+    // );
     //switchMap(_ => this._userBarService.postIngredient())
   }
 }
