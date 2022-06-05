@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatButtonModule } from '@angular/material/button';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
@@ -20,6 +21,7 @@ import { GetRandomComponent } from './get-random/get-random.component';
 import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
 import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    
   
   ],
   providers: [],

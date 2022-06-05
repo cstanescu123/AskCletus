@@ -17,12 +17,4 @@ export class UserService {
   getUser(userId: number) {
     return this.httpClient.get<UserResponse>(`${this.baseUrl}/${userId}`);
   }
-
-
-
-
-
-
-
-
 }

@@ -1,8 +1,12 @@
 <div id = "Wallpaper">
-
-<div class="nav-bar-container">
+    <h1>Ask Cleetus!</h1>
     <app-navigation></app-navigation>
 </div>
+
+
 <div class="main-container">
+    <ng-container *ngIf="userName$ | async as userBar">
+        <p>{{userBar.userName}}</p>
+    </ng-container>
     <router-outlet></router-outlet>
 </div>

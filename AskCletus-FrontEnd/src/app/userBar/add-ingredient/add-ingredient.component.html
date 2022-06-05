@@ -1,15 +1,18 @@
-<form [formGroup]="addIngredientFormGroup" (submit)="submitIngredient()">
-	<div>
-		<label>Ingredient:</label>
-		<input type="text" formControlName="ingredient">
-	</div>
+<!-- <div id = "add-ingredient">
+	<form [formGroup]="addIngredientFormGroup" (submit)="submitIngredient()">
+		<div>
+			<h2>What's your hooch?</h2><h4>Enter Ingredient</h4>
+			<input type="text" formControlName="ingredient">
+		</div>
+		<div>
+			<button mat-raised-button color = "accent" #button>Add Ingredient</button>
+		</div>
+	</form>	
+</div> -->
+<div id="add-ingredient">
+<form>
+    <input [formControl]="addIngredientControl" />
+  </form>
 
-	<div>
-		<label>This will be autofilled in when a user id when they are logged in </label>
-		<input type="text" formControlName="userId">
-	</div>
-
-	<div>
-		<button type="submit">Add Ingredient</button>
-	</div>
-</form>	
+  <button mat-raised-button color="accent" #button>Add Ingredient</button>
+</div>
