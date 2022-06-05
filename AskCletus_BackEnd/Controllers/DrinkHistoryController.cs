@@ -25,6 +25,8 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(myBars);
         }
 
+        //create new api response model (not into sql) that allows me to call the below function as it is intended
+
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetMyHistory([FromRoute]int userId)
