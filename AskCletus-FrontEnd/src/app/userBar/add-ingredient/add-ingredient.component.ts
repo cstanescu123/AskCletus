@@ -39,7 +39,6 @@ export class AddIngredientComponent implements AfterViewInit, OnDestroy {
   //addIngredientFormGroup = new FormGroup();
   ingredient = new FormControl();
   userId = new FormControl();
-
   ingredientAndIdSubscription!: Subscription;
   addIngredientControl = new FormControl();
   addingIngredient$ = this.addIngredientControl.valueChanges;
@@ -54,23 +53,15 @@ export class AddIngredientComponent implements AfterViewInit, OnDestroy {
     filter((x) => x !== null),
     map((x) => x!.userId)
   );
-
-  // submitIngredient() {
-  //   const postBar: PostBar = this.addIngredientFormGroup.value;
-  //   this._userBarService.postIngredient(postBar).subscribe();
-  // }
-
   //3 switchmaps to pipe to http request with form/id
   //click button = event
   //grab form info
   //send to post
-
   ngAfterViewInit(): void {
     this.click$ = fromEvent<MouseEvent>(
       this.getIngredientButton.nativeElement,
       'click'
     );
-  
     this.postBar$ = this.click$.pipe(
       /* the parameter of an OPERATOR is the data passed in from the last operator or pipe*/
       // literally true for EVERY rxjs operator
@@ -82,8 +73,6 @@ export class AddIngredientComponent implements AfterViewInit, OnDestroy {
         this._userBarService.postIngredientAndUserId(ingredientAndId)
       )
     );
-
-    this.ingredientAndIdSubscription = this.postBar$.subscribe(() => this._router.navigate(["somepage"]))
-
+    this.ingredientAndIdSubscription = this.postBar$.subscribe(() => this._router.navigate(["bar-home"]))
   }
 }
