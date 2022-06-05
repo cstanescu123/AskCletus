@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DrinkResponse } from '../models/DrinkResponse';
@@ -23,8 +23,8 @@ export class GetRandomComponent implements OnInit {
 
     drinkResponse: string = "";
 
-    searchIngredientFormGroup = new FormGroup({
-      strIngredient1: new FormControl(''),
+    searchIngredientFormGroup = new UntypedFormGroup({
+      strIngredient1: new UntypedFormControl(''),
     })
   
     searchIngredient() {
