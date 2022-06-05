@@ -1,6 +1,10 @@
 
 
-#drinkHistory li{
+.bar-container{
+
+}
+
+.list-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +18,7 @@
 
 }
 
-#drinkHistory li p{
+.bar-container li p{
 
     font: normal bold normal 1.3em/1em Helvetica, sans-serif;
 
