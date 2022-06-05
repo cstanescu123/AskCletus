@@ -37,14 +37,14 @@ getIngredientButton!: ElementRef<HTMLButtonElement>
 click$!: Observable<any>;
 addIngredientClick$!: Observable<any>;
 
-ngAfterViewInit(): void {
-  this.click$ = fromEvent(this.getDogButton.nativeElement, 'click');
+// ngAfterViewInit(): void {
+//   this.click$ = fromEvent(this.getDogButton.nativeElement, 'click');
 
-  this.addIngredientClick$ = this.click$.pipe(
-    mergeMap(_ => this._dogService.getRandomDog()),
-    map(dogResponse => dogResponse.message)
-  );
-}
+//   this.addIngredientClick$ = this.click$.pipe(
+//     mergeMap(_ => this._dogService.getRandomDog()),
+//     map(dogResponse => dogResponse.message)
+//   );
+// }
 
 
 
