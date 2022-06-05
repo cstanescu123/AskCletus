@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { DrinkResponse } from '../models/DrinkResponse';
+import { DrinkServiceService } from '../Services/drink-service.service';
 
 @Component({
   selector: 'app-get-drink-name',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetDrinkNameComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private _drinkService : DrinkServiceService) { 
+
+  }
 
   ngOnInit(): void {
   }
