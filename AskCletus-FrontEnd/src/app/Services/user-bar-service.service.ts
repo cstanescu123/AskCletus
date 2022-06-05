@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IngredientsResponse, PostBar } from 'src/app/models/IngredientsResponse';
+import { IngredientsResponse, PostBar, PostIngredientDrinkId } from 'src/app/models/IngredientsResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class UserBarServiceService {
     
   postIngredient(userBar: PostBar) {
     return this.httpClient.post<IngredientsResponse>(this.baseUrl, userBar);
+  }
+
+  postIngredientAndUserId(userAndId: PostIngredientDrinkId) {
+    return this.httpClient.post<IngredientsResponse>(this.baseUrl, userAndId);
   }
 
   deleteIngredient(ingredientId: number) {

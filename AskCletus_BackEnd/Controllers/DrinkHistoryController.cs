@@ -2,7 +2,8 @@
 using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AskCletus_BackEnd.Controllers
 {
@@ -12,10 +13,12 @@ namespace AskCletus_BackEnd.Controllers
     public class DrinkHistoryController : Controller
     {
         private readonly IDrinkContext _drinkHistoryContext;
+        private readonly ICocktailClient _cocktailClient;
 
-        public DrinkHistoryController(IDrinkContext drinkHistoryContext)
+        public DrinkHistoryController(IDrinkContext drinkHistoryContext, ICocktailClient cocktailClient)
         {
             _drinkHistoryContext = drinkHistoryContext;
+            _cocktailClient = cocktailClient;
         }
 
         [HttpGet]
@@ -29,10 +32,17 @@ namespace AskCletus_BackEnd.Controllers
 
         [HttpGet]
         [Route("{userId}")]
-        public IActionResult GetMyHistory([FromRoute]int userId)
+        public async Task<IActionResult> GetMyHistory([FromRoute]int userId)
         {
             var myBars = _drinkHistoryContext.GetDrinkHistory(userId);
-            return Ok(myBars);
+
+            var drinkIdsTasks = myBars
+                .Select(bar => _cocktailClient.GetDrinkById(bar.DrinkId));
+
+            var drinks = (await Task.WhenAll(drinkIdsTasks))
+                .SelectMany(x => x.drinks).ToList();
+
+            return Ok(drinks);
         }
 
         [HttpPost]
