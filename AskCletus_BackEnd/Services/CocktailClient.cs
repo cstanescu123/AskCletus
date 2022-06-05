@@ -17,6 +17,14 @@ namespace AskCletus_BackEnd.Services
             _baseUrl = config.Value.BaseUrl;
         }
 
+        public async Task<CocktailResponse> GetDrinkById(int drinkId)
+        {
+            var response = await _httpClient.GetAsync($"lookup.php?i={drinkId}");
+            var content = await response.Content.ReadAsStreamAsync();
+            var cocktailResponse = await JsonSerializer.DeserializeAsync<CocktailResponse>(content);
+            return cocktailResponse;
+        }
+
         public async Task<CocktailResponse> GetRecent()
         {
             var response = await _httpClient.GetAsync("recent.php");
