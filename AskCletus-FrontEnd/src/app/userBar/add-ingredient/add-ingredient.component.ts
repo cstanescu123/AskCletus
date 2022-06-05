@@ -5,7 +5,7 @@ import {
   ViewChild,
   AfterViewInit,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { filter, fromEvent, map, mergeMap, Observable, switchMap } from 'rxjs';
 import { PostBar } from 'src/app/models/IngredientsResponse';
@@ -24,7 +24,7 @@ export class AddIngredientComponent implements AfterViewInit {
     private _router: Router
   ) {}
 
-  addIngredientControl = new FormControl();
+  addIngredientControl = new UntypedFormControl();
   addingIngredient$ = this.addIngredientControl.valueChanges;
   click$!: Observable<any>;
   addIngredientClick$!: Observable<any>;
