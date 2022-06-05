@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { filter, fromEvent, map, mergeMap, Observable, switchMap } from 'rxjs';
@@ -30,13 +24,14 @@ export class AddIngredientComponent implements AfterViewInit {
   addIngredientClick$!: Observable<any>;
   postBar$!: Observable<PostBar>;
 
+  @ViewChild('button')
+  getIngredientButton!: ElementRef<HTMLButtonElement>;
+
   userBar$ = this._authService.user$.pipe(
     filter((x) => x !== null),
     map((x) => x!.userId)
   );
 
-  @ViewChild('button')
-  getIngredientButton!: ElementRef<HTMLButtonElement>;
 
   // submitIngredient() {
   //   const postBar: PostBar = this.addIngredientFormGroup.value;
@@ -52,12 +47,12 @@ export class AddIngredientComponent implements AfterViewInit {
       //grab form info
       switchMap((_) => this.addingIngredient$),
       //send to post
-      switchMap(_ => this.addIngredientClick$ = this.postBar$.pipe(
-        switchMap(postBar => this._userBarService.postIngredient(postBar))
-      )));
-    // this.addIngredientClick$ = this.postBar$.pipe(
-    //   switchMap((postBar) => this._userBarService.postIngredient(postBar))
-    // );
-    //switchMap(_ => this._userBarService.postIngredient())
+      // switchMap(_ => this.addIngredientClick$ = this.postBar$.pipe(
+      //   switchMap(postBar => this._userBarService.postIngredient(postBar))
+      // ))
+      );
+    this.addIngredientClick$ = this.postBar$.pipe(
+       switchMap((postBar) => this._userBarService.postIngredient(postBar))
+     );
   }
 }
