@@ -5,7 +5,7 @@
 
 
     <div class="main-container">
-        <ng-container *ngIf="userBar$ | async as userBar">
+        <ng-container *ngIf="userName$ | async as userBar">
             <p>{{userBar.userName}}</p>
         </ng-container>
         <router-outlet></router-outlet>

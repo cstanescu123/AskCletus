@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { filter, fromEvent, map, mergeMap, Observable, switchMap } from 'rxjs';
@@ -16,7 +22,11 @@ export class AddIngredientComponent implements AfterViewInit {
     private _userBarService: UserBarServiceService,
     private _authService: AuthService,
     private _router: Router
-  ) {}
+  ) { }
+  //addIngredientFormGroup = new FormGroup();
+  ingredient = new FormControl();
+  userId = new FormControl();
+
 
   addIngredientControl = new FormControl();
   addingIngredient$ = this.addIngredientControl.valueChanges;
@@ -32,7 +42,6 @@ export class AddIngredientComponent implements AfterViewInit {
     map((x) => x!.userId)
   );
 
-
   // submitIngredient() {
   //   const postBar: PostBar = this.addIngredientFormGroup.value;
   //   this._userBarService.postIngredient(postBar).subscribe();
@@ -41,18 +50,19 @@ export class AddIngredientComponent implements AfterViewInit {
   //3 switchmaps to pipe to http request with form/id
   ngAfterViewInit(): void {
     this.click$ = fromEvent(this.getIngredientButton.nativeElement, 'click');
+    //this.click$ = fromEvent(this.getIngredientButton.nativeElement,'click');
     //click button = event
     this.postBar$ = this.click$.pipe(
-      switchMap((_) => this.userBar$),
+      mergeMap((_) => this.userBar$),
       //grab form info
-      switchMap((_) => this.addingIngredient$),
+      mergeMap((_) => this.addingIngredient$)
       //send to post
-      // switchMap(_ => this.addIngredientClick$ = this.postBar$.pipe(
-      //   switchMap(postBar => this._userBarService.postIngredient(postBar))
+      //switchMap(_ => this.addIngredientClick$ = this.postBar$.pipe(
+      //switchMap(postBar => this._userBarService.postIngredient(postBar))
       // ))
-      );
+    );
     this.addIngredientClick$ = this.postBar$.pipe(
-       switchMap((postBar) => this._userBarService.postIngredient(postBar))
-     );
+      mergeMap((postBar) => this._userBarService.postIngredient(postBar))
+    );
   }
 }
