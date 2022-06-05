@@ -25,6 +25,8 @@ namespace AskCletus_BackEnd.Controllers
             return Ok(myBars);
         }
 
+        //create new api response model (not into sql) that allows me to call the below function as it is intended
+
         [HttpGet]
         [Route("{userId}")]
         public IActionResult GetMyHistory([FromRoute]int userId)
@@ -39,7 +41,6 @@ namespace AskCletus_BackEnd.Controllers
             var drink = new DrinkHistory();
             drink.DrinkId = postHistoryRequest.DrinkId;
             drink.Date = System.DateTime.UtcNow;
-                //postHistoryRequest.Date;
             drink.UserId = postHistoryRequest.UserId;
             var dbDrink = _drinkHistoryContext.AddDrink(drink);
             return Created($"https://localhost:5001/{dbDrink}", dbDrink);

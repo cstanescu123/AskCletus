@@ -1,7 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { filter, map, mergeMap, Observable, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
+import { filter, fromEvent, map, mergeMap, Observable, switchMap } from 'rxjs';
 import { PostBar } from 'src/app/models/IngredientsResponse';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UserBarServiceService } from 'src/app/Services/user-bar-service.service';
@@ -11,48 +17,45 @@ import { UserBarServiceService } from 'src/app/Services/user-bar-service.service
   templateUrl: './add-ingredient.component.html',
   styleUrls: ['./add-ingredient.component.css'],
 })
-export class AddIngredientComponent implements OnInit {
+export class AddIngredientComponent implements AfterViewInit {
   constructor(
     private _userBarService: UserBarServiceService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router
   ) {}
 
-  addIngredientFormGroup = new FormGroup({
-    ingredient: new FormControl(''),
-  });
+  addIngredientControl = new FormControl();
+  addingIngredient$ = this.addIngredientControl.valueChanges;
+  click$!: Observable<any>;
+  addIngredientClick$!: Observable<any>;
+  postBar$!: Observable<PostBar>;
 
   userBar$ = this._authService.user$.pipe(
     filter((x) => x !== null),
     map((x) => x!.userId)
   );
-  
-    //3 switchmaps to pipe to http request with form/id
+
+  @ViewChild('button')
+  getIngredientButton!: ElementRef<HTMLButtonElement>;
+
+  // submitIngredient() {
+  //   const postBar: PostBar = this.addIngredientFormGroup.value;
+  //   this._userBarService.postIngredient(postBar).subscribe();
+  // }
+
+  //3 switchmaps to pipe to http request with form/id
+  ngAfterViewInit(): void {
+    this.click$ = fromEvent(this.getIngredientButton.nativeElement, 'click');
+    this.postBar$ = this.click$.pipe(
+      switchMap((_) => this.userBar$),
+      //grab form info
+      switchMap((_) => this.addingIngredient$)
+    );
     //click button = event
-    //grab user info
-    //grab form info
+    this.addIngredientClick$ = this.postBar$.pipe(
+      switchMap((postBar) => this._userBarService.postIngredient(postBar))
+    );
     //send to post
-@ViewChild('button')
-getIngredientButton!: ElementRef<HTMLButtonElement>
-
-click$!: Observable<any>;
-addIngredientClick$!: Observable<any>;
-
-// ngAfterViewInit(): void {
-//   this.click$ = fromEvent(this.getDogButton.nativeElement, 'click');
-
-//   this.addIngredientClick$ = this.click$.pipe(
-//     mergeMap(_ => this._dogService.getRandomDog()),
-//     map(dogResponse => dogResponse.message)
-//   );
-// }
-
-
-
-  submitIngredient() {
-    const postBar: PostBar = this.addIngredientFormGroup.value;
-  //  this.userBar$;
-    this._userBarService.postIngredient(postBar).subscribe();
+    //switchMap(_ => this._userBarService.postIngredient())
   }
-
-  ngOnInit(): void {}
 }
