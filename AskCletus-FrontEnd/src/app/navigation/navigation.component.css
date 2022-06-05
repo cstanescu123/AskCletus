@@ -1,12 +1,15 @@
-@media only screen and (min-width: 300px) {
+@media only screen and (min-width: 100px) {
+
+
+
     .navigation-container{
+     
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         font: normal bold normal 1em/1em helvetica, sans-serif;
         list-style: none;
-        height: 70px;
-        margin-bottom: 10px;
+        height: 50px;
         background-color: rgb(31, 31, 31);
 
 
@@ -37,8 +40,13 @@
     }
 
 }
-@media only screen and (min-width: 600px) {
-   
+
+@media only screen and (min-width: 300px) {
+
+
+    li span{
+        display: none;
+    }
 
     .navigation-container{
         display: flex;
@@ -46,9 +54,54 @@
         justify-content: space-around;
         font: normal bold normal 1em/1em helvetica, sans-serif;
         list-style: none;
-        height: 70px;
+        height: 50px;
         margin-bottom: 10px;
-        background-color: rgb(31, 31, 31);
+        background-image: url(../images/internationalTractor-blurred.jpg);
+        background-size: 150%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+
+    li {
+        width: 10%;
+        text-align: center;
+        margin-top: 4px;
+      
+    }
+
+    li span{
+        display: none;
+    }
+
+    li a{
+        display: block;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        width: 100%;
+        height: 35px;
+       
+    }
+
+    li mat-icon{
+        line-height: 1.6em;
+    }
+
+}
+@media only screen and (min-width: 600px) {
+
+    li span{
+        display: none;
+    }
+
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        font: normal bold normal 1em/1em helvetica, sans-serif;
+        list-style: none;
+        height: 50px;
+        margin-bottom: 10px;
 
 
     }
@@ -68,20 +121,23 @@
     
     }
     li span{
-        display:block;
+        display:none;
     }
 
 }
 @media only screen and (min-width: 768px) {
 
 
+    li span{
+        display: block;
+    }
 .navigation-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font: normal bold normal 1em/1em helvetica, sans-serif;
     list-style: none;
-    height: 42px;
+    height: 50px;
     margin-bottom: 10px;
     background-color: rgb(31, 31, 31);
 }
