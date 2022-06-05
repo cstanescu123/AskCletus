@@ -18,7 +18,7 @@ export class AddIngredientComponent implements OnInit {
 
     addIngredientFormGroup = new FormGroup({
     ingredient: new FormControl(''),
-   // userId: new FormControl(''),
+    userId: new FormControl(''),
   })
 
   userBar$ = this._authService.user$.pipe(
@@ -27,6 +27,8 @@ export class AddIngredientComponent implements OnInit {
     mergeMap(x => this._userBarService.getUserBar(x))
   );
 
+  userId = this.userBar$
+  
   submitIngredient() {
     const postBar: PostBar = this.addIngredientFormGroup.value;
     this._userBarService.postIngredient(postBar).subscribe();
