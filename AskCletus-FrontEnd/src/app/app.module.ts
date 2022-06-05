@@ -22,6 +22,7 @@ import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component
 import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -38,7 +39,8 @@ import {MatMenuModule} from '@angular/material/menu';
     SearchResultsComponent,
     GetRandomComponent,
     GetDrinkNameComponent,
-    GetDrinkIngredientComponent
+    GetDrinkIngredientComponent,
+
   ],
 
   imports: [
@@ -50,7 +52,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    DragDropModule
   
   ],
   providers: [],
