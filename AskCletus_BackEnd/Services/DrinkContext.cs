@@ -37,7 +37,6 @@ namespace AskCletus_BackEnd.Services
         public IEnumerable<DrinkHistory> GetHistory()
         {
             return DrinkHistories;
-
         }
         
         public Ingredients AddBar(Ingredients userIngredient)

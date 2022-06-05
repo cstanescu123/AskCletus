@@ -1,17 +1,37 @@
 
 
+
 <ng-container class="bar-container" *ngIf="userHistory$ | async as userHistory">
 	<ul >
+
+	This is the user's drink history
+	<!-- <div id = "drinkHistory">
+	<ng-container *ngIf="userHistory$ | async as userHistory; else notLoggedIn">
+		<ul class="bar-container">
+			<li *ngFor="let history of userHistory" class="list-container">
+				<p>Ingredient Name: {{history.drinkId}}</p>
+			</li>
+		</ul>
+		</ng-container>
+		
+		<ng-template #notLoggedIn>
+		<p>You are not logged in and thus cannot see this shit...</p>
+		</ng-template>
+	</div> -->
+<ng-container *ngIf="userHistory$ | async as userHistory">
+	<ul class="bar-container">
+
 		<li *ngFor="let history of userHistory" class="list-container">
 			<p>Ingredient Name: {{history.drinkId}}</p>
 		</li>
 	</ul>
 
 
-</ng-container>
+
 	<!-- <button mat-raised-button color ="accent" [matMenuTriggerFor]="menu">Drink History</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item  *ngFor="let history of userHistory" class="list-container">
 	<p>Ingredient Name: {{history.drinkId}}</p></button>
   
 </mat-menu> -->
+

@@ -24,8 +24,11 @@ export class DrinkHistoryComponent implements OnInit {
     filter(x => x !== null),
     map(x => x!.userId),
     mergeMap(x => this._historyrService.getHistory(x)),
+    map(x => x)
     );
 
+  drinkByName$ = this.userHistory$.forEach(history => { this._drinkService.getDrinkById(1)});
+  
   ngOnInit(): void {
     this._historyrService.getHistories().subscribe(history => {
       this.histories = history;
