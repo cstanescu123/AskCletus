@@ -4,5 +4,8 @@
 </div>
 
 <div class="main-container">
-        <router-outlet></router-outlet>
+    <ng-container *ngIf="userBar$ | async as userBar">
+        <p>{{userBar.userName}}</p>
+    </ng-container>
+    <router-outlet></router-outlet>
 </div>

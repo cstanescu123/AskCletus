@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 constructor(private _authService: AuthService,
             private _userService: UserService) {}
 
-userName$ = this._authService.user$.pipe(
+userBar$ = this._authService.user$.pipe(
   filter(x => x !== null),
   map(x => x!.userId),
   mergeMap(x => this._userService.getUser(x)),
