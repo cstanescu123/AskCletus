@@ -5,14 +5,14 @@
 			<input type="text" formControlName="ingredient">
 		</div>
 		<div>
-			<button mat-raised-button color = "accent" type="submit">Add Ingredient</button>
+			<button mat-raised-button color = "accent" #button>Add Ingredient</button>
 		</div>
 	</form>	
 </div> -->
 <div id = "add-ingredient">	
-	<ng-container *ngIf="addIngredient$ | async as addIngredient">
+	<!-- <ng-container *ngIf="addIngredient$ | async as addIngredient">
 		<p>{{addIngredient$}}</p>
-	</ng-container>
+	</ng-container> -->
 	
 	<form [formGroup]="addIngredientFormGroup">
 		<input type="text" formControlName="ingredient" />

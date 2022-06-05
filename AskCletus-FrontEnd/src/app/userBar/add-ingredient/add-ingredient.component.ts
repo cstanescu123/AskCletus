@@ -19,24 +19,23 @@ export class AddIngredientComponent implements OnInit {
 
   addIngredientFormGroup = new FormGroup({
     ingredient: new FormControl(''),
-    userId: new FormControl(''),
   });
-
-  addIngredient$ = this.addIngredientFormGroup.valueChanges;
 
   userBar$ = this._authService.user$.pipe(
     filter((x) => x !== null),
-    map((x) => x!.userId),
-    mergeMap((x) => this._userBarService.getUserBar(x))
+    map((x) => x!.userId)
   );
+  
+    //3 switchmaps to pipe to http request with form/id
+    //click button = event
+    //grab user info
+    //grab form info
+    //send to post
+@ViewChild('button')
+getIngredientButton!: ElementRef<HTMLButtonElement>
 
-  userId = this.userBar$;
-
-  @ViewChild('button')
-  getIngredientButton!: ElementRef<HTMLButtonElement>;
-
-  click$!: Observable<any>;
-  addIngredientClick$!: Observable<any>;
+click$!: Observable<any>;
+addIngredientClick$!: Observable<any>;
 
   submitIngredient() {
     const postBar: PostBar = this.addIngredientFormGroup.value;
@@ -47,9 +46,10 @@ export class AddIngredientComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.click$ = fromEvent(this.getIngredientButton.nativeElement, 'click');
+    
     this.addIngredientClick$ = this.click$.pipe(
       mergeMap((_) => this.userBar$),
-      mergeMap((_) => this.addIngredient$)
+     // mergeMap((_) => this.addIngredient$)
     );
   }
 }
