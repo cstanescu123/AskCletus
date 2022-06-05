@@ -5,7 +5,7 @@
         justify-content: center;
         list-style: none;
         flex-wrap: wrap;
-       
+        margin-top: 200px;
         width: 90vw;
         height: 70vh;
     }
@@ -26,6 +26,51 @@
         background-attachment: fixed;
         height: 50px;
         width: 120px;
+        margin: 2em;
+        padding: 2em;
+        color:rgb(255, 229, 31);
+        text-shadow: 1px 1px black;
+
+    }
+
+    li p{
+        margin: 0;
+    }
+
+    li button{
+        width: 80px;
+        height: 30px;
+        border-radius: 11px;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .bar-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style: none;
+        flex-wrap: wrap;
+        margin-top: 200px;
+        width: 90vw;
+        height: 70vh;
+    }
+    
+
+
+    ul li{
+        display: flex;
+        flex-direction: column;
+        font: normal bold normal 1em/1.2em Helvetica, sans-serif;
+        text-align: center;
+        border: 2px solid black;
+        border-radius: 100px;
+        background-image: url("../../images/internationalTractor.jpg");
+        background-size: 700px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        height: 50px;
+        width: 70px;
        
         color:rgb(255, 229, 31);
         text-shadow: 1px 1px black;
@@ -50,14 +95,11 @@
         justify-content: center;
         list-style: none;
         flex-wrap: wrap;
-        /* background-color: rgb(204, 213, 221); */
         width: 90vw;
         height: 70vh;
+        margin-top: 200px;
     }
-    .list-container {
-        margin: 2em;
-        padding: 2em;
-    }
+ 
 
 
     ul li{
@@ -72,12 +114,13 @@
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
-        height: 120px;
-        width: 120px;
+        height: 110px;
+        width: 110px;
         box-shadow: -7px 5px 17px;
         color:rgb(233, 187, 6);
         text-shadow: 1px 1px black;
-
+        margin: 2em;
+        padding: 2em;
     }
 
     li button{

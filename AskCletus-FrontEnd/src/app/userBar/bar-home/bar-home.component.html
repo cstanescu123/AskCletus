@@ -1,13 +1,15 @@
+<div id = barHome>
 <ng-container *ngIf="userBar$ | async as userBar">
-	<ul class="bar-container">
-		<li *ngFor="let bar of userBar" class="list-container">
-			<p>Ingredient Name: {{bar.ingredient}}</p>
-			<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
-		</li>
-	</ul>
-</ng-container>
-	
-<app-drink-history></app-drink-history>
-<app-get-random></app-get-random>
-<app-get-drink-ingredient></app-get-drink-ingredient>
-<app-get-drink-name></app-get-drink-name>
+		<ul class="bar-container">
+			<li *ngFor="let bar of userBar" class="list-container">
+				<p>Ingredient Name: {{bar.ingredient}}</p>
+				<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
+			</li>
+		</ul>
+	</ng-container>
+		
+	<app-drink-history></app-drink-history>
+	<app-get-random></app-get-random>
+	<app-get-drink-ingredient></app-get-drink-ingredient>
+	<app-get-drink-name></app-get-drink-name>
+</div>
