@@ -2,6 +2,7 @@
 using AskCletus_BackEnd.Services.DALModels;
 using AskCletus_BackEnd.Services.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,7 +41,10 @@ namespace AskCletus_BackEnd.Controllers
                 .Select(bar => _cocktailClient.GetDrinkById(bar.DrinkId));
 
             var drinks = (await Task.WhenAll(drinkIdsTasks))
-                .SelectMany(x => x.drinks).ToList();
+                .Select(x => { Console.Write(x.drinks); return x.drinks; })
+                .Where(list => list is not null)
+                .SelectMany(list => list)
+                .ToList();
 
             return Ok(drinks);
         }
