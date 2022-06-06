@@ -1,1 +1,14 @@
 <p>get-drink-name works!</p>
+
+<form>
+  <input type="text" [formControl]="drinkNameControl" />
+</form>
+
+<ng-container *ngIf="drinkName$ | async as drinkName">
+  <p>{{ drinkName.drinks[0].strDrink }}</p>
+  <ul class="bar-container">
+    <li *ngFor="let drink of drinkName" class="list-container">
+      <p>{{ drinkName.drinks[0].strDrink }}</p>
+    </li>
+  </ul>
+</ng-container>
