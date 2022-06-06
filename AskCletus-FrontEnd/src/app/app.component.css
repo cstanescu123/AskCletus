@@ -33,7 +33,7 @@
                 background-color:goldenrod;
                 z-index: 10;
                 position: fixed;
-                top: 1px;
+                top: 100px;
                 left: 1px;
         }
 }
@@ -71,7 +71,7 @@
                 background-color:goldenrod;
                 z-index: 10;
                 position: fixed;
-                top: 1px;
+                top: 100px;
                 left: 1px;
         }
 
@@ -108,7 +108,7 @@
                 background-color:goldenrod;
                 z-index: 10;
                 position: fixed;
-                top: 1px;
+                top: 100px;
                 left: 1px;
         }
 }
