@@ -13,7 +13,7 @@ export class GetDrinkNameComponent implements OnInit {
 
   constructor(private _drinkService: DrinkServiceService) { 
     this.drinkNameControl = new FormControl();
-    this.drinkInput$ = this.drinkNameControl.valueChanges
+    this.drinkInput$ = this.drinkNameControl.valueChanges;
     this.drinkName$ = this.drinkInput$.pipe(
       switchMap(x => this._drinkService.getDrinkByName(x)),
       map(x => x.drinks)
