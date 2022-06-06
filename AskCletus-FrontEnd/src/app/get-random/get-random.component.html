@@ -9,34 +9,21 @@
 	</div>
 </form>	 -->
 
-<!-- <ul *ngIf="drinks.length > 0; else waitingforDrink">
-
-	<li *ngFor="let drink of drinks">
-		<div>
-		<p>name: 
-			<a [routerLink]="['/student', drink]">{{drink}}</a>
-		</p>
-		</div>
-	</li>
-	
-	</ul>
-	
-	<ng-template #waitingforDrink>
-		<p>getting your drink...</p>
-	</ng-template> -->
-
-	<!-- <pre *ngIf="randomDrink$ | async as drinks; else gettingDrink">
+<!-- <pre *ngIf="randomDrink$ | async as drinks; else gettingDrink">
 		name: {{ drinks.drinks[0].strDrink }}
 	  </pre>
 	   -->
-	  <ng-template #gettingDrink>
-		<p>loading, please wait...</p>
-	  </ng-template>
+<ng-template #gettingDrink>
+  <p>loading, please wait...</p>
+</ng-template>
 
-
-	<button mat-raised-button color ="accent" [matMenuTriggerFor]="menu">Random Drink</button>
+<button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+  Random Drink
+</button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item  *ngIf="randomDrink$ | async as drinks; else gettingDrink">
-	 {{ drinks.drinks[0].strDrink }}</button>
-  
-</mat-menu> 
+  <button
+    mat-menu-item
+    *ngIf="randomDrink$ | async as drinks; else gettingDrink">
+    {{ drinks.drinks[0].strDrink }}
+  </button>
+</mat-menu>
