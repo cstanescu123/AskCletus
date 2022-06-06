@@ -1,8 +1,11 @@
-<div *ngIf="drink$ | async as drink; else gettingDrink">
-	<h1>Name: {{drink.idDrink}</h1>
-    <h1>Name: {{drink.strDrink}</h1>
+<div *ngIf="drink$ | async as drinks; else gettingDrink">
+	<ul >
+		<li *ngFor="drink in drinks">
+			<p>{{drinks.drinks.drink}}</p>
+		</li>
+	</ul>
 </div>
 
 <ng-template #gettingDrink>
-	<p>getting student...</p>
+	<p>getting da drank...</p>
 </ng-template>
