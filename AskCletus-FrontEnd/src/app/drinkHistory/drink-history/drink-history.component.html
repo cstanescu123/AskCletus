@@ -1,11 +1,10 @@
-<ul *ngIf="histories.length > 0; else getHistory">
-	<li *ngFor="let history of histories">
-		<div>
-			<p>Ingredient Name: {{history.drinkId }}  </p>
-			<p>Associate User Id: {{history.userId}} </p>
-		</div>
-	</li>
-</ul>
-	<ng-template #getHistory>
-		<p>you should of deleted your history...</p>
-	</ng-template>
+<div>
+  <ng-container class="bar-container" *ngIf="userHistory$ | async as userHistory">
+	  <p>{{ userHistory[0].drinkId }}</p>
+        <ul class="bar-container">
+          <li *ngFor="let history of userHistory" class="list-container" cdkDrag>
+            <p>Ingredient Name: {{ history.drinkId }}</p>
+          </li>
+        </ul>
+      </ng-container>
+</div>

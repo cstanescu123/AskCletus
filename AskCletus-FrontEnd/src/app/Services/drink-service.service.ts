@@ -9,16 +9,24 @@ import { DrinkResponse } from 'src/app/models/DrinkResponse';
 export class DrinkServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/Drink/";
+  baseUrl = "https://localhost:5001/Drink";
 
   public getRecentDrink(): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}recent`);
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/recent`);
   }
-
   public getRandomDrink(): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}random`)
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/random`)
   }
-  getDrink(name: string): Observable<DrinkResponse> {
+  public getDrink(name: string): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${name}`);
+  }
+  public getDrinkById(drinkId: number): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${drinkId}`)
+  }
+  public getDrinkByName(name: string): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/DrinkName?drinkName=${name}`);
+  }
+  public getDrinkByIngredient(ingredient: string): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${ingredient}`);
   }
 }

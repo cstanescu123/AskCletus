@@ -8,3 +8,5 @@ export interface IngredientsResponse {
 }
 
 export type PostBar = Omit<IngredientsResponse, "ingredientId">;
+
+export type PostIngredientDrinkId = Omit<IngredientsResponse, "ingredientsId" | "user">;

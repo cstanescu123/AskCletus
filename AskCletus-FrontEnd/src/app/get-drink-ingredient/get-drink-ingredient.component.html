@@ -1,1 +1,10 @@
-<p>get-drink-ingredient works!</p>
+<form>
+  <label>Search For A Drink By Ingredient</label>
+  <input type="text" [formControl]="drinkNameControl" />
+</form>
+
+<ul class="bar-container">
+  <li *ngFor="let drink of drinks$ | async" class="list-container">
+    <p>{{ drink.strDrink }}</p>
+  </li>
+</ul>

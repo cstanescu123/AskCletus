@@ -10,16 +10,10 @@ namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-       // private readonly string _connectionString;
 
         public DbSet<AppUsers> AppUsers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
-
-        public DrinkContext()
-        {
-            //_connectionString = dbConfig.Value.AskCletus;
-        }
 
         public DrinkHistory AddDrink(DrinkHistory drink)
         {
@@ -37,7 +31,6 @@ namespace AskCletus_BackEnd.Services
         public IEnumerable<DrinkHistory> GetHistory()
         {
             return DrinkHistories;
-
         }
         
         public Ingredients AddBar(Ingredients userIngredient)
@@ -102,7 +95,7 @@ namespace AskCletus_BackEnd.Services
                 dbUser.UserName = user.UserName;
                 dbUser.Email = user.Email;
                 dbUser.Token = user.Token;
-                dbUser.Ingredients = user.Ingredients;
+                //dbUser.Ingredients = user.Ingredients;
 
 
                 var entityUser = AppUsers.Update(dbUser).Entity;
@@ -170,4 +163,3 @@ namespace AskCletus_BackEnd.Services
         }
     }
 }
-

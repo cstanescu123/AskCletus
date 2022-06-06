@@ -1,0 +1,25 @@
+
+
+.bar-container{
+
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 20px;
+    background-color:rgb(233, 187, 6);
+    list-style-type: none;
+    
+
+}
+
+.bar-container li p{
+
+    font: normal bold normal 1.3em/1em Helvetica, sans-serif;
+
+}

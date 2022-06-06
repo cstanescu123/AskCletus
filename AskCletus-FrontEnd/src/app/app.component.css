@@ -1,20 +1,114 @@
-.nav-bar-container-bar {
-        height: 10% vh;
-        width: 100% vw;
-}
-.main-container {
-        height: 90% vh;
-        width: 100% vw;
+
+
+
+@media only screen and (min-width: 300px) {
+
+        app-navigation{
+                position: fixed;
+                width: 100vw;
+                z-index: 9;
+        }
+
+        .main-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 30px;
+                height: 90% vh;
+                width: 100% vw;
+        }
+
+        #Wallpaper{
+                display: flex;
+                justify-content:center;
+                height: 100vh;
+                background-image: url("../app/images/internationalTractor-blurred.jpg");
+                background-size: 1200px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+        }
+
+        h1{
+                background-color:goldenrod;
+                z-index: 10;
+                position: fixed;
+                top: 100px;
+                left: 1px;
+        }
 }
 
-app-sign-in{
+@media only screen and (min-width: 600px) {
+
+        app-navigation{
+                position: fixed;
+                width: 100vw;
+                z-index: 9;
+        }
+
+        .main-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 30px;
+                height: 90% vh;
+                width: 100% vw;
+        }
+
+        #Wallpaper{
+                display: flex;
+                justify-content:center;
+                height: 100vh;
+
+                background-image: url("../app/images/internationalTractor-blurred.jpg");
+                background-size: 700px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+        }
+
+        h1{
+                background-color:goldenrod;
+                z-index: 10;
+                position: fixed;
+                top: 100px;
+                left: 1px;
+        }
+
 
 }
+@media only screen and (min-width: 768px) {
 
-#Wallpaper{
-        background-image: url("../app/images/bia-blurred.jpg");
-        background-size: 700px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-attachment: fixed;
+        app-navigation{
+
+                position: fixed;
+                width: 100vw;
+                z-index: 9;
+        }
+
+        .main-container {
+               margin-top: 30px;
+                height: 90% vh;
+                width: 100% vw;
+        }
+
+        #Wallpaper{
+              
+                display: flex;
+                justify-content:center;
+
+                background-image: url("../app/images/internationalTractor-blurred.jpg");
+                background-size: 700px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+        }
+
+        h1{
+                background-color:goldenrod;
+                z-index: 10;
+                position: fixed;
+                top: 100px;
+                left: 1px;
+        }
 }

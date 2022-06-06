@@ -56,6 +56,9 @@ namespace AskCletus_BackEnd.Migrations
                     b.Property<int>("DrinkId")
                         .HasColumnType("int");
 
+                    b.Property<string>("DrinkName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 

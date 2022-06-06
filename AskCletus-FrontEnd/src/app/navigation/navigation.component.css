@@ -1,30 +1,169 @@
+@media only screen and (min-width: 100px) {
+
+
+
+    .navigation-container{
+     
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font: normal bold normal 1em/1em helvetica, sans-serif;
+        list-style: none;
+        height: 50px;
+        background-color: rgb(31, 31, 31);
+
+
+    }
+
+    li {
+        width: 10%;
+        text-align: center;
+        margin-top: 4px;
+      
+    }
+
+    li span{
+        display: none;
+    }
+
+    li a{
+        display: block;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        width: 100%;
+        height: 35px;
+       
+    }
+
+    li mat-icon{
+        line-height: 1.6em;
+    }
+
+}
+
+@media only screen and (min-width: 300px) {
+
+
+    li span{
+        display: none;
+    }
+
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font: normal bold normal 1em/1em helvetica, sans-serif;
+        list-style: none;
+        height: 50px;
+        margin-bottom: 10px;
+        background-image: url(../images/internationalTractor-blurred.jpg);
+        background-size: 150%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+
+    li {
+        width: 10%;
+        text-align: center;
+        margin-top: 4px;
+      
+    }
+
+    li span{
+        display: none;
+    }
+
+    li a{
+        display: block;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        width: 100%;
+        height: 35px;
+       
+    }
+
+    li mat-icon{
+        line-height: 1.6em;
+    }
+
+}
+@media only screen and (min-width: 600px) {
+
+    li span{
+        display: none;
+    }
+
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font: normal bold normal 1em/1em helvetica, sans-serif;
+        list-style: none;
+        height: 50px;
+        margin-bottom: 10px;
+
+
+    }
+
+    li {
+        width: 20%;
+        text-align: center;
+        margin-top: 4px;
+      
+    }
+    li a{
+        display: block;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        width: 100%;
+        height: 35px;
+    
+    }
+    li span{
+        display:none;
+    }
+
+}
+@media only screen and (min-width: 768px) {
+
+
+    li span{
+        display: block;
+    }
 .navigation-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     font: normal bold normal 1em/1em helvetica, sans-serif;
     list-style: none;
-    height: 38px;
+    height: 50px;
     margin-bottom: 10px;
-    background-color: rgb(201, 207, 213);
+    background-color: rgb(31, 31, 31);
 }
 
 li {
-    width: 16%;
+    width: 25%;
     text-align: center;
-    line-height: 2em;
-    background-color:aliceblue;
+    margin-top: 10px;
+  
+}
+
+li mat-icon{
+    display: none;
 }
 
 li a{
     display: block;
-    color: rgb(51, 69, 51);
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    
-    
     width: 100%;
-    height: 35px
+    height: 35px;
+
+
 }
+
+
 
 li a:hover{
     font-size: 1.3em;
@@ -33,4 +172,5 @@ li a:hover{
 
 ul{
     border-bottom: 1px solid black;
+}
 }

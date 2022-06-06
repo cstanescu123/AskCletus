@@ -2,11 +2,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 import { BarHomeComponent } from './userBar/bar-home/bar-home.component';
 import { AddIngredientComponent } from './userBar/add-ingredient/add-ingredient.component';
@@ -20,6 +21,9 @@ import { GetRandomComponent } from './get-random/get-random.component';
 import { GetDrinkNameComponent } from './get-drink-name/get-drink-name.component';
 import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({
@@ -35,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SearchResultsComponent,
     GetRandomComponent,
     GetDrinkNameComponent,
-    GetDrinkIngredientComponent
+    GetDrinkIngredientComponent,
+
   ],
 
   imports: [
@@ -45,7 +50,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatMenuModule,
+    DragDropModule
   
   ],
   providers: [],

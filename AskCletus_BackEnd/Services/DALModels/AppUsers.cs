@@ -14,7 +14,7 @@ namespace AskCletus_BackEnd.Services.DALModels
         public string Email { get; set; }
         public string Token { get; set; }
         public Authority Authority { get; set; }
-        public IEnumerable<Ingredients> Ingredients { get; set; }
+       // public IEnumerable<Ingredients> Ingredients { get; set; }
     }
 
     public enum Authority
