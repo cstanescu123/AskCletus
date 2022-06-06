@@ -35,11 +35,7 @@ const routes: Routes = [
     path: '',
     component: WelcomePageComponent
   }
- 
-  //define routes here
-
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

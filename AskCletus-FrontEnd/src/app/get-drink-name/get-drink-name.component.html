@@ -4,11 +4,17 @@
   <input type="text" [formControl]="drinkNameControl" />
 </form>
 
-<ng-container *ngIf="drinkName$ | async as drinkName">
-  <p>{{ drinkName.drinks[0].strDrink }}</p>
+<ng-container *ngIf="drinks$ | async as drinks">
+  <p>{{ drinks[0].strDrink }}</p>
   <ul class="bar-container">
-    <li *ngFor="let drink of drinkName" class="list-container">
-      <p>{{ drinkName.drinks[0].strDrink }}</p>
+    <li *ngFor="let drink of drinks" class="list-container">
+      <p>{{ drinks[0].strDrink }}</p>
     </li>
   </ul>
 </ng-container>
+
+<ul class="bar-container">
+  <li *ngFor="let drink of drinks$ | async" class="list-container">
+    <p>{{ drink.strDrink }}</p>
+  </li>
+</ul>

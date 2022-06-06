@@ -28,7 +28,7 @@ namespace AskCletus_BackEnd.Controllers
             var user = _drinkContext.GetUser(userId);
             if (user != null)
             {
-                return Ok(user);
+                return Ok(user.Result);
             }
             return BadRequest();
         }

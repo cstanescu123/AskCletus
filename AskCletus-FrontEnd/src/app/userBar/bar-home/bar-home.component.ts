@@ -37,9 +37,5 @@ export class BarHomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this._userBarService.getUserBars().subscribe(bars => {
-      this.bars = bars;
-    })
-  }
+  ngOnInit(): void { }
 }
