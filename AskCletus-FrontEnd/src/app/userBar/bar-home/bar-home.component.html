@@ -4,13 +4,15 @@
 			<li *ngFor="let bar of userBar" class="list-container">
 				<p>Ingredient Name: {{ bar.ingredient }}</p>
 				<p>
-					<button (click)="removeIngredient(bar.ingredientsId)">Delete me</button>
+					<button (click)="removeIngredient(bar.ingredientsId)">Delete</button>
 				</p>
 			</li>
 		</ul>
 	</ng-container>
-	<app-drink-history></app-drink-history>
-	<app-get-random></app-get-random>
-	<app-get-drink-ingredient></app-get-drink-ingredient>
-	<app-get-drink-name></app-get-drink-name>
+	<div class = "bar-bottom">
+		<app-drink-history></app-drink-history>
+		<app-get-random></app-get-random>
+		<app-get-drink-ingredient></app-get-drink-ingredient>
+		<app-get-drink-name></app-get-drink-name>
+	</div>
 </div>

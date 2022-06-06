@@ -6,7 +6,7 @@
      
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         font: normal bold normal 1em/1em helvetica, sans-serif;
         list-style: none;
         height: 50px;
@@ -51,7 +51,7 @@
     .navigation-container{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         font: normal bold normal 1em/1em helvetica, sans-serif;
         list-style: none;
         height: 50px;
@@ -97,7 +97,7 @@
     .navigation-container{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         font: normal bold normal 1em/1em helvetica, sans-serif;
         list-style: none;
         height: 50px;
@@ -134,7 +134,7 @@
 .navigation-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     font: normal bold normal 1em/1em helvetica, sans-serif;
     list-style: none;
     height: 50px;
@@ -145,7 +145,7 @@
 li {
     width: 25%;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 10px;
   
 }
 

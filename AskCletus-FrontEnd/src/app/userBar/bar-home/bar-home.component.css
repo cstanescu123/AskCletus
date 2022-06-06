@@ -1,4 +1,6 @@
 @media only screen and (min-width: 300px) {
+
+
     .bar-container {
         display: flex;
         flex-direction: row;
@@ -87,24 +89,31 @@
     }
 }
 @media only screen and (min-width: 768px) {
-   
-   .bar-container {
+
+    #barHome{
+        width: 100vw;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        list-style: none;
-        flex-wrap: wrap;
-        width: 90vw;
-        height: 70vh;
-        margin-top: 200px;
     }
- 
+
+.bar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 90vw;
+    height: 70vh;
+    margin-top: 200px;
+}
+
 
 
     ul li{
         display: flex;
         flex-direction: column;
-        font: normal bold normal 1em/1.2em Helvetica, sans-serif;
+        font: normal bold normal 1.5em/1.2em Helvetica, sans-serif;
         text-align: center;
         border: 2px solid black;
         border-radius: 100px;
@@ -116,8 +125,8 @@
         height: 110px;
         width: 110px;
         box-shadow: -7px 5px 17px;
-        color:rgb(233, 187, 6);
-        text-shadow: 1px 1px black;
+        color:rgb(225, 225, 225);
+        text-shadow: 2px 2px black;
         margin: 2em;
         padding: 2em;
     }
