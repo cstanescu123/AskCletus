@@ -10,28 +10,26 @@ import { HistoryService } from 'src/app/Services/history.service';
 @Component({
   selector: 'app-drink-history',
   templateUrl: './drink-history.component.html',
-  styleUrls: ['./drink-history.component.css']
+  styleUrls: ['./drink-history.component.css'],
 })
 export class DrinkHistoryComponent implements OnInit {
+  histories: HistoryResponse[] = [];
 
-  histories: HistoryResponse[] = []
-
-  constructor(private _historyrService: HistoryService,
-              private _authService: AuthService,
-              private _drinkService: DrinkServiceService) { }
+  constructor(
+    private _historyrService: HistoryService,
+    private _authService: AuthService,
+    private _drinkService: DrinkServiceService
+  ) {}
 
   userHistory$ = this._authService.user$.pipe(
-    filter(x => x !== null),
-    map(x => x!.userId),
-    mergeMap(x => this._historyrService.getHistory(x)),
-    map(x => x)
-    );
+    filter((x) => x !== null),
+    map((x) => x!.userId),
+    mergeMap((x) => this._historyrService.getHistory(x)),
+  );
 
-  drinkByName$ = this.userHistory$.forEach(history => { this._drinkService.getDrinkById(1)});
-  
   ngOnInit(): void {
-    this._historyrService.getHistories().subscribe(history => {
+    this._historyrService.getHistories().subscribe((history) => {
       this.histories = history;
-    })
+    });
   }
 }
