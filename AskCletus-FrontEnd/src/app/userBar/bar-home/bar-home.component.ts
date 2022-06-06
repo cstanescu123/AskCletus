@@ -11,35 +11,31 @@ import { UserBarServiceService } from '../../Services/user-bar-service.service';
   styleUrls: ['./bar-home.component.css']
 })
 export class BarHomeComponent implements OnInit {
-  
-  
+
+
   constructor(private _userBarService: UserBarServiceService,
     private _authService: AuthService) { }
-        
-        //grab user to get userId to get their version of the bar
-        //if no user, don't stay on this page
-        //if user get userId for user bar
-        
-    bars: IngredientsResponse[] = []
-    
-    userBar$ = this._authService.user$.pipe(
-      filter(x => x !== null),
-      map(x => x!.userId),
-      mergeMap(x => this._userBarService.getUserBar(x))
-    );
- 
-    removeIngredient(id: number) {
-      const userBars$ = this._userBarService.deleteIngredient(id).pipe(
+
+  //grab user to get userId to get their version of the bar
+  //if no user, don't stay on this page
+  //if user get userId for user bar
+
+  bars: IngredientsResponse[] = []
+
+  userBar$ = this._authService.user$.pipe(
+    filter(x => x !== null),
+    map(x => x!.userId),
+    mergeMap(x => this._userBarService.getUserBar(x))
+  );
+
+  removeIngredient(id: number) {
+    const userBars$ = this._userBarService.deleteIngredient(id).pipe(
       switchMap(() => this._userBarService.getUserBars())
-      );
-      userBars$.subscribe(ingredient => {
+    );
+    userBars$.subscribe(ingredient => {
       this.bars = ingredient
     });
-    }
-        
-    ngOnInit(): void {
-    this._userBarService.getUserBars().subscribe(bars => {
-      this.bars = bars;
-    })
-    }
+  }
+
+  ngOnInit(): void { }
 }
