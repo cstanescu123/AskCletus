@@ -24,9 +24,9 @@ export class DrinkServiceService {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${drinkId}`)
   }
   public getDrinkByName(name: string): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/DrinkName?drinkName=${name}`);
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${name}`);
   }
   public getDrinkByIngredient(ingredient: string): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${ingredient}`);
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${ingredient}`);
   }
 }
