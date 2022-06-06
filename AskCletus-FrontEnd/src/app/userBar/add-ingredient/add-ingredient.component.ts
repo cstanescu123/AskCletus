@@ -48,12 +48,8 @@ export class AddIngredientComponent implements AfterViewInit, OnDestroy {
 
   }
 
-<<<<<<< HEAD
-  addIngredientControl = new UntypedFormControl();
-=======
   ingredientAndIdSubscription!: Subscription;
   addIngredientControl = new FormControl();
->>>>>>> 29071a52b5047d1ece365733095e27329272d37d
   addingIngredient$ = this.addIngredientControl.valueChanges;
   click$!: Observable<MouseEvent>;
   addIngredientClick$!: Observable<any>;
