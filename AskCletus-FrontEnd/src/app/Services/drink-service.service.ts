@@ -26,4 +26,7 @@ export class DrinkServiceService {
   public getDrinkByName(name: string): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/DrinkName?drinkName=${name}`);
   }
+  public getDrinkByIngredient(ingredient: string): Observable<DrinkResponse> {
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${ingredient}`);
+  }
 }

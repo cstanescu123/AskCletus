@@ -1,17 +1,12 @@
+<<<<<<< HEAD
 <h3>Search for a Drink</h3>
 
+=======
+>>>>>>> c8bb4a35e7b172be23148fca494e8d3a7c1dc71f
 <form>
+  <label>Search For A Drink By Name:</label>
   <input type="text" [formControl]="drinkNameControl" />
 </form>
-
-<ng-container *ngIf="drinks$ | async as drinks">
-  <p>{{ drinks[0].strDrink }}</p>
-  <ul class="bar-container">
-    <li *ngFor="let drink of drinks" class="list-container">
-      <p>{{ drinks[0].strDrink }}</p>
-    </li>
-  </ul>
-</ng-container>
 
 <ul class="bar-container">
   <li *ngFor="let drink of drinks$ | async" class="list-container">
