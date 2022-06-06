@@ -3,6 +3,6 @@
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item *ngIf="randomDrink$ | async as drinks">
-    {{ drinks.drinks[0].strDrink }}
+    <a [routerLink]="['/search-results', drinks.drinks[0].idDrink]">{{ drinks.drinks[0].strDrink }}</a>
   </button>
 </mat-menu>
