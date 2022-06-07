@@ -1,4 +1,14 @@
 <div>
+<<<<<<< HEAD
+  <ng-container class="bar-container" *ngIf="userHistory$ | async as userHistory">
+	  <p>{{ userHistory[0].drinkId }}</p>
+        <ul class="bar-container">
+          <li *ngFor="let history of userHistory" class="list-container" cdkDrag>
+            <p>Ingredient Name: {{ history.drinkId }}</p>
+          </li>
+        </ul>
+      </ng-container>
+=======
   <ng-container
     class="bar-container"
     *ngIf="userHistory$ | async as userHistory"
@@ -9,4 +19,5 @@
       </li>
     </ul>
   </ng-container>
+>>>>>>> c9a64d7c6529a4380196eb05f69ed00d4853d61a
 </div>

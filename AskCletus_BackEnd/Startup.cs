@@ -54,20 +54,37 @@ namespace AskCletus_BackEnd
             {
                 swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
             });
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
-                });
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddDefaultPolicy(builder =>
+            //    {
+            //        builder.AllowAnyOrigin();
+            //        builder.AllowAnyHeader();
+            //        builder.AllowAnyMethod();
+            //    });
 
+
+
+                services.AddCors(corsOptions =>
+                {
+                    corsOptions.AddDefaultPolicy(corsPolicyBuilder =>
+                    {
+                        corsPolicyBuilder.AllowAnyHeader();
+                        corsPolicyBuilder.AllowAnyMethod();
+                        corsPolicyBuilder.AllowAnyOrigin();
+                    });
+                });
+
+
+
+            //});
+            
             services.AddHttpClient<GitHubService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -76,14 +93,15 @@ namespace AskCletus_BackEnd
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AskCletus_BackEnd v1"));
             }
+         
 
             app.UseHttpsRedirection();
 
-            app.UseCors();
 
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

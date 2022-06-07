@@ -1,3 +1,15 @@
+@media only screen and (min-width: 100px) {
+
+    #add-button{
+        height: 40px;
+        width: 100px;
+    }
+
+    #add-button:hover{
+        background-color:rgb(234, 204, 5)
+    }
+}
+
 @media only screen and (min-width: 300px) {
 
     #add-ingredient{
@@ -13,6 +25,10 @@
         background-position: fixed;
     }
 
+#add-button{
+        height: 40px;
+        border-radius: 5px;
+    }
 
     h2, h4{
         display: block;
