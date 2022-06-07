@@ -3,9 +3,6 @@
   <app-navigation></app-navigation>
 
   <div class="main-container">
-    <ng-container *ngIf="userName$ | async as userBar">
-      <p style="text-align: center">{{ userBar.userName }}</p>
-    </ng-container>
     <router-outlet></router-outlet>
   </div>
 </div>
