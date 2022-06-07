@@ -54,15 +54,30 @@ namespace AskCletus_BackEnd
             {
                 swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "AskCletus_BackEnd", Version = "v1" });
             });
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
+            //services.AddCors(options =>
+            //{
+            //    options.AddDefaultPolicy(builder =>
+            //    {
+            //        builder.AllowAnyOrigin();
+            //        builder.AllowAnyHeader();
+            //        builder.AllowAnyMethod();
+            //    });
+
+
+
+                services.AddCors(corsOptions =>
                 {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyHeader();
-                    builder.AllowAnyMethod();
+                    corsOptions.AddDefaultPolicy(corsPolicyBuilder =>
+                    {
+                        corsPolicyBuilder.AllowAnyHeader();
+                        corsPolicyBuilder.AllowAnyMethod();
+                        corsPolicyBuilder.AllowAnyOrigin();
+                    });
                 });
-            });
+
+
+
+            //});
 
             services.AddHttpClient<GitHubService>();
         }
