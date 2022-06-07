@@ -11,7 +11,10 @@ export class AuthService {
 
   constructor(private _http: HttpClient) { }
 
-  baseUrl = "https://localhost:5001/Auth";
+  baseUrl = 
+  //"https://askcletusbackend20220525201644.azurewebsites.net/Auth"
+  //"https://askcletusbackendapi.azure-api.net/Auth";
+  "https://localhost:5001/Auth";
 
   user$: ReplaySubject<User | null> = new ReplaySubject();
 

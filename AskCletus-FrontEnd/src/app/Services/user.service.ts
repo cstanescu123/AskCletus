@@ -8,7 +8,10 @@ import { UserResponse } from 'src/app/models/UserResponse';
 export class UserService {
 
   constructor(private httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/user";
+  baseUrl = 
+  //"https://askcletusbackend20220525201644.azurewebsites.net/user"
+  //"https://askcletusbackendapi.azure-api.net/user";
+  "https://localhost:5001/user";
   
   deleteUser(userId: number) {
     return this.httpClient.delete<UserResponse>(`${this.baseUrl}/${userId}`);

@@ -12,7 +12,10 @@ export class HistoryService {
   }
 
   constructor(private _httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/DrinkHistory";
+  baseUrl = 
+  //"https://askcletusbackend20220525201644.azurewebsites.net/DrinkHistory"
+  //"https://askcletusbackendapi.azure-api.net/DrinkHistory";
+  "https://localhost:5001/DrinkHistory";
 
   getHistories() { 
     return this.httpClient.get<Array<HistoryResponse>>(this.baseUrl);
