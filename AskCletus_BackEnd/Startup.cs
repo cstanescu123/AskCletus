@@ -93,7 +93,7 @@ namespace AskCletus_BackEnd
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AskCletus_BackEnd v1"));
             }
-            app.UseCors();
+         
 
             app.UseHttpsRedirection();
 
@@ -101,6 +101,7 @@ namespace AskCletus_BackEnd
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
