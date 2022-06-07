@@ -1,6 +1,15 @@
-<p>search-results works!</p>
-<ul>
-    <!--<li ng for something.></li> -->
+<div *ngIf="drink$ | async as drinks; else gettingDrink">
+	<ul >
+		<li *ngFor="drink in drinks">
+			<p>{{drinks.drinks}}</p>
+		</li>
+	</ul>
+</div>
 
-    <!-- bring in search rseults from drink? and display here. -->
-</ul>
+<ng-template #gettingDrink>
+	<p>getting da drank...</p>
+</ng-template>
+
+IngredientSearch?ingredientName=
+
+DrinkName?drinkName=
