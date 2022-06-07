@@ -17,6 +17,12 @@ export class NavigationComponent implements OnInit {
 
   user: User | null = null;
 
+  userName$ = this._authService.user$.pipe(
+    filter(x => x !== null),
+    map(x => x!.userId),
+    mergeMap(x => this._userService.getUser(x)),
+  );
+
   ngOnInit(): void {
     const user = localStorage.getItem("user");
     if (user) {
