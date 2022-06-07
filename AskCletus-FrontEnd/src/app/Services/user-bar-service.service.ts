@@ -8,7 +8,8 @@ import { IngredientsResponse, PostBar, PostIngredientDrinkId } from 'src/app/mod
 export class UserBarServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/Bar";
+  baseUrl = "https://askcletusbackendapi.azure-api.net/Bar"; 
+  //"https://localhost:5001/Bar";
 
   getUserBars() { 
     return this.httpClient.get<Array<IngredientsResponse>>(this.baseUrl);

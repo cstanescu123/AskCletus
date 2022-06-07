@@ -33,7 +33,7 @@ const routes: Routes = [
     component: DrinkHistoryComponent
   },
   {
-    path: "app-search-results",
+    path: "app-search-results/ :id",
     component: SearchResultsComponent
   },
   {

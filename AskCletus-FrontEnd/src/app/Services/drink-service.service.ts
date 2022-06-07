@@ -9,7 +9,8 @@ import { DrinkResponse } from 'src/app/models/DrinkResponse';
 export class DrinkServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  baseUrl = "https://localhost:5001/Drink";
+  baseUrl = "https://askcletusbackendapi.azure-api.net/Drink";
+  //"https://localhost:5001/Drink";
 
   public getRecentDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/recent`);
@@ -24,9 +25,9 @@ export class DrinkServiceService {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${drinkId}`)
   }
   public getDrinkByName(name: string): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${name}`);
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/DrinkName?drinkName=${name}`);
   }
   public getDrinkByIngredient(ingredient: string): Observable<DrinkResponse> {
-    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/${ingredient}`);
+    return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/IngredientSearch?ingredientName=${ingredient}`);
   }
 }
