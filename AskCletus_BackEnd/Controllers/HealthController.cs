@@ -5,7 +5,7 @@ namespace AskCletus_BackEnd.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class Health : ControllerBase
+    public class HealthController : ControllerBase
     {
         [HttpGet]
         public IActionResult Healthy()
