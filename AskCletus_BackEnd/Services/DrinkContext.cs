@@ -10,16 +10,10 @@ namespace AskCletus_BackEnd.Services
 {
     public class DrinkContext : DbContext, IDrinkContext
     {
-       // private readonly string _connectionString;
 
         public DbSet<AppUsers> AppUsers { get; set; }
         public DbSet<Ingredients> UserIngredient { get; set; }
         public DbSet<DrinkHistory> DrinkHistories { get; set; }
-
-        public DrinkContext()
-        {
-            //_connectionString = dbConfig.Value.AskCletus;
-        }
 
         public DrinkHistory AddDrink(DrinkHistory drink)
         {
@@ -169,4 +163,3 @@ namespace AskCletus_BackEnd.Services
         }
     }
 }
-

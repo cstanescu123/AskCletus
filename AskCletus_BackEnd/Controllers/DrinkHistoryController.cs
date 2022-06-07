@@ -35,18 +35,18 @@ namespace AskCletus_BackEnd.Controllers
         [Route("{userId}")]
         public async Task<IActionResult> GetMyHistory([FromRoute]int userId)
         {
-            var myBars = _drinkHistoryContext.GetDrinkHistory(userId);
+            //var myHistory = _drinkHistoryContext.GetDrinkHistory(userId);
+            //var drinkIdsTasks = myHistory
+            //    .Select(bar => _cocktailClient.GetDrinkById(bar.DrinkId));
 
-            var drinkIdsTasks = myBars
-                .Select(bar => _cocktailClient.GetDrinkById(bar.DrinkId));
+            //var drinks = (await Task.WhenAll(drinkIdsTasks))
+            //    .SelectMany(x => x.drinks).ToList();
 
-            var drinks = (await Task.WhenAll(drinkIdsTasks))
-                .Select(x => { Console.Write(x.drinks); return x.drinks; })
-                .Where(list => list is not null)
-                .SelectMany(list => list)
-                .ToList();
-
-            return Ok(drinks);
+            //return Ok(drinks);
+            {
+                var myHistory = _drinkHistoryContext.GetDrinkHistory(userId);
+                return Ok(myHistory);
+            }
         }
 
         [HttpPost]

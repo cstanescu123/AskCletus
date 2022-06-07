@@ -1,29 +1,8 @@
-<!-- <form [formGroup]="searchIngredientFormGroup" (submit)="searchIngredient()">
-	<div>
-		<label>Ingredient:</label>
-		<input type="text" formControlName="strIngredient1">
-		<a [routerLink]="['/searchResult', {{drinkResponse.strIngredient1}}"></a>
-	</div>
-	<div>
-		<button type="submit">Search!</button>
-	</div>
-</form>	 -->
-
-<!-- <pre *ngIf="randomDrink$ | async as drinks; else gettingDrink">
-		name: {{ drinks.drinks[0].strDrink }}
-	  </pre>
-	   -->
-<ng-template #gettingDrink>
-  <p>loading, please wait...</p>
-</ng-template>
-
 <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
   Random Drink
 </button>
 <mat-menu #menu="matMenu">
-  <button
-    mat-menu-item
-    *ngIf="randomDrink$ | async as drinks; else gettingDrink">
+  <button mat-menu-item *ngIf="randomDrink$ | async as drinks">
     {{ drinks.drinks[0].strDrink }}
   </button>
 </mat-menu>
