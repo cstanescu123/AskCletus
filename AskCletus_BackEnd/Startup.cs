@@ -72,6 +72,7 @@ namespace AskCletus_BackEnd
                         corsPolicyBuilder.AllowAnyHeader();
                         corsPolicyBuilder.AllowAnyMethod();
                         corsPolicyBuilder.AllowAnyOrigin();
+                        corsPolicyBuilder.AllowCredentials();
                     });
                 });
 
@@ -96,13 +97,10 @@ namespace AskCletus_BackEnd
          
 
             app.UseHttpsRedirection();
-
-
             app.UseRouting();
-
             app.UseAuthorization();
-            app.UseCors();
 
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
