@@ -72,7 +72,6 @@ namespace AskCletus_BackEnd
                         corsPolicyBuilder.AllowAnyHeader();
                         corsPolicyBuilder.AllowAnyMethod();
                         corsPolicyBuilder.AllowAnyOrigin();
-                        corsPolicyBuilder.AllowCredentials();
                     });
                 });
 
