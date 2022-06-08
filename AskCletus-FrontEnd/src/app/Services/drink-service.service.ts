@@ -10,9 +10,9 @@ export class DrinkServiceService {
 
   constructor(private httpClient: HttpClient) { }
   baseUrl = 
-  //"https://askcletusbackend20220525201644.azurewebsites.net/Drink"
+  "https://askcletusbackend20220525201644.azurewebsites.net/Drink"
   //"https://askcletusbackendapi.azure-api.net/Drink";
-  "https://localhost:5001/Drink";
+  // "https://localhost:5001/Drink";
 
   public getRecentDrink(): Observable<DrinkResponse> {
     return this.httpClient.get<DrinkResponse>(`${this.baseUrl}/recent`);

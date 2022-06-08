@@ -9,4 +9,11 @@
   </li>
 </ul>
 
-
+<!-- <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+  Search By Drink Name
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngIf="drinks$ | async as drinks">
+    <a [routerLink]="['/search-results', drinks.drinks[0].idDrink]">{{ drinks.drinks[0].strDrink }}</a>
+  </button>
+</mat-menu> -->
