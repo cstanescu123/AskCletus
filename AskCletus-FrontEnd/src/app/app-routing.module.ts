@@ -13,6 +13,10 @@ import { GuestComponent } from './guest/guest.component';
 const routes: Routes = [
 
   {
+    path: '',
+    component: WelcomePageComponent
+  },
+  {
     path: 'addIngredient', 
     component: AddIngredientComponent
   },
@@ -40,10 +44,7 @@ const routes: Routes = [
     path: "guest",
     component: GuestComponent
   },
-  {
-    path: '',
-    component: WelcomePageComponent
-  }
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
