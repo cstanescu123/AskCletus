@@ -44,16 +44,6 @@ export class BarHomeComponent implements OnInit {
     this._authService.redirectGitHubToken();
   }
 
-  ngOnInit(): void { 
-    this._activatedRoute.queryParams.pipe(
-      map(params => ({code: params["code"], state: params["state"]})),
-      filter(p => p.code && p.state && p.state === localStorage.getItem("authState")),
-      switchMap((p: {code: string}) => this._authService.githubLogin(p.code))
-    ) 
-    .subscribe(user => {
-      localStorage.setItem("user", JSON.stringify(user));
-      this._authService.setUser(user);
-      this._router.navigate(["/app-bar-home"]);
-    });
+  ngOnInit(): void {
   }
 }

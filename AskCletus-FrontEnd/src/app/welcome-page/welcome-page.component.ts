@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { map } from 'rxjs/internal/operators/map';
 import { filter } from 'rxjs/internal/operators/filter';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
@@ -25,13 +26,16 @@ export class WelcomePageComponent implements OnInit {
     // localhost:4200/?code=12345&state=123435
     this._activatedRoute.queryParams.pipe(
       map(params => ({code: params["code"], state: params["state"]})),
+      // tap(obj => alert(`before filter: ${JSON.stringify(obj)}`)),
       filter(p => p.code && p.state && p.state === localStorage.getItem("authState")),
-      switchMap((p: {code: string}) => this._authService.githubLogin(p.code))
+      // tap(obj => alert(`after filter: ${JSON.stringify(obj)}`)),
+      switchMap(({code}: {code: string}) => this._authService.githubLogin(code)),
+      // tap(obj => alert(`after  login api call: ${JSON.stringify(obj)}`)),
     ) 
     .subscribe(user => {
       localStorage.setItem("user", JSON.stringify(user));
       this._authService.setUser(user);
-      this._router.navigate(["/app-bar-home"]);
+      this._router.navigate(["/","app-bar-home"]);
     });
   }
 
