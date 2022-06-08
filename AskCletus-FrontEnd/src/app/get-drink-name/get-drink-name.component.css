@@ -1,18 +1,32 @@
-
 @media only screen and (min-width: 100px) {
 
+    label {
+      font: normal normal normal 1em/1em helvetica, sans-serif;
+      color: rgb(255, 255, 255);
+      text-shadow: 2px 2px 1px black;
+    }
+  
+  
+      label{
+          font: normal normal normal 1em/1em helvetica, sans-serif;
+          color:rgb(255, 255, 255);
+          text-shadow: 2px 2px 1px black;
+          margin: 2px;
+      }
+  
+      input{
+          height: 30px;
+          margin: 5px;
+      }
 
-        label{
-            font: normal normal normal 1em/1em helvetica, sans-serif;
-            color:rgb(255, 255, 255);
-            text-shadow: 2px 2px 1px black;
-        }
+      .bar-container{
+        max-height: 40px;
+        list-style-type: none;
+      }
 
-
-
-        ul{
-            background-color: blueviolet;
-            list-style: none;
-            
-        }
-}
+      .bar-container li{
+          background-color:rgb(245, 197, 2);
+         
+          height:16px;
+      }
+  }
