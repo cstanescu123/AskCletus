@@ -1,5 +1,9 @@
-
 @media only screen and (min-width: 100px) {
+  label {
+    font: normal normal normal 1em/1em helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 1px black;
+  }
 
 
     label{
@@ -14,7 +18,5 @@
 
 ul{
     max-height: 700px;
-}
-
-
+  }
 }
