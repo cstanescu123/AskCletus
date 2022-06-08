@@ -96,13 +96,10 @@ namespace AskCletus_BackEnd
          
 
             app.UseHttpsRedirection();
-
-
             app.UseRouting();
-
             app.UseAuthorization();
-            app.UseCors();
 
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
