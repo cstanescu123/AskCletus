@@ -30,7 +30,7 @@ export class AuthService {
       'client_id=ea9f15d9c88471a08302',
       `state=${authState}`,
       'allow_signup=true',
-      encodeURIComponent('redirect_uri=http://localhost:4200/user-login'),
+      encodeURIComponent('redirect_uri=https://askcletusbackend20220525201644.azurewebsites.net/app-bar-home'),
     ];
 
     window.location.href = `https://github.com/login/oauth/authorize?${queryParameters.join('&')}`;
