@@ -1,11 +1,10 @@
-<div id="authwrap">
-  <mat-card id="auth-card">
-    <h3>Signin' in?</h3>
-    <button mat-raised-button color="accent" (click)="onGithubLogin()">
-      LOGIN WITH GITHUB
-    </button>
-
-    <h3>Sneakin' in?</h3>
-    <button mat-raised-button color = "accent"><a [routerLink]='["guest"]'>BE MY GUEST</a></button>
-  </mat-card>
+<div id = "authwrap">
+	<mat-card id = "auth-card" >
+		<h3>Signin' in?</h3>
+		<button mat-raised-button color = "accent"  (click)="onGithubLogin()">LOGIN WITH GITHUB</button>
+	
+		<h3>Sneakin' in?</h3>
+		<!-- <button mat-raised-button color = "accent">BE MY GUEST</button> -->
+		<app-guest></app-guest>
+	</mat-card>	
 </div>
