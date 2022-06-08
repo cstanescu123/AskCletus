@@ -1,10 +1,14 @@
-<ng-container *ngIf="drink$ | async as drinks; else gettingDrink">
-		<p>{{drinks.drinks[0].strDrink}}</p>
-		<p>{{drinks.drinks[0].strInstructions}}</p>
-		<p>{{drinks.drinks[0].strIngredient1}}: {{drinks.drinks[0].strMeasure1}}</p>
-		<p>{{drinks.drinks[0].strIngredient2}}: {{drinks.drinks[0].strMeasure2}}</p>
-		<p>{{drinks.drinks[0].strIngredient3}}: {{drinks.drinks[0].strMeasure3}}</p>
-</ng-container>
-<ng-template #gettingDrink>
-	Getting yo drank foo
-</ng-template>
+<div id = "how-to">
+
+	<ng-container *ngIf="drink$ | async as drinks; else gettingDrink" >
+			<p>{{drinks.drinks[0].strDrink}}</p>
+			<p>{{drinks.drinks[0].strInstructions}}</p>
+			<p>{{drinks.drinks[0].strIngredient1}}: {{drinks.drinks[0].strMeasure1}}</p>
+			<p>{{drinks.drinks[0].strIngredient2}}: {{drinks.drinks[0].strMeasure2}}</p>
+			<p>{{drinks.drinks[0].strIngredient3}}: {{drinks.drinks[0].strMeasure3}}</p>
+	</ng-container>
+	<ng-template #gettingDrink>
+		Getting yo drank foo
+	</ng-template>
+
+</div>
