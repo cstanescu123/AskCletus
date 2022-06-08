@@ -23,7 +23,7 @@ export class WelcomePageComponent implements OnInit {
 
   ngOnInit(): void {
     // localhost:4200/?code=12345&state=123435
-    this._activatedRoute.queryParams.pipe(
+    /* this._activatedRoute.queryParams.pipe(
       map(params => ({code: params["code"], state: params["state"]})),
       filter(p => p.code && p.state && p.state === localStorage.getItem("authState")),
       switchMap((p: {code: string}) => this._authService.githubLogin(p.code))
@@ -31,8 +31,8 @@ export class WelcomePageComponent implements OnInit {
     .subscribe(user => {
       localStorage.setItem("user", JSON.stringify(user));
       this._authService.setUser(user);
-      this._router.navigate(["/app-bar-home"]);
-    });
+      this._router.navigate(["/"]);
+    }); */
   }
 
 }
