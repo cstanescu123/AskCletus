@@ -76,7 +76,7 @@ export class AddIngredientComponent implements AfterViewInit, OnDestroy {
       )
     );
     this.ingredientAndIdSubscription = this.postBar$.subscribe(() =>
-      this._router.navigate(['bar-home/bar-home'])
+      this._router.navigate(['app-bar-home'])
     );
   }
 }
