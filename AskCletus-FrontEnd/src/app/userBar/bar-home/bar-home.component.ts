@@ -40,6 +40,9 @@ export class BarHomeComponent implements OnInit {
       this.bars = ingredient
     });
   }
+  onGithubLogin() {
+    this._authService.redirectGitHubToken();
+  }
 
   ngOnInit(): void { 
     this._activatedRoute.queryParams.pipe(
