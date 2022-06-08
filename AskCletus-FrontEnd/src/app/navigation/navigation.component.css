@@ -38,6 +38,13 @@
     li mat-icon{
         line-height: 1.6em;
     }
+    
+    p{
+        font: normal bold normal 2em/1em Helvetica, sans-serif;
+        color: rgb(126, 126, 126);
+        position: fixed;
+        bottom: 10px;
+    }
 
 }
 

@@ -5,7 +5,18 @@
     text-shadow: 2px 2px 1px black;
   }
 
-  ul {
+
+    label{
+        font: normal normal normal 1em/1em helvetica, sans-serif;
+        color:rgb(255, 255, 255);
+        text-shadow: 2px 2px 1px black;
+    }
+
+    input{
+        height: 40px;
+    }
+
+ul{
     max-height: 700px;
   }
 }
