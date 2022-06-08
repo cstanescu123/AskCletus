@@ -24,8 +24,8 @@ import { GetDrinkIngredientComponent } from './get-drink-ingredient/get-drink-in
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
-
+import { GuestComponent } from './guest/guest.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -41,12 +41,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     GetRandomComponent,
     GetDrinkNameComponent,
     GetDrinkIngredientComponent,
+    GuestComponent,
 
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,

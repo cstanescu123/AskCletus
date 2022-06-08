@@ -7,28 +7,30 @@ import { UserService } from '../Services/user.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
   user$ = this._authService.user$;
 
-  constructor(private _authService: AuthService,
-              private _userService: UserService) { }
+  constructor(
+    private _authService: AuthService,
+    private _userService: UserService
+  ) {}
 
   user: User | null = null;
 
   userName$ = this._authService.user$.pipe(
-    filter(x => x !== null),
-    map(x => x!.userId),
-    mergeMap(x => this._userService.getUser(x)),
+    filter((x) => x !== null),
+    map((x) => x!.userId),
+    mergeMap((x) => this._userService.getUser(x))
   );
 
   ngOnInit(): void {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     if (user) {
       const currentUser = JSON.parse(user);
 
-      this._authService.autoLogin(currentUser.userId).subscribe(user => {
+      this._authService.autoLogin(currentUser.userId).subscribe((user) => {
         if (user) {
           this._authService.setUser(user);
         }
@@ -37,11 +39,12 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    localStorage.setItem("user", "");
-    this._authService.user$.pipe(
-      filter(user => user !== null),
-      switchMap(user => this._authService.logout(user!.userId))
-    ).subscribe(_ => this._authService.setUser(null));
+    localStorage.setItem('user', '');
+    this._authService.user$
+      .pipe(
+        filter((user) => user !== null),
+        switchMap((user) => this._authService.logout(user!.userId))
+      )
+      .subscribe((_) => this._authService.setUser(null));
   }
-
 }
