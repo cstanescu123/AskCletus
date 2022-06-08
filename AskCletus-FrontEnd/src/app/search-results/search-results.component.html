@@ -1,7 +1,7 @@
 <div *ngIf="drink$ | async as drinks; else gettingDrink">
-	<ul >
-		<li *ngFor="drink in drinks">
-			<p>{{drinks.drinks}}</p>
+	<ul>
+		<li *ngFor="let drink in drinks">
+			<p>{{drinks.strDrink}</p>
 		</li>
 	</ul>
 </div>
