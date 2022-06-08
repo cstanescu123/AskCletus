@@ -26,7 +26,7 @@ export class AuthService {
     const authState = uuidv4();
     localStorage.setItem("authState", authState);
 
-    const clientId = "8b2fa8cbb5dab88d80dd";
+    const clientId = "ea9f15d9c88471a08302";
     const redirectUri = "redirect_uri=https://localhost:4200";
 
     const queryParameters = [
