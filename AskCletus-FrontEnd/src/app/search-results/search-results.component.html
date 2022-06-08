@@ -1,14 +1,8 @@
-<ng-container *ngFor="let dirnk in drink$ | async as drinks; else gettingDrink">
-
-	<div> 
-		<ul>
-			<li >
-				<p>{{drinks.drink.strDrink}}</p>
-			</li>
-		</ul>
-	</div>
+<ng-container *ngIf="drink$ | async as drinks; else gettingDrink">
+		<!-- <p>{{drink.strDrink}}</p>
+		<p>{{drink.strDrink}}</p>
+		<p>{{drink.strDrink}}</p> -->
 </ng-container>
-	
 <ng-template #gettingDrink>
-	<p>getting da drank...</p>
+	Getting yo drank foo
 </ng-template>
