@@ -1,4 +1,7 @@
-body{
-    color: blueviolet;
-    background-color: white;
+#how-to{
+    background-color: aliceblue;
+    max-width: 500px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 4px;
 }

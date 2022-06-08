@@ -1,4 +1,71 @@
- 
+@media only screen and (min-width: 100px) { 
+    #authwrap{
+           display:flex;
+           flex-direction:column;
+           align-items: center;
+           justify-content: center;
+       
+       
+       
+           height: 100vh;
+       }
+   
+       a{
+           text-decoration: none;
+           color: black;
+           
+       }
+   
+       .cover{
+           display:flex;
+           flex-direction:column;
+           align-items: center;
+           justify-content: center;
+           border-radius: 25px;
+           width: 40vw;
+           height: 50vh;
+          
+           position: absolute;
+       }
+   
+       .mat-card{
+           opacity: 50%;
+           display:flex;
+           flex-direction: column;
+           justify-content: center;
+           border: 3px solid rgb(133, 133, 133);
+           background-color: rgb(165, 165, 165);
+           border-radius: 25px;
+           width: 40vw;
+           height: 50vh;
+       
+       }
+   h3{
+   
+       top: 1px;
+       color:rgb(255, 255, 255);
+       background-color: rgb(5, 4, 0);
+       border-right: 2px solid black;
+       border-left: 8px solid black;
+       border-radius: 50%;
+       box-shadow: 7px 4px 7px black;
+       height: 100px;
+       width: 100px;
+       z-index: 2;
+       }
+   
+       
+   
+       .cover:hover{
+           background-image: url("../../app/images/internationalTractor.jpg");
+           background-size: 700px;
+           background-repeat: no-repeat;
+           background-position: center;
+           background-attachment: fixed;
+       }
+   } 
+
+
 @media only screen and (min-width: 768px) { 
  #authwrap{
         display:flex;
@@ -7,13 +74,30 @@
         justify-content: center;
     
     
-        opacity: 50%;
+    
         height: 100vh;
     }
 
+    a{
+        text-decoration: none;
+        color: black;
+
+    }
+
+    .cover{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        width: 40vw;
+        height: 50vh;
+       
+        position: absolute;
+    }
 
     .mat-card{
-        
+        opacity: 50%;
         display:flex;
         flex-direction: column;
         justify-content: center;
@@ -24,8 +108,7 @@
         height: 50vh;
     
     }
-
-    .mat-card h3{
+h3{
 
     top: 1px;
     color:rgb(255, 255, 255);
@@ -39,8 +122,9 @@
     z-index: 2;
     }
 
+    
 
-    #authwrap mat-card:hover{
+    .cover:hover{
         background-image: url("../../app/images/internationalTractor.jpg");
         background-size: 700px;
         background-repeat: no-repeat;
