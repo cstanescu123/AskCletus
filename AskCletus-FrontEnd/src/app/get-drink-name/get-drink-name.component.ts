@@ -34,3 +34,14 @@ export class GetDrinkNameComponent implements OnInit {
   drinkInput$: Observable<string>;
   ngOnInit(): void {}
 }
+
+// ngOnInit(): void {
+//   const subscription = this._drinkService
+//     .getRandomDrink()
+//     .subscribe((response) => {
+//       this.drinkResponse = JSON.stringify(response, null, 2);
+//     });
+// }
+// toJson(obj: any) {
+//   return JSON.stringify(obj, null, 2);
+// }
