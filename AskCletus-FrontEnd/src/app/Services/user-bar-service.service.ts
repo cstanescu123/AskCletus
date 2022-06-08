@@ -9,9 +9,9 @@ export class UserBarServiceService {
 
   constructor(private httpClient: HttpClient) { }
   baseUrl = 
-  //"https://askcletusbackend20220525201644.azurewebsites.net/Bar"
+  "https://askcletusbackend20220525201644.azurewebsites.net/Bar"
   //"https://askcletusbackendapi.azure-api.net/Bar"; 
-  "https://localhost:5001/Bar";
+  // "https://localhost:5001/Bar";
 
   getUserBars() { 
     return this.httpClient.get<Array<IngredientsResponse>>(this.baseUrl);
