@@ -8,6 +8,10 @@
         text-shadow: 2px 2px 1px black;
     }
 
+    input{
+        height: 40px;
+    }
+
 ul{
     max-height: 700px;
 }
