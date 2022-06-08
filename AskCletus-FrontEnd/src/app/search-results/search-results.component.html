@@ -1,15 +1,14 @@
-<div *ngIf="drink$ | async as drinks; else gettingDrink">
-	<ul>
-		<li *ngFor="let drink in drinks">
-			<p>{{drinks.strDrink}</p>
-		</li>
-	</ul>
-</div>
+<ng-container *ngFor="let dirnk in drink$ | async as drinks; else gettingDrink">
 
+	<div> 
+		<ul>
+			<li >
+				<p>{{drinks.drink.strDrink}}</p>
+			</li>
+		</ul>
+	</div>
+</ng-container>
+	
 <ng-template #gettingDrink>
 	<p>getting da drank...</p>
 </ng-template>
-
-IngredientSearch?ingredientName=
-
-DrinkName?drinkName=
